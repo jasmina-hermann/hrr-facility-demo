@@ -1,33 +1,28 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'ProCleaning';
-export const SITE_DESCRIPTION = 'Specialized, efficient, and thorough cleaning services';
-
+export const SITE_TITLE = 'H-R-R Facility GmbH';
+export const SITE_DESCRIPTION = 'Reinigung und Hauswartung für Privat- und Geschäftskunden in Kreuzlingen, Winterthur und Umgebung.';
 
 export const NAV_MENU = [
     {
         url: "/",
-        title: "Home"
+        title: "Startseite"
     },
     {
-        url: "#",
-        title: "About us"
+        url: "/reinigung",
+        title: "Reinigung"
     },
     {
-        url: "/service",
-        title: "Service"
+        url: "/hauswartung",
+        title: "Hauswartung"
     },
     {
-        url: "/team",
-        title: "Team"
+        url: "/about",
+        title: "Über uns"
     },
     {
-        url: "/blog",
-        title: "Blog"
-    },
-     {
         url: "/contact",
-        title: "Contact"
+        title: "Kontakt"
     }
 ];
