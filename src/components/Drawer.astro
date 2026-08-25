@@ -4,29 +4,17 @@ import HeaderLink from "./HeaderLink.astro";
 import Logo from "./Logo.astro";
 ---
 
-<div class="drawer-side">
-  <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"
-    ><span class="sr-only">Open menu</span>
-  </label>
-  <div class="menu bg-dark text-white min-h-full w-80 p-4">
-    <Logo mode="dark" />
-    <ul class="mt-4">
-      {
-        NAV_MENU.map((item) => (
-          <li>
-            <HeaderLink href={item.url} class="hover:bg-black">
-              {item.title}
-            </HeaderLink>
-          </li>
-        ))
-      }
+<div class="drawer-side z-[60]">
+  <label for="my-drawer-2" aria-label="Menü schliessen" class="drawer-overlay"><span class="sr-only">Menü schliessen</span></label>
+  <div class="menu min-h-full w-80 bg-[#fbfaf8] p-6 text-[#262626] shadow-2xl">
+    <Logo />
+    <ul class="mt-8 gap-2">
+      {NAV_MENU.map((item) => (
+        <li><HeaderLink href={item.url} class="rounded-xl hover:bg-[#fff1e4] hover:text-[#ef7f1a]">{item.title}</HeaderLink></li>
+      ))}
     </ul>
-    <div class="flex flex-col gap-2 items-center w-full mt-auto">
-      <a
-        href="#"
-        class="btn bg-main border-main text-white rounded-lg hover:bg-green-600 hover:text-white! w-full"
-        >Get a quote</a
-      >
+    <div class="mt-auto pt-8">
+      <a href="/contact" class="flex w-full items-center justify-center rounded-xl bg-[#ef7f1a] px-5 py-4 font-bold text-white">Offerte anfragen →</a>
     </div>
   </div>
 </div>
