@@ -1,24 +1,11 @@
----
-import Image from "astro/components/Image.astro";
-const { mode = "light" } = Astro.props;
----
-
-<a href="/" class="logo">
-  <Image
-    src={mode == "light" ? `/img/logo.svg` : `/img/logo-w.svg`}
-    alt="logo"
+<a href="/" class="logo inline-flex items-center" aria-label="H-R-R Facility GmbH Startseite">
+  <img
+    src="https://le-de.cdn-website.com/987a3abca60a4d0682fee4826dac4603/dms3rep/multi/opt/H-R-R-Facility_logo-204w.png"
+    alt="H-R-R 24/7 Service"
     width="204"
-    height="50"
+    height="91"
+    loading="eager"
     fetchpriority="high"
-    loading="eager"
-    class="w-auto h-auto dark:hidden"
-  />
-  <Image
-    src="/img/logo-w.svg"
-    alt="logo"
-    width="204"
-    height="50"
-    loading="eager"
-    class="hidden dark:block"
+    class="h-[58px] md:h-[66px] w-auto object-contain"
   />
 </a>
