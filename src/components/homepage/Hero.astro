@@ -1,41 +1,32 @@
----
-import { Image } from "astro:assets";
----
-
-<section class="relative overflow-hidden bg-[#fbfaf8] py-14 lg:py-24">
-  <Image
-    src="/img/bg/bg0.webp"
-    alt="H-R-R Facility Reinigung und Hauswartung"
-    width={1600}
-    height={900}
+<section class="relative overflow-hidden bg-[#fbfaf8] min-h-[650px] lg:min-h-[720px] flex items-center">
+  <img
+    src="/img/hrr-hero-team.webp"
+    alt="H-R-R Facility Team für Reinigung und Hauswartung"
+    class="absolute inset-y-0 right-0 w-full lg:w-[56%] h-full object-cover object-center"
     loading="eager"
     fetchpriority="high"
-    format="webp"
-    quality={70}
-    class="absolute inset-y-0 right-0 w-full lg:w-[58%] h-full object-cover object-top"
   />
-  <div class="absolute inset-0 bg-gradient-to-r from-[#fbfaf8] via-[#fbfaf8]/95 to-[#fbfaf8]/35 lg:to-transparent"></div>
-  <div class="absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#ef8b2c]/10 blur-3xl"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-[#fbfaf8] via-[#fbfaf8]/98 to-[#fbfaf8]/25 lg:via-[#fbfaf8]/96 lg:to-transparent"></div>
+  <div class="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#ef8b2c]/10 blur-3xl"></div>
 
-  <div class="container relative z-10">
-    <div class="max-w-3xl py-8 lg:py-16">
-      <div class="inline-flex items-center gap-3 rounded-full border border-[#ef8b2c]/25 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#b9671b] shadow-sm backdrop-blur">
-        H-R-R Facility GmbH
-      </div>
-      <h1 class="mt-6 max-w-3xl">Reinigung & Hauswartung auf höchstem Niveau.</h1>
+  <div class="container relative z-10 py-16 lg:py-24">
+    <div class="max-w-3xl">
+      <p class="text-[#ef7f1a] font-bold uppercase tracking-[0.16em] text-sm mb-5">H-R-R Facility GmbH</p>
+      <h1 class="max-w-3xl">Reinigung &amp;<br />Hauswartung auf<br /><span class="text-[#ef7f1a]">höchstem</span> Niveau.</h1>
+      <div class="h-[2px] w-16 bg-[#ef7f1a] my-6"></div>
       <p class="max-w-2xl text-lg md:text-xl leading-relaxed text-[#67625d]">
         Persönliche Betreuung, kompromisslose Sauberkeit und zuverlässiger Immobilienservice für Privat- und Geschäftskunden.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-4">
-        <a href="#dienstleistungen" class="inline-flex items-center justify-center rounded-full bg-[#ef8b2c] px-7 py-3.5 font-semibold text-white shadow-[0_12px_30px_rgba(239,139,44,0.28)] transition hover:-translate-y-0.5 hover:bg-[#df7c1e]">Dienstleistungen entdecken</a>
-        <a href="/contact" class="inline-flex items-center justify-center rounded-full border border-[#d9d1c8] bg-white/90 px-7 py-3.5 font-semibold text-[#292929] transition hover:border-[#ef8b2c] hover:text-[#b9671b]">Offerte anfragen</a>
+        <a href="#dienstleistungen" class="inline-flex items-center justify-center gap-3 rounded-xl bg-[#ef7f1a] px-7 py-4 font-semibold text-white shadow-[0_14px_34px_rgba(239,127,26,0.25)] transition hover:-translate-y-0.5 hover:bg-[#da6f12]">Unsere Dienstleistungen <span>→</span></a>
+        <a href="/contact" class="inline-flex items-center justify-center gap-3 rounded-xl border border-[#ded7cf] bg-white/95 px-7 py-4 font-semibold text-[#292929] transition hover:border-[#ef7f1a] hover:text-[#c86713]">Offerte anfragen <span>→</span></a>
       </div>
 
-      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-[#6d6862]">
-        <span>✓ Privat & Geschäftlich</span>
-        <span>✓ Kreuzlingen</span>
-        <span>✓ Winterthur</span>
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-[#66615d]">
+        <span class="flex items-center gap-2"><b class="text-[#ef7f1a]">✓</b> Privat &amp; Geschäftlich</span>
+        <span class="flex items-center gap-2"><b class="text-[#ef7f1a]">✓</b> Kreuzlingen</span>
+        <span class="flex items-center gap-2"><b class="text-[#ef7f1a]">✓</b> Winterthur</span>
       </div>
     </div>
   </div>
