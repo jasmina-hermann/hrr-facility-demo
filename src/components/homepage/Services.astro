@@ -1,38 +1,45 @@
----
-import ServiceCard from "../../components/card/ServiceCard.astro";
-import { getCollection } from "astro:content";
-
-const services = (await getCollection("service"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
----
-
-<section class="section section-services">
+<section class="section py-16 md:py-24 bg-base-100">
   <div class="container">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 border-b border-b-main pb-10"
-    >
-      <h2 class="capitalize">We always provide the best service</h2>
-      <div>
-        <div class="flex flex-wrap justify-between items-center gap-3">
-          <p class="font-semibold mb-3 text-xl">Services</p>
-          <p>
-            <a href="/service" class="text-main underline hover:no-underline"
-              >All services</a
-            >
-          </p>
-        </div>
-        <p class="mb-3">
-          While we can customize your cleaning plan to suit your needs, most
-          clients schedule regular cleaning services :
-        </p>
-      </div>
+    <div class="max-w-3xl mb-10 md:mb-14">
+      <p class="uppercase tracking-[0.22em] text-sm font-bold text-[#f28c28] mb-3">Unsere Dienstleistungen</p>
+      <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Was dürfen wir für Sie übernehmen?</h2>
+      <p class="text-lg opacity-75">Wählen Sie zuerst den Bereich. Danach können Sie zwischen Privat und Geschäftlich auswählen.</p>
     </div>
 
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-10 relative"
-    >
-      {services.map((service) => <ServiceCard {...service} />)}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <a href="/reinigung" class="group relative overflow-hidden rounded-3xl min-h-[360px] md:min-h-[460px] bg-[#171717] border border-white/10 shadow-xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#2b2b2b] via-[#171717] to-black"></div>
+        <div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#f28c28]/20 blur-3xl transition duration-500 group-hover:bg-[#f28c28]/35"></div>
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between text-white">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f28c28] text-3xl">✦</span>
+            <span class="text-sm uppercase tracking-[0.18em] opacity-60">01</span>
+          </div>
+          <div>
+            <p class="text-[#f28c28] font-semibold mb-2">Sauberkeit mit System</p>
+            <h3 class="text-4xl md:text-5xl font-bold mb-4">Reinigung</h3>
+            <p class="text-white/70 max-w-md mb-6">Professionelle Reinigung für Wohnungen, Häuser, Büros, Praxen und Liegenschaften.</p>
+            <span class="inline-flex items-center gap-3 font-semibold">Privat oder Geschäftlich wählen <span class="text-2xl transition-transform group-hover:translate-x-2">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/hauswartung" class="group relative overflow-hidden rounded-3xl min-h-[360px] md:min-h-[460px] bg-[#f28c28] shadow-xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#ffad55] via-[#f28c28] to-[#d96d09]"></div>
+        <div class="absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-white/15 blur-3xl"></div>
+        <div class="relative h-full p-8 md:p-12 flex flex-col justify-between text-white">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-black/20 text-3xl">⌂</span>
+            <span class="text-sm uppercase tracking-[0.18em] opacity-70">02</span>
+          </div>
+          <div>
+            <p class="font-semibold text-white/85 mb-2">Ihre Immobilie in guten Händen</p>
+            <h3 class="text-4xl md:text-5xl font-bold mb-4">Hauswartung</h3>
+            <p class="text-white/80 max-w-md mb-6">Zuverlässige Betreuung, Kontrolle und Pflege von Gebäuden und Aussenanlagen.</p>
+            <span class="inline-flex items-center gap-3 font-semibold">Privat oder Geschäftlich wählen <span class="text-2xl transition-transform group-hover:translate-x-2">→</span></span>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
