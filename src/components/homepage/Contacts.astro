@@ -2,104 +2,61 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<section class="section section-contacts">
+<section class="section section-contacts bg-[#fbfaf8] py-16 md:py-24">
   <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
       <div>
-        <h3 class="font-semibold text-xl lg:text-[40px]">Find us</h3>
-        <div class="mt-10 grid gap-6">
-          <div
-            class="grid grid-cols-[54px_1fr] gap-4 items-center dark:bg-dark dark:border-dark bg-gray-50 border border-gray-200 rounded-lg p-4"
-          >
-            <div
-              class="bg-main text-white flex items-center justify-center rounded-full w-13.5 h-13.5"
-            >
-              <Icon name="lucide:phone-call" size={24} />
-            </div>
-            <div>
-              <p class="font-semibold text-lg mb-0">Call Us</p>
-              <a href="tel:+(08)255201888">+(08) 255 201 888</a>
-            </div>
-          </div>
-
-          <div
-            class="grid grid-cols-[54px_1fr] gap-4 items-center dark:bg-dark dark:border-dark bg-gray-50 border border-gray-200 rounded-lg p-4"
-          >
-            <div
-              class="bg-main text-white flex items-center justify-center rounded-full w-13.5 h-13.5"
-            >
-              <Icon name="lucide:mail" size={24} />
-            </div>
-            <div>
-              <p class="font-semibold text-lg mb-0">Email Now</p>
-              <a href="mailto:Hello@procleaning.com">Hello@procleaning.com</a>
-            </div>
-          </div>
-
-          <div
-            class="grid grid-cols-[54px_1fr] gap-4 items-center dark:bg-dark dark:border-dark bg-gray-50 border border-gray-200 rounded-lg p-4"
-          >
-            <div
-              class="bg-main text-white flex items-center justify-center rounded-full w-13.5 h-13.5"
-            >
+        <p class="uppercase tracking-[0.2em] text-sm font-bold text-[#ef8b2c] mb-3">Kontakt</p>
+        <h3>Wir sind für Sie da.</h3>
+        <p class="text-[#6d6862] max-w-xl">Persönlich, zuverlässig und schnell erreichbar. H-R-R Facility betreut Privat- und Geschäftskunden in Kreuzlingen, Winterthur und Umgebung.</p>
+        <div class="mt-10 grid gap-5">
+          <div class="grid grid-cols-[54px_1fr] gap-4 items-center bg-white border border-[#eee5dc] rounded-2xl p-5 shadow-[0_12px_38px_rgba(70,50,30,0.06)]">
+            <div class="bg-[#fff1e4] text-[#ef8b2c] flex items-center justify-center rounded-full w-13.5 h-13.5">
               <Icon name="lucide:map-pin" size={24} />
             </div>
             <div>
-              <p class="font-semibold text-lg mb-0">Address</p>
-              <a href="#"
-                ><address class="not-italic">
-                  7510, Brand Tower, New York, USA
-                </address></a
-              >
+              <p class="font-semibold text-lg mb-1">Standorte</p>
+              <p class="text-[#6d6862] mb-0">Kreuzlingen · Winterthur</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-[54px_1fr] gap-4 items-center bg-white border border-[#eee5dc] rounded-2xl p-5 shadow-[0_12px_38px_rgba(70,50,30,0.06)]">
+            <div class="bg-[#fff1e4] text-[#ef8b2c] flex items-center justify-center rounded-full w-13.5 h-13.5">
+              <Icon name="lucide:phone-call" size={24} />
+            </div>
+            <div>
+              <p class="font-semibold text-lg mb-1">Direkter Kontakt</p>
+              <p class="text-[#6d6862] mb-0">Telefonnummer wird ergänzt</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-[54px_1fr] gap-4 items-center bg-white border border-[#eee5dc] rounded-2xl p-5 shadow-[0_12px_38px_rgba(70,50,30,0.06)]">
+            <div class="bg-[#fff1e4] text-[#ef8b2c] flex items-center justify-center rounded-full w-13.5 h-13.5">
+              <Icon name="lucide:mail" size={24} />
+            </div>
+            <div>
+              <p class="font-semibold text-lg mb-1">E-Mail</p>
+              <p class="text-[#6d6862] mb-0">E-Mail-Adresse wird ergänzt</p>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <p class="text-sm mb-0">Contact info</p>
-        <h3 class="font-semibold text-xl lg:text-[40px] mb-3">Keep In Touch</h3>
-        <p class="">
-          We prioritize responding to your inquiries promptly to ensure you
-          receive the assistance you need in a timely manner
-        </p>
+      <div class="bg-white border border-[#eee5dc] rounded-[2rem] p-7 md:p-10 shadow-[0_20px_70px_rgba(70,50,30,0.08)]">
+        <p class="text-sm uppercase tracking-[0.18em] text-[#ef8b2c] font-bold mb-2">Unverbindlich anfragen</p>
+        <h3 class="mb-3">Ihre Offerte.</h3>
+        <p class="text-[#6d6862]">Teilen Sie uns kurz mit, wobei wir Sie unterstützen dürfen. Wir melden uns persönlich bei Ihnen.</p>
 
-        <form action="/" method="POST" class="mt-8 grid gap-3">
+        <form action="/" method="POST" class="mt-8 grid gap-4">
           <fieldset class="fieldset">
-            <input
-              type="text"
-              placeholder="Name"
-              class="input w-full validator"
-              id="contact-name"
-              name="contact_name"
-              required
-            />
-            <p class="validator-hint hidden">Required</p>
-          </fieldset>
-
-          <fieldset class="fieldset">
-            <input
-              type="text"
-              placeholder="Email"
-              class="input w-full validator"
-              id="contact-email"
-              name="contact_email"
-              required
-            />
-            <p class="validator-hint hidden">Required</p>
+            <input type="text" placeholder="Name" class="input w-full rounded-xl border-[#ddd3ca]" id="contact-name" name="contact_name" required />
           </fieldset>
           <fieldset class="fieldset">
-            <textarea
-              class="textarea w-full validator"
-              placeholder="Message"
-              id="contact-msg"
-              name="contact_msg"
-              required></textarea>
-            <p class="validator-hint hidden">Required</p>
+            <input type="email" placeholder="E-Mail" class="input w-full rounded-xl border-[#ddd3ca]" id="contact-email" name="contact_email" required />
           </fieldset>
-          <button
-            class="btn bg-main border-main text-white rounded-lg hover:bg-green-600 shadow-none lg:mr-auto"
-            type="submit">Sent Massage</button
-          >
+          <fieldset class="fieldset">
+            <textarea class="textarea w-full rounded-xl border-[#ddd3ca] min-h-32" placeholder="Wie können wir Sie unterstützen?" id="contact-msg" name="contact_msg" required></textarea>
+          </fieldset>
+          <button class="btn bg-[#ef8b2c] border-[#ef8b2c] text-white rounded-full hover:bg-[#df7c1e] shadow-none lg:mr-auto px-7" type="submit">Anfrage senden</button>
         </form>
       </div>
     </div>
