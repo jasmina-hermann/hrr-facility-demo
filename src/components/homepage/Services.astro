@@ -1,10 +1,10 @@
 <section id="dienstleistungen" class="bg-[#fbfaf8] py-14 md:py-20">
   <div class="container">
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-7">
-      <article class="relative overflow-hidden rounded-[22px] border border-[#e9e3dc] bg-white min-h-[390px] md:min-h-[420px] shadow-[0_18px_55px_rgba(73,54,35,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(239,127,26,0.13)]">
-        <img src="/img/hrr-cleaning-card.webp" alt="Hochwertig gereinigter Wohnbereich" class="absolute right-0 top-0 h-full w-[46%] object-cover object-center" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/98 via-[58%] to-white/5"></div>
-        <div class="relative z-10 flex min-h-[390px] md:min-h-[420px] max-w-[72%] flex-col p-7 sm:p-9 md:p-10">
+      <article class="service-card relative overflow-hidden rounded-[22px] border border-[#e9e3dc] bg-white min-h-[420px] md:min-h-[420px] shadow-[0_18px_55px_rgba(73,54,35,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(239,127,26,0.13)]">
+        <img src="/img/hrr-cleaning-card.webp" alt="Hochwertig gereinigter Wohnbereich" class="service-image absolute right-0 top-0 h-full w-[46%] object-cover object-center" loading="lazy" />
+        <div class="service-fade absolute inset-0 bg-gradient-to-r from-white via-white/98 via-[58%] to-white/5"></div>
+        <div class="service-content relative z-10 flex min-h-[420px] max-w-[72%] flex-col p-7 sm:p-9 md:p-10">
           <div class="flex items-start gap-5">
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-[14px] bg-[#ef7f1a] text-3xl text-white shadow-[0_10px_25px_rgba(239,127,26,0.22)]">✦</div>
             <div>
@@ -25,10 +25,10 @@
         </div>
       </article>
 
-      <article class="relative overflow-hidden rounded-[22px] border border-[#e9e3dc] bg-white min-h-[390px] md:min-h-[420px] shadow-[0_18px_55px_rgba(73,54,35,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(239,127,26,0.13)]">
-        <img src="/img/hrr-hauswartung-card.webp" alt="Gepflegte Liegenschaft und Umgebung" class="absolute right-0 top-0 h-full w-[46%] object-cover object-center" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/98 via-[58%] to-white/5"></div>
-        <div class="relative z-10 flex min-h-[390px] md:min-h-[420px] max-w-[72%] flex-col p-7 sm:p-9 md:p-10">
+      <article class="service-card relative overflow-hidden rounded-[22px] border border-[#e9e3dc] bg-white min-h-[420px] md:min-h-[420px] shadow-[0_18px_55px_rgba(73,54,35,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(239,127,26,0.13)]">
+        <img src="/img/hrr-hauswartung-card.webp" alt="Gepflegte Liegenschaft und Umgebung" class="service-image absolute right-0 top-0 h-full w-[46%] object-cover object-center" loading="lazy" />
+        <div class="service-fade absolute inset-0 bg-gradient-to-r from-white via-white/98 via-[58%] to-white/5"></div>
+        <div class="service-content relative z-10 flex min-h-[420px] max-w-[72%] flex-col p-7 sm:p-9 md:p-10">
           <div class="flex items-start gap-5">
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-[14px] bg-[#ef7f1a] text-3xl text-white shadow-[0_10px_25px_rgba(239,127,26,0.22)]">⌂</div>
             <div>
@@ -54,7 +54,46 @@
 
 <style>
   @media (max-width: 640px) {
-    article > img { width: 100% !important; height: 46% !important; top: auto !important; bottom: 0 !important; opacity: .32; }
-    article > div.relative { max-width: 100% !important; }
+    .service-card {
+      min-height: 430px !important;
+    }
+
+    .service-image {
+      width: 44% !important;
+      height: 100% !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: auto !important;
+      opacity: 1 !important;
+      object-position: center !important;
+    }
+
+    .service-fade {
+      background: linear-gradient(90deg, #fff 0%, #fff 52%, rgba(255,255,255,.88) 64%, rgba(255,255,255,.12) 100%) !important;
+    }
+
+    .service-content {
+      max-width: 78% !important;
+      min-height: 430px !important;
+      padding: 28px 22px !important;
+    }
+
+    .service-content h2 {
+      font-size: 38px !important;
+    }
+
+    .service-content > div:first-child {
+      gap: 14px !important;
+    }
+
+    .service-content > div:first-child > div:first-child {
+      width: 58px !important;
+      height: 58px !important;
+    }
+
+    .service-content .grid {
+      width: 100% !important;
+      padding-top: 30px !important;
+    }
   }
 </style>
