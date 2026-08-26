@@ -2,61 +2,40 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<section class="section section-contacts bg-[#fbfaf8] py-16 md:py-24">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-      <div>
-        <p class="uppercase tracking-[0.2em] text-sm font-bold text-[#ef8b2c] mb-3">Kontakt</p>
-        <h3>Wir sind für Sie da.</h3>
-        <p class="text-[#6d6862] max-w-xl">Persönlich, zuverlässig und schnell erreichbar. H-R-R Facility betreut Privat- und Geschäftskunden in Kreuzlingen, Winterthur und Umgebung.</p>
-        <div class="mt-10 grid gap-5">
-          <div class="grid grid-cols-[54px_1fr] gap-4 items-center bg-white border border-[#eee5dc] rounded-2xl p-5 shadow-[0_12px_38px_rgba(70,50,30,0.06)]">
-            <div class="bg-[#fff1e4] text-[#ef8b2c] flex items-center justify-center rounded-full w-13.5 h-13.5">
-              <Icon name="lucide:map-pin" size={24} />
-            </div>
-            <div>
-              <p class="font-semibold text-lg mb-1">Standorte</p>
-              <p class="text-[#6d6862] mb-0">Kreuzlingen · Winterthur</p>
-            </div>
-          </div>
+<section class="bg-[#173d34] py-14 md:py-18">
+  <div class="site-shell">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-stretch">
+      <div class="rounded-[30px] border border-white/10 bg-white/6 p-7 text-white md:p-9">
+        <p class="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#f6b77e]">Direkt &amp; persönlich</p>
+        <h2 class="!text-white">Wie dürfen wir Ihre Immobilie unterstützen?</h2>
+        <p class="mt-4 max-w-xl text-lg leading-relaxed text-white/72">Ob regelmässige Reinigung, Hauswartung oder eine individuelle Lösung: Schreiben Sie uns kurz, was Sie benötigen. Wir melden uns persönlich bei Ihnen.</p>
 
-          <div class="grid grid-cols-[54px_1fr] gap-4 items-center bg-white border border-[#eee5dc] rounded-2xl p-5 shadow-[0_12px_38px_rgba(70,50,30,0.06)]">
-            <div class="bg-[#fff1e4] text-[#ef8b2c] flex items-center justify-center rounded-full w-13.5 h-13.5">
-              <Icon name="lucide:phone-call" size={24} />
-            </div>
-            <div>
-              <p class="font-semibold text-lg mb-1">Direkter Kontakt</p>
-              <p class="text-[#6d6862] mb-0">Telefonnummer wird ergänzt</p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-[54px_1fr] gap-4 items-center bg-white border border-[#eee5dc] rounded-2xl p-5 shadow-[0_12px_38px_rgba(70,50,30,0.06)]">
-            <div class="bg-[#fff1e4] text-[#ef8b2c] flex items-center justify-center rounded-full w-13.5 h-13.5">
-              <Icon name="lucide:mail" size={24} />
-            </div>
-            <div>
-              <p class="font-semibold text-lg mb-1">E-Mail</p>
-              <p class="text-[#6d6862] mb-0">E-Mail-Adresse wird ergänzt</p>
-            </div>
-          </div>
+        <div class="mt-8 grid gap-4">
+          <div class="flex items-center gap-4 rounded-2xl bg-white/8 p-4"><span class="grid h-11 w-11 place-items-center rounded-xl bg-[#ef7f1a] text-white"><Icon name="lucide:map-pin" size={21} /></span><div><b class="block">Region</b><span class="text-sm text-white/65">Kreuzlingen · Winterthur · Umgebung</span></div></div>
+          <div class="flex items-center gap-4 rounded-2xl bg-white/8 p-4"><span class="grid h-11 w-11 place-items-center rounded-xl bg-[#ef7f1a] text-white"><Icon name="lucide:shield-check" size={21} /></span><div><b class="block">Diskret &amp; zuverlässig</b><span class="text-sm text-white/65">Für Privatkunden, Unternehmen und Verwaltungen</span></div></div>
+          <div class="flex items-center gap-4 rounded-2xl bg-white/8 p-4"><span class="grid h-11 w-11 place-items-center rounded-xl bg-[#ef7f1a] text-white"><Icon name="lucide:sparkles" size={21} /></span><div><b class="block">Premium-Anspruch</b><span class="text-sm text-white/65">Sorgfalt für hochwertige Räume und Liegenschaften</span></div></div>
         </div>
       </div>
-      <div class="bg-white border border-[#eee5dc] rounded-[2rem] p-7 md:p-10 shadow-[0_20px_70px_rgba(70,50,30,0.08)]">
-        <p class="text-sm uppercase tracking-[0.18em] text-[#ef8b2c] font-bold mb-2">Unverbindlich anfragen</p>
-        <h3 class="mb-3">Ihre Offerte.</h3>
-        <p class="text-[#6d6862]">Teilen Sie uns kurz mit, wobei wir Sie unterstützen dürfen. Wir melden uns persönlich bei Ihnen.</p>
 
-        <form action="/" method="POST" class="mt-8 grid gap-4">
-          <fieldset class="fieldset">
-            <input type="text" placeholder="Name" class="input w-full rounded-xl border-[#ddd3ca]" id="contact-name" name="contact_name" required />
-          </fieldset>
-          <fieldset class="fieldset">
-            <input type="email" placeholder="E-Mail" class="input w-full rounded-xl border-[#ddd3ca]" id="contact-email" name="contact_email" required />
-          </fieldset>
-          <fieldset class="fieldset">
-            <textarea class="textarea w-full rounded-xl border-[#ddd3ca] min-h-32" placeholder="Wie können wir Sie unterstützen?" id="contact-msg" name="contact_msg" required></textarea>
-          </fieldset>
-          <button class="btn bg-[#ef8b2c] border-[#ef8b2c] text-white rounded-full hover:bg-[#df7c1e] shadow-none lg:mr-auto px-7" type="submit">Anfrage senden</button>
+      <div class="rounded-[30px] bg-[#fbf8f4] p-7 shadow-[0_25px_80px_rgba(0,0,0,.18)] md:p-10">
+        <p class="premium-kicker mb-2">Unverbindlich anfragen</p>
+        <h3 class="!mb-2 !text-[42px]">Ihre persönliche Offerte.</h3>
+        <p class="max-w-2xl text-[#6d6862]">Je genauer wir Ihr Objekt und Ihren Bedarf kennen, desto passender können wir die Betreuung planen.</p>
+
+        <form action="/" method="POST" class="mt-7 grid gap-4 sm:grid-cols-2">
+          <input type="text" placeholder="Name" class="input w-full rounded-xl border-[#ddd3ca] bg-white" id="contact-name" name="contact_name" required />
+          <input type="email" placeholder="E-Mail" class="input w-full rounded-xl border-[#ddd3ca] bg-white" id="contact-email" name="contact_email" required />
+          <select class="select w-full rounded-xl border-[#ddd3ca] bg-white text-[#5f5a55]" name="service">
+            <option>Reinigung</option>
+            <option>Hauswartung</option>
+            <option>Reinigung &amp; Hauswartung</option>
+          </select>
+          <input type="text" placeholder="Ort / Liegenschaft" class="input w-full rounded-xl border-[#ddd3ca] bg-white" name="location" />
+          <textarea class="textarea min-h-32 w-full rounded-xl border-[#ddd3ca] bg-white sm:col-span-2" placeholder="Was dürfen wir für Sie übernehmen?" id="contact-msg" name="contact_msg" required></textarea>
+          <div class="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-sm text-[#777069]">✓ Unverbindlich &nbsp; ✓ Persönliche Rückmeldung &nbsp; ✓ Keine Standardpakete</p>
+            <button class="cta-primary border-0" type="submit">Offerte anfragen <span>→</span></button>
+          </div>
         </form>
       </div>
     </div>
