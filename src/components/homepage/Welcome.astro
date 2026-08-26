@@ -1,91 +1,38 @@
----
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
----
+<section class="bg-white py-14 md:py-20">
+  <div class="mx-auto w-full max-w-[1500px] px-4 md:px-8">
+    <div class="max-w-3xl mb-10">
+      <p class="uppercase tracking-[0.2em] text-sm font-bold text-[#ef7f1a] mb-4">Einfach. Verlässlich. Professionell.</p>
+      <h2>So funktioniert die Zusammenarbeit mit H-R-R.</h2>
+      <p class="mt-4 text-lg leading-relaxed text-[#69635e]">
+        Gute Facility-Dienstleistungen beginnen mit klaren Absprachen. Deshalb halten wir den Ablauf bewusst einfach: Wir hören zu, planen passend zu Ihrer Immobilie und führen die vereinbarten Arbeiten zuverlässig und sauber aus.
+      </p>
+    </div>
 
-<section class="section section-welcome">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <Image
-        src="/img/img2.webp"
-        alt=""
-        width="535"
-        height="442"
-        format="webp"
-        quality={45}
-        class="w-auto h-auto"
-      />
-      <div>
-        <h2>Welcome To Our Pro-cleaning Company!</h2>
-        <p>
-          We make your space shine! Professional and reliable cleaning service
-          company providing top-notch solutions for homes and businesses.
-          Satisfaction guaranteed!"
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 my-6 gap-4">
-          <div
-            class="grid grid-cols-[20px_1fr] items-center bg-gray-50 dark:bg-dark dark:bg-dark p-4 rounded gap-4"
-          >
-            <div
-              class="bg-main text-white rounded-full flex items-center justify-center w-5 h-5"
-            >
-              <Icon name="lucide:check" />
-            </div>
-            <p class="font-semibold text-lg">Vetted professionals</p>
-          </div>
-
-          <div
-            class="grid grid-cols-[20px_1fr] items-center bg-gray-50 dark:bg-dark p-4 rounded gap-4"
-          >
-            <div
-              class="bg-main text-white rounded-full flex items-center justify-center w-5 h-5"
-            >
-              <Icon name="lucide:check" />
-            </div>
-            <p class="font-semibold text-lg">Next day availability</p>
-          </div>
-
-          <div
-            class="grid grid-cols-[20px_1fr] items-center bg-gray-50 dark:bg-dark p-4 rounded gap-4"
-          >
-            <div
-              class="bg-main text-white rounded-full flex items-center justify-center w-5 h-5"
-            >
-              <Icon name="lucide:check" />
-            </div>
-            <p class="font-semibold text-lg">Standard cleaning tasks</p>
-          </div>
-
-          <div
-            class="grid grid-cols-[20px_1fr] items-center bg-gray-50 dark:bg-dark p-4 rounded gap-4"
-          >
-            <div
-              class="bg-main text-white rounded-full flex items-center justify-center w-5 h-5"
-            >
-              <Icon name="lucide:check" />
-            </div>
-            <p class="font-semibold text-lg">Best Quality</p>
-          </div>
-          <div
-            class="grid grid-cols-[20px_1fr] items-center bg-gray-50 dark:bg-dark p-4 rounded gap-4"
-          >
-            <div
-              class="bg-main text-white rounded-full flex items-center justify-center w-5 h-5"
-            >
-              <Icon name="lucide:check" />
-            </div>
-            <p class="font-semibold text-lg">Affordable Prices</p>
-          </div>
-        </div>
-        <div class="mt-6 grid grid-cols-2 gap-4 max-w-sm mx-auto sm:mx-0">
-          <a
-            href="#"
-            class="btn bg-main border-main text-white rounded-lg hover:bg-green-600"
-            >Book Now</a
-          >
-          <a href="#" class="btn btn-outline rounded-lg">Know More</a>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="rounded-[24px] border border-[#eadfd4] bg-[#fbf7f2] p-7 md:p-8">
+        <div class="text-[#ef7f1a] text-sm font-bold tracking-[0.18em] uppercase">01 · Bedarf klären</div>
+        <h3 class="!text-3xl mt-4">Persönlich besprechen</h3>
+        <p class="text-[#6d6761] leading-relaxed">Wir klären, welche Leistungen Sie benötigen, welche Bereiche betreut werden sollen und was Ihnen besonders wichtig ist.</p>
       </div>
+      <div class="rounded-[24px] border border-[#eadfd4] bg-[#fbf7f2] p-7 md:p-8">
+        <div class="text-[#ef7f1a] text-sm font-bold tracking-[0.18em] uppercase">02 · Lösung planen</div>
+        <h3 class="!text-3xl mt-4">Transparent offerieren</h3>
+        <p class="text-[#6d6761] leading-relaxed">Sie erhalten eine nachvollziehbare Lösung mit klar definiertem Umfang – abgestimmt auf Objekt, Rhythmus und gewünschte Qualität.</p>
+      </div>
+      <div class="rounded-[24px] border border-[#eadfd4] bg-[#fbf7f2] p-7 md:p-8">
+        <div class="text-[#ef7f1a] text-sm font-bold tracking-[0.18em] uppercase">03 · Ausführen</div>
+        <h3 class="!text-3xl mt-4">Zuverlässig erledigen</h3>
+        <p class="text-[#6d6761] leading-relaxed">Unser Team setzt die vereinbarten Leistungen sorgfältig um und sorgt für einen gepflegten, funktionalen und professionellen Eindruck.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 rounded-[28px] bg-[#f3e7dc] px-7 py-7 md:px-10 md:py-9 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div class="max-w-3xl">
+        <p class="text-[#ef7f1a] font-bold uppercase tracking-[0.16em] text-sm mb-2">Ihre Immobilie in guten Händen</p>
+        <h3 class="!text-3xl md:!text-4xl !mb-2">Qualität, auf die Sie sich verlassen können.</h3>
+        <p class="text-[#69635e]">Für Privatkunden, Verwaltungen und Unternehmen in Kreuzlingen, Winterthur und Umgebung.</p>
+      </div>
+      <a href="/contact" class="inline-flex items-center justify-center gap-3 rounded-xl bg-[#ef7f1a] px-7 py-4 font-semibold text-white shadow-[0_12px_28px_rgba(239,127,26,0.2)] transition hover:bg-[#da6f12]">Offerte anfragen <span>→</span></a>
     </div>
   </div>
 </section>
