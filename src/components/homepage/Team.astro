@@ -1,39 +1,49 @@
----
-import TeamCard from "../card/TeamCard.astro";
-import { getCollection } from "astro:content";
-
-const team = (await getCollection("team"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
----
-
-<section class="section section-services">
-  <div class="container">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 border-b border-b-main pb-10"
-    >
-      <h2 class="capitalize">
-        Effective Cleaning Requires an Expert Cleaning Team
-      </h2>
+<section class="bg-[#f5efe8] py-14 md:py-20">
+  <div class="mx-auto w-full max-w-[1580px] px-4 md:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center">
       <div>
-        <div class="flex flex-wrap justify-between items-center gap-3">
-          <p class="font-semibold mb-3 text-xl">Expert Team</p>
-          <p>
-            <a href="/team" class="text-main underline hover:no-underline"
-              >All team</a
-            >
-          </p>
-        </div>
-        <p class="mb-3">
-          We have professional expert cleaning staff ensuring top-notch
-          cleanliness and hygiene for your space.
+        <p class="uppercase tracking-[0.2em] text-sm font-bold text-[#ef7f1a] mb-4">Warum H-R-R Facility GmbH</p>
+        <h2 class="max-w-3xl">Erfahrung, Qualität und persönliche Betreuung.</h2>
+        <p class="mt-5 text-lg leading-relaxed text-[#69635e] max-w-2xl">
+          Seit über 20 Jahren steht H-R-R Facility GmbH für zuverlässige Dienstleistungen rund um Reinigung, Hauswartung und den Werterhalt von Immobilien. Unser Anspruch ist nicht einfach nur eine erledigte Arbeit, sondern ein Ergebnis, das sichtbar überzeugt und langfristig Vertrauen schafft.
         </p>
+        <p class="mt-4 text-lg leading-relaxed text-[#69635e] max-w-2xl">
+          Ob Privathaushalt, Mehrfamilienhaus, Verwaltung, Büro oder Gewerbeobjekt: Wir arbeiten strukturiert, sorgfältig und mit einem hohen Qualitätsbewusstsein. Dabei setzen wir auf erfahrenes Personal, moderne Ausrüstung und eine persönliche Betreuung, bei der Sie jederzeit wissen, wer für Ihre Immobilie verantwortlich ist.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          <div class="rounded-2xl bg-white border border-[#e7ddd3] p-5 shadow-sm">
+            <p class="text-[#ef7f1a] text-sm font-bold uppercase tracking-[0.14em]">20+ Jahre</p>
+            <h3 class="!text-2xl !mb-2 mt-2">Berufserfahrung</h3>
+            <p class="text-[#6c6660]">Fundiertes Know-how und zuverlässige Abläufe aus langjähriger Praxis.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#e7ddd3] p-5 shadow-sm">
+            <p class="text-[#ef7f1a] text-sm font-bold uppercase tracking-[0.14em]">24/7 Service</p>
+            <h3 class="!text-2xl !mb-2 mt-2">Verfügbarkeit</h3>
+            <p class="text-[#6c6660]">Flexible Lösungen und direkte Erreichbarkeit, wenn es darauf ankommt.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#e7ddd3] p-5 shadow-sm">
+            <p class="text-[#ef7f1a] text-sm font-bold uppercase tracking-[0.14em]">Modern</p>
+            <h3 class="!text-2xl !mb-2 mt-2">Beste Ausrüstung</h3>
+            <p class="text-[#6c6660]">Hochwertige Technik und passende Mittel für saubere, effiziente Ergebnisse.</p>
+          </div>
+          <div class="rounded-2xl bg-white border border-[#e7ddd3] p-5 shadow-sm">
+            <p class="text-[#ef7f1a] text-sm font-bold uppercase tracking-[0.14em]">Persönlich</p>
+            <h3 class="!text-2xl !mb-2 mt-2">Direkte Betreuung</h3>
+            <p class="text-[#6c6660]">Kurze Wege, klare Absprachen und verlässliche Ansprechpartner.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-10 relative"
-    >
-      {team.map((people) => <TeamCard {...people} />)}
+
+      <div class="relative min-h-[520px]">
+        <div class="absolute inset-0 rounded-[30px] bg-[#efe3d8]"></div>
+        <img src="/img/hrr-cleaning-card.webp" alt="Sauberer, heller Wohnbereich" class="absolute left-0 top-0 w-[74%] h-[62%] object-cover rounded-[26px] border-8 border-white shadow-[0_24px_70px_rgba(70,48,28,0.14)]" loading="lazy" />
+        <img src="/img/hrr-hauswartung-card.webp" alt="Gepflegte Liegenschaft" class="absolute right-0 bottom-0 w-[66%] h-[54%] object-cover rounded-[26px] border-8 border-white shadow-[0_24px_70px_rgba(70,48,28,0.14)]" loading="lazy" />
+        <div class="absolute right-8 top-10 rounded-2xl bg-[#ef7f1a] text-white px-6 py-5 shadow-xl">
+          <div class="text-3xl font-bold">Qualität</div>
+          <div class="text-sm text-white/85 mt-1">ist unser Siegel</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
