@@ -2,22 +2,41 @@
 import Layout from "../layouts/Main.astro";
 ---
 <Layout title="Reinigung | H-R-R Facility GmbH">
-  <main class="min-h-[75vh] bg-[#f7f7f5] py-14 md:py-20">
+  <main class="bg-[#fbf8f4] py-12 md:py-16">
     <div class="container">
       <a href="/" class="text-[#ef7f1a] font-semibold">← Zurück zur Übersicht</a>
-      <div class="max-w-3xl mt-7 mb-10">
-        <p class="uppercase tracking-[0.22em] text-sm font-bold text-[#ef7f1a] mb-3">H-R-R Facility GmbH</p>
-        <h1 class="text-5xl md:text-6xl mb-4">Reinigung</h1>
-        <p class="text-xl text-[#6d6863]">Für wen dürfen wir reinigen?</p>
+
+      <div class="mt-7 grid grid-cols-1 lg:grid-cols-[1.05fr_.95fr] gap-8 lg:gap-12 items-end">
+        <div>
+          <p class="uppercase tracking-[0.22em] text-sm font-bold text-[#ef7f1a] mb-3">H-R-R Facility GmbH</p>
+          <h1 class="mb-4">Reinigung</h1>
+          <p class="max-w-2xl text-xl leading-relaxed text-[#6b655f]">Professionelle Reinigung für private Räume und geschäftlich genutzte Flächen – gründlich, diskret und auf Ihre Anforderungen abgestimmt.</p>
+        </div>
+        <div class="rounded-[28px] border border-[#eadfd4] bg-[#f3e7dc] p-6 md:p-8">
+          <p class="text-sm font-bold uppercase tracking-[0.16em] text-[#ef7f1a]">Sauberkeit mit Anspruch</p>
+          <p class="mt-3 text-lg leading-relaxed text-[#5f5953]">Wir verbinden sorgfältige Ausführung mit klaren Abläufen und persönlicher Betreuung. Für Räume, in denen man sich wohlfühlt – und Geschäftsumgebungen, die professionell wirken.</p>
+        </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
-        <a href="/reinigung-privat" class="group rounded-[26px] bg-white border border-[#e7e0d9] p-9 md:p-12 min-h-[320px] flex flex-col justify-between shadow-[0_15px_45px_rgba(59,45,30,0.07)] hover:-translate-y-1 hover:shadow-[0_24px_65px_rgba(239,127,26,0.12)] transition duration-300">
-          <span class="text-5xl">⌂</span>
-          <div><p class="text-[#ef7f1a] font-bold mb-2">REINIGUNG</p><h2 class="text-4xl mb-4">Privat</h2><p class="text-[#6d6863] mb-5">Reinigungslösungen für Wohnungen, Häuser und private Liegenschaften – zuverlässig, sorgfältig und individuell auf Ihren Alltag abgestimmt.</p><span class="font-semibold">Leistungen ansehen →</span></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+        <a href="/reinigung-privat" class="group rounded-[28px] bg-white border border-[#e7ded5] p-8 md:p-10 min-h-[300px] flex flex-col justify-between shadow-[0_16px_45px_rgba(59,45,30,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(239,127,26,0.11)]">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ef7f1a] text-2xl text-white">✦</div>
+          <div>
+            <p class="text-[#ef7f1a] font-bold mb-2 tracking-[0.12em]">REINIGUNG</p>
+            <h2 class="!text-4xl md:!text-5xl mb-4">Privat</h2>
+            <p class="text-[#6b655f] leading-relaxed mb-5">Reinigungslösungen für Wohnungen, Häuser und private Liegenschaften – zuverlässig, sorgfältig und individuell auf Ihren Alltag abgestimmt.</p>
+            <span class="font-semibold">Leistungen ansehen →</span>
+          </div>
         </a>
-        <a href="/reinigung-geschaeftlich" class="group rounded-[26px] bg-white border border-[#e7e0d9] p-9 md:p-12 min-h-[320px] flex flex-col justify-between shadow-[0_15px_45px_rgba(59,45,30,0.07)] hover:-translate-y-1 hover:shadow-[0_24px_65px_rgba(239,127,26,0.12)] transition duration-300">
-          <span class="text-5xl">▦</span>
-          <div><p class="text-[#ef7f1a] font-bold mb-2">REINIGUNG</p><h2 class="text-4xl mb-4">Geschäftlich</h2><p class="text-[#6d6863] mb-5">Professionelle Reinigung für Büros, Gewerbe, Verwaltungen und Liegenschaften – diskret, effizient und mit konstant hohem Qualitätsanspruch.</p><span class="font-semibold">Leistungen ansehen →</span></div>
+
+        <a href="/reinigung-geschaeftlich" class="group rounded-[28px] bg-white border border-[#e7ded5] p-8 md:p-10 min-h-[300px] flex flex-col justify-between shadow-[0_16px_45px_rgba(59,45,30,0.06)] transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(239,127,26,0.11)]">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ef7f1a] text-2xl text-white">▦</div>
+          <div>
+            <p class="text-[#ef7f1a] font-bold mb-2 tracking-[0.12em]">REINIGUNG</p>
+            <h2 class="!text-4xl md:!text-5xl mb-4">Geschäftlich</h2>
+            <p class="text-[#6b655f] leading-relaxed mb-5">Professionelle Reinigung für Büros, Gewerbe, Verwaltungen und Liegenschaften – effizient, diskret und mit konstant hohem Qualitätsanspruch.</p>
+            <span class="font-semibold">Leistungen ansehen →</span>
+          </div>
         </a>
       </div>
     </div>
