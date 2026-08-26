@@ -1,53 +1,32 @@
-<section class="relative overflow-hidden bg-[#fbfaf8] lg:min-h-[610px]">
-  <div class="container relative z-10 pt-9 pb-0 lg:py-14 xl:py-16">
-    <div class="max-w-3xl lg:max-w-[49%]">
-      <p class="text-[#ef7f1a] font-bold uppercase tracking-[0.16em] text-sm mb-4">H-R-R Facility GmbH</p>
-      <h1 class="max-w-3xl">Reinigung &amp;<br />Hauswartung auf<br /><span class="text-[#ef7f1a]">höchstem</span> Niveau.</h1>
-      <div class="h-[2px] w-16 bg-[#ef7f1a] my-5"></div>
-      <p class="max-w-xl text-lg md:text-xl leading-relaxed text-[#67625d]">
-        Persönliche Betreuung, kompromisslose Sauberkeit und zuverlässiger Immobilienservice für Privat- und Geschäftskunden.
-      </p>
+<section class="bg-[#fbfaf8]">
+  <div class="mx-auto grid w-full max-w-[1780px] grid-cols-1 lg:grid-cols-[44%_56%] lg:min-h-[540px]">
+    <div class="flex items-center px-5 py-10 sm:px-8 lg:px-12 xl:px-16 lg:py-12">
+      <div class="w-full max-w-[720px]">
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-[#ef7f1a]">H-R-R Facility GmbH</p>
+        <h1 class="!mb-0 !text-[50px] sm:!text-[58px] lg:!text-[62px] xl:!text-[68px] !leading-[0.98]">Reinigung &amp;<br />Hauswartung auf<br /><span class="text-[#ef7f1a]">höchstem</span> Niveau.</h1>
+        <div class="my-4 h-[2px] w-14 bg-[#ef7f1a]"></div>
+        <p class="max-w-[610px] text-base sm:text-lg leading-relaxed text-[#67625d]">Persönliche Betreuung, kompromisslose Sauberkeit und zuverlässiger Immobilienservice für Privat- und Geschäftskunden.</p>
 
-      <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a href="#dienstleistungen" class="inline-flex items-center justify-center gap-3 rounded-xl bg-[#ef7f1a] px-7 py-4 font-semibold text-white shadow-[0_12px_28px_rgba(239,127,26,0.22)] transition hover:-translate-y-0.5 hover:bg-[#da6f12]">Unsere Dienstleistungen <span>→</span></a>
-        <a href="/contact" class="inline-flex items-center justify-center gap-3 rounded-xl border border-[#ded7cf] bg-white px-7 py-4 font-semibold text-[#292929] transition hover:border-[#ef7f1a] hover:text-[#c86713]">Offerte anfragen <span>→</span></a>
-      </div>
+        <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+          <a href="#dienstleistungen" class="inline-flex items-center justify-center gap-3 rounded-xl bg-[#ef7f1a] px-6 py-3.5 font-semibold text-white shadow-[0_12px_28px_rgba(239,127,26,0.20)] transition hover:bg-[#da6f12]">Unsere Dienstleistungen <span>→</span></a>
+          <a href="/contact" class="inline-flex items-center justify-center gap-3 rounded-xl border border-[#ded7cf] bg-white px-6 py-3.5 font-semibold text-[#292929] transition hover:border-[#ef7f1a] hover:text-[#c86713]">Offerte anfragen <span>→</span></a>
+        </div>
 
-      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#66615d]">
-        <span class="flex items-center gap-2"><b class="text-[#ef7f1a]">✓</b> Privat &amp; Geschäftlich</span>
-        <span class="flex items-center gap-2"><b class="text-[#ef7f1a]">✓</b> Kreuzlingen</span>
-        <span class="flex items-center gap-2"><b class="text-[#ef7f1a]">✓</b> Winterthur</span>
+        <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[#66615d]">
+          <span><b class="mr-2 text-[#ef7f1a]">✓</b>Privat &amp; Geschäftlich</span>
+          <span><b class="mr-2 text-[#ef7f1a]">✓</b>Kreuzlingen</span>
+          <span><b class="mr-2 text-[#ef7f1a]">✓</b>Winterthur</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="relative mt-7 h-[300px] sm:h-[360px] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[55%]">
-    <img
-      src="/img/hrr-hero-team.webp"
-      alt="H-R-R Facility Team für Reinigung und Hauswartung"
-      class="hero-team-image h-full w-full object-cover object-[64%_center] sm:object-center lg:object-[58%_center]"
-      loading="eager"
-      fetchpriority="high"
-      decoding="sync"
-    />
-    <div class="hero-team-fade absolute inset-0"></div>
+    <div class="relative min-h-[330px] sm:min-h-[400px] lg:min-h-[540px] overflow-hidden">
+      <img src="/img/hrr-hero-team.webp" alt="H-R-R Facility Team für Reinigung und Hauswartung" class="h-full w-full object-cover object-center hero-team-image" loading="eager" fetchpriority="high" />
+      <div class="pointer-events-none absolute inset-y-0 left-0 hidden w-[18%] bg-gradient-to-r from-[#fbfaf8] to-transparent lg:block"></div>
+    </div>
   </div>
 </section>
 
 <style>
-  .hero-team-image {
-    image-rendering: auto;
-    filter: contrast(1.09) saturate(1.06) brightness(1.01);
-    transform: translateZ(0);
-  }
-
-  .hero-team-fade {
-    background: linear-gradient(to top, rgba(251,250,248,.24) 0%, transparent 24%);
-  }
-
-  @media (min-width: 1024px) {
-    .hero-team-fade {
-      background: linear-gradient(90deg, #fbfaf8 0%, rgba(251,250,248,.60) 9%, rgba(251,250,248,.10) 20%, transparent 31%);
-    }
-  }
+  .hero-team-image { filter: contrast(1.12) saturate(1.07); }
 </style>
