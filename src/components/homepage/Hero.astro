@@ -21,14 +21,31 @@
     </div>
   </div>
 
-  <div class="relative mt-8 h-[310px] sm:h-[380px] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[56%]">
+  <div class="relative mt-8 h-[310px] sm:h-[380px] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[57%]">
     <img
       src="/img/hrr-hero-team.webp"
       alt="H-R-R Facility Team für Reinigung und Hauswartung"
-      class="h-full w-full object-cover object-[64%_center] sm:object-center lg:object-center"
+      class="hero-team-image h-full w-full object-cover object-[64%_center] sm:object-center lg:object-center"
       loading="eager"
       fetchpriority="high"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-[#fbfaf8]/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#fbfaf8] lg:via-[#fbfaf8]/40 lg:to-transparent"></div>
+    <div class="hero-team-fade absolute inset-0"></div>
   </div>
 </section>
+
+<style>
+  .hero-team-image {
+    image-rendering: auto;
+    filter: contrast(1.05) saturate(1.03);
+  }
+
+  .hero-team-fade {
+    background: linear-gradient(to top, rgba(251,250,248,.42) 0%, transparent 28%);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-team-fade {
+      background: linear-gradient(90deg, #fbfaf8 0%, rgba(251,250,248,.72) 10%, rgba(251,250,248,.18) 22%, transparent 34%);
+    }
+  }
+</style>
