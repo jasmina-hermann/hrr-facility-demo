@@ -17,7 +17,12 @@
     --hrr-border: #E9DED3;
     --hrr-text: #292929;
     --hrr-muted: #6B655F;
+    --site-max: 1500px;
+    --site-pad: 24px;
 }
+
+@media (min-width: 768px) { :root { --site-pad: 32px; } }
+@media (min-width: 1280px) { :root { --site-pad: 40px; } }
 
 html { scroll-behavior: smooth; }
 
@@ -28,10 +33,18 @@ body {
     letter-spacing: -0.012em;
 }
 
-.container { @apply max-w-7xl! mx-auto px-4; }
+.container,
+.site-shell {
+    width: 100%;
+    max-width: var(--site-max) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: var(--site-pad) !important;
+    padding-right: var(--site-pad) !important;
+}
+
 .section { @apply my-8 lg:my-14; }
 .header { @apply text-lg; }
-
 .menu a { @apply hover:text-main text-base; }
 
 @layer base {
@@ -60,7 +73,6 @@ body {
 .post ol { @apply list-decimal; }
 .post ul { @apply list-disc; }
 
-/* Legacy template colours are neutralised globally. */
 .bg-green-50, .bg-green-100, .bg-green-200, .bg-green-300, .bg-green-400, .bg-green-500, .bg-green-600, .bg-green-700, .bg-green-800, .bg-green-900 { background-color: var(--hrr-beige) !important; }
 .text-green-50, .text-green-100, .text-green-200, .text-green-300, .text-green-400, .text-green-500, .text-green-600, .text-green-700, .text-green-800, .text-green-900 { color: var(--hrr-orange) !important; }
 .border-green-50, .border-green-100, .border-green-200, .border-green-300, .border-green-400, .border-green-500, .border-green-600, .border-green-700, .border-green-800, .border-green-900 { border-color: var(--hrr-orange) !important; }
