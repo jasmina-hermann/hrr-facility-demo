@@ -12,6 +12,8 @@
     --font-body: "Manrope", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --hrr-orange: #EF7F1A;
     --hrr-orange-dark: #D96A0A;
+    --hrr-emerald: #0F6B57;
+    --hrr-emerald-soft: #EAF3EF;
     --hrr-beige: #F6EFE7;
     --hrr-cream: #FBF8F4;
     --hrr-border: #E9DED3;
@@ -25,7 +27,6 @@
 @media (min-width: 1280px) { :root { --site-pad: 40px; } }
 
 html { scroll-behavior: smooth; }
-
 body {
     font-family: var(--font-body);
     color: var(--hrr-text);
@@ -54,7 +55,6 @@ body {
         letter-spacing: -0.035em;
         color: #262626;
     }
-
     h1 { @apply text-5xl sm:text-6xl md:text-7xl lg:text-[76px] mb-4 leading-[0.98]; }
     h2 { @apply mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[1.02]; }
     h3 { @apply mb-3 text-2xl sm:text-3xl md:text-4xl lg:text-[42px] leading-[1.05]; }
@@ -62,6 +62,35 @@ body {
     h5, .h5 { @apply font-semibold mb-3 text-base sm:text-lg md:text-xl lg:text-2xl; }
     h6 { @apply font-semibold mb-3 text-base sm:text-base md:text-lg lg:text-xl; }
 }
+
+.premium-kicker {
+    color: var(--hrr-emerald);
+    font-size: .78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+}
+
+.premium-card {
+    border: 1px solid var(--hrr-border);
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 24px 70px rgba(67,48,30,.09);
+}
+
+.cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+    border-radius: 14px;
+    background: var(--hrr-orange);
+    color: white;
+    font-weight: 700;
+    padding: .95rem 1.45rem;
+    box-shadow: 0 14px 34px rgba(239,127,26,.24);
+    transition: .25s ease;
+}
+.cta-primary:hover { transform: translateY(-2px); background: var(--hrr-orange-dark); }
 
 .tab { @apply rounded-full bg-white text-black h-auto! px-4 py-2; }
 .tab-active { @apply bg-main text-white; }
@@ -73,9 +102,9 @@ body {
 .post ol { @apply list-decimal; }
 .post ul { @apply list-disc; }
 
-.bg-green-50, .bg-green-100, .bg-green-200, .bg-green-300, .bg-green-400, .bg-green-500, .bg-green-600, .bg-green-700, .bg-green-800, .bg-green-900 { background-color: var(--hrr-beige) !important; }
-.text-green-50, .text-green-100, .text-green-200, .text-green-300, .text-green-400, .text-green-500, .text-green-600, .text-green-700, .text-green-800, .text-green-900 { color: var(--hrr-orange) !important; }
-.border-green-50, .border-green-100, .border-green-200, .border-green-300, .border-green-400, .border-green-500, .border-green-600, .border-green-700, .border-green-800, .border-green-900 { border-color: var(--hrr-orange) !important; }
+.bg-green-50, .bg-green-100, .bg-green-200, .bg-green-300, .bg-green-400, .bg-green-500, .bg-green-600, .bg-green-700, .bg-green-800, .bg-green-900 { background-color: var(--hrr-emerald-soft) !important; }
+.text-green-50, .text-green-100, .text-green-200, .text-green-300, .text-green-400, .text-green-500, .text-green-600, .text-green-700, .text-green-800, .text-green-900 { color: var(--hrr-emerald) !important; }
+.border-green-50, .border-green-100, .border-green-200, .border-green-300, .border-green-400, .border-green-500, .border-green-600, .border-green-700, .border-green-800, .border-green-900 { border-color: var(--hrr-emerald) !important; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .fadeIn { animation-name: fadeIn; }
