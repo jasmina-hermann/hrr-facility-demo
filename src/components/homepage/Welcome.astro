@@ -1,117 +1,141 @@
 ---
 import { Icon } from "astro-icon/components";
-import { IMAGES } from "../../consts";
 
-const reasons = [
+const groups = [
   {
-    title: "Alles aus einer Hand",
+    icon: "lucide:building-2",
+    title: "Liegenschaften & Unternehmen",
+    text: "Für Verwaltungen, Eigentümer, Firmen und Gewerbe. Wir betreuen Ihr Objekt mit einem festen Team.",
     points: [
-      "Reinigung, Hauswartung, Renovation und Garten",
-      "Ein Ansprechpartner für alle Arbeiten",
-      "Persönliche Betreuung und klare Kommunikation",
+      "Treppenhaus-, Büro- und Gewerbereinigung",
+      "Hauswartung mit festen Kontrollgängen",
+      "Instandstellung beim Mieterwechsel",
+      "Umgebungspflege und Winterdienst",
     ],
+    href: "/hauswartung#geschaeftlich",
+    cta: "Mehr für Liegenschaften",
   },
   {
-    title: "Erfahrenes, motiviertes Team",
+    icon: "lucide:house",
+    title: "Privathaushalte",
+    text: "Für Wohnungen und Häuser, ob Eigentum oder Miete. Einmalig oder regelmässig, wie es für Sie passt.",
     points: [
-      "Über 20 Jahre Berufserfahrung",
-      "Junges, engagiertes Team",
-      "Pünktliche und zuverlässige Ausführung",
+      "Regelmässige Wohnungsreinigung",
+      "Umzugsreinigung mit Abgabe",
+      "Kleine Renovationen",
+      "Gartenpflege",
     ],
-  },
-  {
-    title: "Faire Preise",
-    points: [
-      "Transparente, kostenlose Offerten",
-      "Faire und wettbewerbsfähige Preise",
-    ],
-  },
-  {
-    title: "Moderne Geräte, sichere Arbeit",
-    points: [
-      "Moderne Ausrüstung und Technik",
-      "Die Sicherheit unserer Kunden steht an erster Stelle",
-    ],
+    href: "/reinigung#privat",
+    cta: "Mehr für Privathaushalte",
   },
 ];
 ---
 
-<!-- Zielgruppen -->
-<section class="section bg-white">
-  <div class="site-shell">
-    <div class="max-w-2xl">
-      <span class="eyebrow">Für wen wir arbeiten</span>
-      <h2>Für Liegenschaften und Privathaushalte</h2>
-      <p class="lead">Wählen Sie den passenden Einstieg – wir beraten Sie gerne persönlich.</p>
-    </div>
+<section class="audience relative bg-white">
+  <!-- Weicher, geschwungener Übergang nach oben -->
+  <svg class="audience__curve audience__curve--top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 0H1440V30C1160 120 280 120 0 30Z" fill="#fff"></path>
+  </svg>
 
-    <div class="mt-10 grid gap-6 md:grid-cols-2">
-      <div class="rounded-[10px] border border-[var(--hrr-line)] p-7 md:p-9">
-        <div class="mb-5 grid h-12 w-12 place-items-center rounded-lg bg-[var(--hrr-orange-soft)] text-[var(--hrr-orange)]">
-          <Icon name="lucide:building-2" size={24} />
-        </div>
-        <h3>Liegenschaften &amp; Unternehmen</h3>
-        <p class="text-[var(--hrr-muted)]">Für Verwaltungen, Eigentümer, Unternehmen und Gewerbeobjekte. Wir übernehmen die Betreuung Ihres Objekts:</p>
-        <ul class="check-list mt-4">
-          <li>Treppenhaus-, Büro- und Gewerbereinigung</li>
-          <li>Hauswartung und Kontrollgänge</li>
-          <li>Renovierungsarbeiten bei Mieterwechsel</li>
-          <li>Gartenunterhalt und Winterdienst</li>
-        </ul>
-        <a href="/hauswartung#geschaeftlich" class="btn-line mt-7">Mehr für Liegenschaften</a>
+  <div class="audience__body">
+    <div class="audience__glow" aria-hidden="true"></div>
+
+    <div class="site-shell relative py-24 md:py-32">
+      <div class="mx-auto max-w-2xl text-center" data-reveal>
+        <span class="eyebrow">Für wen wir arbeiten</span>
+        <h2 class="!text-white">Für Liegenschaften und Privathaushalte</h2>
+        <p class="lead !text-white/70">
+          Ob Verwaltung mit zwanzig Wohnungen oder Einfamilienhaus: Wir richten den Einsatz nach Ihrem Objekt.
+        </p>
       </div>
 
-      <div class="rounded-[10px] border border-[var(--hrr-line)] p-7 md:p-9">
-        <div class="mb-5 grid h-12 w-12 place-items-center rounded-lg bg-[var(--hrr-orange-soft)] text-[var(--hrr-orange)]">
-          <Icon name="lucide:house" size={24} />
-        </div>
-        <h3>Privathaushalte</h3>
-        <p class="text-[var(--hrr-muted)]">Für Wohnungen, Häuser, Eigentümer und Mieter. Gerne übernehmen wir für Sie:</p>
-        <ul class="check-list mt-4">
-          <li>Regelmässige Wohnungsreinigung</li>
-          <li>Umzugs- und Endreinigung mit Abgabe</li>
-          <li>Kleine Renovierungen</li>
-          <li>Gartenpflege</li>
-        </ul>
-        <a href="/reinigung#privat" class="btn-line mt-7">Mehr für Privathaushalte</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Warum H-R-R -->
-<section class="section section-sand">
-  <div class="site-shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-    <div class="lg:sticky lg:top-32">
-      <span class="eyebrow">Warum H-R-R?</span>
-      <h2>Rundum betreut – mit einem Ansprechpartner</h2>
-      <p class="lead mb-8">Qualität, Zuverlässigkeit und Erreichbarkeit – darauf können Sie bei uns zählen.</p>
-      <div class="photo aspect-[4/3]">
-        <img src={IMAGES.hauswart.src} alt={IMAGES.hauswart.alt} loading="lazy" />
-      </div>
-    </div>
-
-    <div class="grid gap-5">
-      {reasons.map((r, i) => (
-        <div class="rounded-[10px] bg-white p-6 md:p-7">
-          <div class="flex items-baseline gap-4">
-            <span class="font-semibold text-[var(--hrr-orange)]">{String(i + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{r.title}</h3>
-              <ul class="check-list mt-3 text-[var(--hrr-muted)]">
-                {r.points.map((p) => <li>{p}</li>)}
+      <div class="mt-14 grid gap-6 lg:grid-cols-2" data-stagger>
+        {groups.map((g) => (
+          <div class="flex">
+            <article class="audience__card group">
+              <div class="flex items-center gap-4">
+                <span class="audience__icon"><Icon name={g.icon} size={26} /></span>
+                <h3 class="!mb-0 !text-white">{g.title}</h3>
+              </div>
+              <p class="mt-5 text-white/70">{g.text}</p>
+              <ul class="check-list mt-6 text-white/90">
+                {g.points.map((p) => <li>{p}</li>)}
               </ul>
-            </div>
+              <a href={g.href} class="btn-main mt-9 self-start">
+                {g.cta} <Icon name="lucide:arrow-right" size={18} class="transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </article>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
+
+  <!-- Weicher, geschwungener Übergang nach unten -->
+  <svg class="audience__curve audience__curve--bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120H1440V90C1160 0 280 0 0 90Z" fill="#fff"></path>
+  </svg>
 </section>
 
-<!-- Bildband -->
-<section class="relative">
-  <div class="h-[280px] md:h-[380px] overflow-hidden bg-[var(--hrr-sand)]">
-    <img src={IMAGES.liegenschaft.src} alt={IMAGES.liegenschaft.alt} loading="lazy" class="h-full w-full object-cover" />
-  </div>
-</section>
+<style>
+  .audience__body {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #2a2e33 0%, #1d2024 55%, #24211e 100%);
+  }
+
+  /* Warmer Lichtschein in Orange */
+  .audience__glow {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    left: 50%;
+    top: -340px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 118, 26, .22) 0%, rgba(232, 118, 26, .06) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .audience__curve {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: clamp(40px, 7vw, 110px);
+    z-index: 2;
+    display: block;
+  }
+  .audience__curve--top { top: -1px; }
+  .audience__curve--bottom { bottom: -1px; }
+
+  .audience__card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2.2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+    transition: transform .5s cubic-bezier(.2, .7, .2, 1), border-color .5s ease, background .5s ease;
+  }
+  @media (min-width: 768px) {
+    .audience__card { padding: 2.8rem; }
+  }
+  .audience__card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232, 118, 26, .55);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .04));
+  }
+
+  .audience__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: var(--hrr-orange);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(232, 118, 26, .35);
+  }
+</style>
