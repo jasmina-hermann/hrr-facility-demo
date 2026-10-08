@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Main.astro";
+import { CONTACT } from "../consts";
+---
+
+<Layout title="Impressum">
+  <section class="section bg-white">
+    <div class="site-shell"><div class="post max-w-3xl">
+      <h1>Impressum</h1>
+
+      <h2 class="!text-2xl">Verantwortlich für den Inhalt</h2>
+      <p>
+        H-R-R Facility GmbH<br />
+        {CONTACT.street}<br />
+        {CONTACT.city}<br />
+        Schweiz
+      </p>
+      <p>
+        Telefon: <a href={CONTACT.phoneHref} class="text-[var(--hrr-orange)]">{CONTACT.phone}</a><br />
+        E-Mail: <a href={CONTACT.emailHref} class="text-[var(--hrr-orange)]">{CONTACT.email}</a>
+      </p>
+      <!-- Hier noch UID-Nummer und Handelsregistereintrag ergänzen, z. B.:
+      <p>UID: CHE-123.456.789<br />Handelsregister: Kanton Thurgau</p> -->
+
+      <h2 class="!text-2xl">Haftungsausschluss</h2>
+      <p>
+        Wir prüfen die Inhalte dieser Webseite sorgfältig. Für die Richtigkeit, Vollständigkeit und Aktualität
+        der Informationen übernehmen wir jedoch keine Gewähr. Für Inhalte verlinkter Webseiten sind
+        ausschliesslich deren Betreiber verantwortlich.
+      </p>
+
+      <h2 class="!text-2xl">Urheberrechte</h2>
+      <p>
+        Texte, Bilder und Logos auf dieser Webseite gehören der H-R-R Facility GmbH oder den genannten
+        Rechteinhabern. Bilder teilweise von Unsplash (unsplash.com).
+      </p>
+    </div></div>
+  </section>
+</Layout>
