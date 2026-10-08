@@ -1,0 +1,275 @@
+---
+// Slideshow mit Fotos der Mitarbeitenden.
+// Weiche Überblendung, langsamer Zoom, Punkte, Pfeile, Wischen am Handy.
+import { Icon } from "astro-icon/components";
+
+interface Slide {
+  src: string;
+  alt: string;
+  caption?: string;
+  fallback?: string;
+  pos?: string;
+}
+
+interface Props {
+  slides: Slide[];
+  interval?: number; // Millisekunden pro Bild
+}
+
+const { slides, interval = 5500 } = Astro.props;
+---
+
+<div class="tss" data-slideshow data-interval={interval} style={`--tss-time: ${interval}ms`} aria-roledescription="Slideshow" aria-label="Unser Team">
+  <div class="tss__stage">
+    {slides.map((s, i) => (
+      <figure
+        class:list={["tss__slide", { "is-active": i === 0 }]}
+        aria-roledescription="Bild"
+        aria-label={`${i + 1} von ${slides.length}`}
+        aria-hidden={i === 0 ? "false" : "true"}
+      >
+        <img
+          src={s.src}
+          alt={s.alt}
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : "auto"}
+          decoding="async"
+          style={s.pos ? `object-position: ${s.pos}` : undefined}
+          onerror={s.fallback ? `this.onerror=null;this.src='${s.fallback}'` : undefined}
+        />
+        {s.caption && <figcaption class="tss__caption">{s.caption}</figcaption>}
+      </figure>
+    ))}
+    <div class="tss__shade" aria-hidden="true"></div>
+  </div>
+
+  {slides.length > 1 && (
+    <div class="tss__bar">
+      <div class="tss__dots" role="tablist" aria-label="Bild wählen">
+        {slides.map((_, i) => (
+          <button
+            type="button"
+            class:list={["tss__dot", { "is-active": i === 0 }]}
+            aria-label={`Bild ${i + 1} zeigen`}
+            data-go={i}
+          >
+            <span></span>
+          </button>
+        ))}
+      </div>
+      <div class="tss__arrows">
+        <button type="button" class="tss__arrow" data-prev aria-label="Vorheriges Bild">
+          <Icon name="lucide:chevron-left" size={20} />
+        </button>
+        <button type="button" class="tss__arrow" data-next aria-label="Nächstes Bild">
+          <Icon name="lucide:chevron-right" size={20} />
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .tss {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #e8e8e6;
+    box-shadow: 0 24px 60px rgba(20, 22, 25, .14);
+    isolation: isolate;
+  }
+  @media (min-width: 1024px) {
+    .tss { aspect-ratio: 5 / 4; }
+  }
+
+  .tss__stage { position: absolute; inset: 0; }
+
+  .tss__slide {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(.4, 0, .2, 1);
+  }
+  .tss__slide.is-active { opacity: 1; z-index: 1; }
+
+  .tss__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    scale: 1.08;
+    transition: scale 1.2s ease;
+  }
+  /* Langsamer Zoom auf dem aktiven Bild */
+  .tss__slide.is-active img {
+    animation: tssZoom calc(var(--tss-time) + 1200ms) linear both;
+  }
+  @keyframes tssZoom {
+    from { scale: 1.08; }
+    to   { scale: 1; }
+  }
+
+  /* Verlauf unten, damit Text und Punkte gut lesbar sind */
+  .tss__shade {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 45%;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(18, 20, 23, .6), rgba(18, 20, 23, 0));
+    pointer-events: none;
+  }
+
+  .tss__caption {
+    position: absolute;
+    left: 22px;
+    bottom: 70px;
+    z-index: 3;
+    max-width: calc(100% - 44px);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 700;
+    line-height: 1.25;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .7s ease .35s, transform .7s cubic-bezier(.16, .8, .2, 1) .35s;
+  }
+  .tss__slide.is-active .tss__caption { opacity: 1; transform: translateY(0); }
+
+  /* Steuerung unten */
+  .tss__bar {
+    position: absolute;
+    left: 22px;
+    right: 16px;
+    bottom: 18px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .tss__dots { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .tss__dot {
+    position: relative;
+    width: 14px;
+    height: 4px;
+    padding: 10px 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    box-sizing: content-box;
+  }
+  .tss__dot::before,
+  .tss__dot span {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    height: 4px;
+    border-radius: 4px;
+  }
+  .tss__dot::before { right: 0; background: rgba(255, 255, 255, .4); }
+  .tss__dot span { width: 0; background: var(--hrr-orange); }
+  .tss__dot.is-active { width: 30px; }
+  @media (min-width: 640px) {
+    .tss__dots { gap: .45rem; }
+    .tss__dot { width: 22px; }
+    .tss__dot.is-active { width: 44px; }
+  }
+  /* Fortschritt im aktiven Punkt */
+  .tss__dot.is-active span { animation: tssProgress var(--tss-time) linear forwards; }
+  .tss.is-paused .tss__dot.is-active span { animation-play-state: paused; }
+  @keyframes tssProgress {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+  .tss__dot { transition: width .4s ease; }
+
+  .tss__arrows { display: flex; gap: .4rem; }
+  .tss__arrow {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .45);
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: background-color .3s ease, border-color .3s ease;
+  }
+  .tss__arrow:hover { background: var(--hrr-orange); border-color: var(--hrr-orange); }
+  .tss__arrow:focus-visible,
+  .tss__dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tss__slide, .tss__caption { transition-duration: .01s; }
+    .tss__slide.is-active img { animation: none; scale: 1; }
+    .tss__dot.is-active span { animation: none; width: 100%; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-slideshow]").forEach((root) => {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>(".tss__slide"));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>(".tss__dot"));
+    if (slides.length < 2) return;
+
+    const time = Number(root.dataset.interval) || 5500;
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let current = 0;
+    let timer: number | undefined;
+
+    const show = (index: number) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const on = i === current;
+        s.classList.toggle("is-active", on);
+        s.setAttribute("aria-hidden", on ? "false" : "true");
+      });
+      dots.forEach((d, i) => {
+        d.classList.remove("is-active");
+        if (i === current) {
+          void d.offsetWidth; // Fortschrittsbalken neu starten
+          d.classList.add("is-active");
+        }
+      });
+    };
+
+    const stop = () => window.clearInterval(timer);
+    const start = () => {
+      stop();
+      if (!calm) timer = window.setInterval(() => show(current + 1), time);
+    };
+    const go = (index: number) => {
+      show(index);
+      start();
+    };
+
+    root.querySelector("[data-prev]")?.addEventListener("click", () => go(current - 1));
+    root.querySelector("[data-next]")?.addEventListener("click", () => go(current + 1));
+    dots.forEach((d) => d.addEventListener("click", () => go(Number(d.dataset.go))));
+
+    // Pause, solange die Maus auf dem Bild ist
+    root.addEventListener("mouseenter", () => { stop(); root.classList.add("is-paused"); });
+    root.addEventListener("mouseleave", () => { root.classList.remove("is-paused"); go(current); });
+
+    // Wischen auf dem Handy
+    let startX = 0;
+    root.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(dx < 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    // Pause, wenn der Tab im Hintergrund ist
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+
+    start();
+  });
+</script>
