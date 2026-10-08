@@ -1,76 +1,50 @@
 ---
 import Layout from "../layouts/Main.astro";
+import { CONTACT } from "../consts";
 ---
 
-<Layout>
-  <section class="section">
-    <div class="container max-w-3xl prose">
-      <div class="breadcrumbs text-sm mb-6">
-        <ul class="flex! flex-wrap">
-          <li><a href="/">Home</a></li>
-          <li>Privacy Policy</li>
-        </ul>
-      </div>
+<Layout title="Datenschutz">
+  <section class="section bg-white">
+    <div class="site-shell"><div class="post max-w-3xl">
+      <h1>Datenschutzerklärung</h1>
+      <p>
+        Der Schutz Ihrer Personendaten ist uns wichtig. Wir bearbeiten Ihre Daten nach dem
+        Schweizerischen Datenschutzgesetz (DSG). Hier erfahren Sie, welche Daten wir bearbeiten und wozu.
+      </p>
 
-      <div class="post">
-        <h1 class="uppercase">Privacy Policy</h1>
+      <h2 class="!text-2xl">Verantwortliche Stelle</h2>
+      <p>
+        H-R-R Facility GmbH, {CONTACT.street}, {CONTACT.city}<br />
+        E-Mail: <a href={CONTACT.emailHref} class="text-[var(--hrr-orange)]">{CONTACT.email}</a>
+      </p>
 
-        <p>
-          At ProCleaning, we value your privacy and are committed to protecting
-          your personal information. This Privacy Policy explains how we
-          collect, use, and safeguard your data when you use our website and
-          services.
-        </p>
+      <h2 class="!text-2xl">Kontaktaufnahme und Offertanfragen</h2>
+      <p>
+        Wenn Sie uns per Telefon, E-Mail, WhatsApp oder Kontaktformular kontaktieren, verwenden wir Ihre Angaben
+        (z. B. Name, E-Mail, Telefonnummer, Nachricht) ausschliesslich zur Bearbeitung Ihrer Anfrage und zur
+        Erstellung einer Offerte. Das Kontaktformular wird über den Dienst FormSubmit (formsubmit.co) per E-Mail
+        an uns weitergeleitet.
+      </p>
 
-        <h2 class="h4">1. Information We Collect</h2>
-        <p>
-          We may collect personal information such as your name, email address,
-          phone number, and address when you contact us or request cleaning
-          services.
-        </p>
+      <h2 class="!text-2xl">Server-Logdaten</h2>
+      <p>
+        Beim Aufruf der Webseite werden technisch notwendige Daten wie IP-Adresse, Datum, Uhrzeit und Browser
+        vom Hosting-Anbieter kurzzeitig gespeichert. Diese Daten dienen dem sicheren Betrieb der Webseite.
+      </p>
 
-        <h2 class="h4">2. How We Use Your Information</h2>
-        <ul>
-          <li>To provide and manage our cleaning services</li>
-          <li>To respond to inquiries and customer support requests</li>
-          <li>To send service updates or confirmations</li>
-          <li>To improve our website and services</li>
-        </ul>
+      <h2 class="!text-2xl">Externe Inhalte</h2>
+      <p>
+        Für Schriften und Bilder nutzen wir Google Fonts und Unsplash. Beim Laden dieser Inhalte wird Ihre
+        IP-Adresse an die jeweiligen Anbieter übermittelt. Diese können ihren Sitz auch ausserhalb der Schweiz haben.
+      </p>
 
-        <h2 class="h4">3. Data Protection</h2>
-        <p>
-          We implement appropriate security measures to protect your personal
-          data against unauthorized access, alteration, disclosure, or
-          destruction.
-        </p>
+      <h2 class="!text-2xl">Ihre Rechte</h2>
+      <p>
+        Sie können jederzeit Auskunft über Ihre bei uns gespeicherten Daten verlangen sowie deren Berichtigung
+        oder Löschung beantragen. Schreiben Sie uns dazu an {CONTACT.email}.
+      </p>
 
-        <h2 class="h4">4. Sharing Information</h2>
-        <p>
-          We do not sell or rent your personal data. Information may only be
-          shared with trusted service providers when necessary to deliver our
-          services.
-        </p>
-
-        <h2 class="h4">5. Cookies</h2>
-        <p>
-          Our website may use cookies to improve user experience and analyze
-          website traffic.
-        </p>
-
-        <h2 class="h4">6. Your Rights</h2>
-        <p>
-          You may request access, correction, or deletion of your personal data
-          by contacting us directly.
-        </p>
-
-        <h2 class="h4">7. Contact Us</h2>
-        <p>
-          If you have any questions about this Privacy Policy, please contact us
-          at:
-          <br />
-          <strong>Email:</strong> support@procleaning.com
-        </p>
-      </div>
-    </div>
+      <p class="text-sm text-[var(--hrr-muted)]">Stand: {new Date().getFullYear()}</p>
+    </div></div>
   </section>
 </Layout>
