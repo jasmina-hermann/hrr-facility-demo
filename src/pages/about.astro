@@ -1,34 +1,61 @@
 ---
 import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
+import Contacts from "../components/homepage/Contacts.astro";
+import { IMAGES } from "../consts";
+
+const values = [
+  { title: "Verlässlichkeit", text: "Abmachungen gelten. Termine, Qualität und Kommunikation sind für Sie jederzeit nachvollziehbar." },
+  { title: "Sorgfalt", text: "Saubere Arbeit bis ins Detail – ob im Treppenhaus, im Büro oder bei Ihnen zu Hause." },
+  { title: "Nähe", text: "Persönliche Ansprechpartner aus der Region und kurze Wege, wenn etwas schnell gehen muss." },
+];
 ---
 
-<Layout title="Über uns | H-R-R Facility GmbH">
-  <main class="bg-[#fbf8f4] py-12 md:py-16">
-    <div class="container">
-      <p class="uppercase tracking-[0.22em] text-sm font-bold text-[#ef7f1a] mb-3">H-R-R Facility GmbH</p>
-      <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_.9fr] gap-10 lg:gap-14 items-start">
-        <div>
-          <h1>Facility Services mit persönlichem Anspruch.</h1>
-          <p class="mt-5 max-w-3xl text-xl leading-relaxed text-[#6b655f]">H-R-R Facility steht für zuverlässige Reinigung, professionelle Hauswartung und persönliche Betreuung. Unser Ziel ist nicht einfach, Aufgaben abzuarbeiten – wir möchten, dass Immobilien gepflegt wirken, Abläufe funktionieren und unsere Kunden sich auf uns verlassen können.</p>
-          <p class="mt-5 max-w-3xl text-lg leading-relaxed text-[#6b655f]">Mit langjähriger Berufserfahrung, moderner Ausrüstung und klaren Abläufen betreuen wir private Liegenschaften, Verwaltungen, Unternehmen und Gewerbeobjekte in Kreuzlingen, Winterthur und Umgebung.</p>
-        </div>
-        <div class="rounded-[30px] border border-[#eadfd4] bg-[#f3e7dc] p-7 md:p-9">
-          <p class="text-sm font-bold uppercase tracking-[0.16em] text-[#ef7f1a]">Wofür wir stehen</p>
-          <div class="mt-6 grid gap-5">
-            <div><h3 class="!text-3xl">Verlässlichkeit</h3><p class="text-[#6b655f]">Abmachungen gelten. Termine, Qualität und Kommunikation sollen für unsere Kunden jederzeit nachvollziehbar sein.</p></div>
-            <div><h3 class="!text-3xl">Qualität</h3><p class="text-[#6b655f]">Saubere Ausführung, gepflegte Details und ein professioneller Gesamteindruck stehen bei jeder Leistung im Mittelpunkt.</p></div>
-            <div><h3 class="!text-3xl">Nähe</h3><p class="text-[#6b655f]">Persönliche Ansprechpartner und kurze Wege sorgen dafür, dass Anliegen schnell und unkompliziert gelöst werden.</p></div>
-          </div>
-        </div>
+<Layout title="Über uns" description="H-R-R Facility GmbH aus Tägerwilen – Reinigung und Hauswartung mit über 20 Jahren Erfahrung.">
+  <PageHero
+    eyebrow="Über uns"
+    title="Ein Team aus der Region – für Ihre Liegenschaft"
+    text="H-R-R Facility GmbH steht für zuverlässige Reinigung und Hauswartung. Wir betreuen Liegenschaften, Unternehmen und Privathaushalte in Kreuzlingen, Winterthur und Umgebung."
+    image={IMAGES.hero}
+  />
+
+  <section class="section bg-white">
+    <div class="site-shell grid gap-12 lg:grid-cols-2">
+      <div>
+        <span class="eyebrow">Wer wir sind</span>
+        <h2>Erfahrung, die man sieht</h2>
+        <p class="lead">
+          Mit über 20 Jahren Berufserfahrung wissen wir, worauf es ankommt: dass die Arbeit sauber gemacht wird,
+          dass man uns erreicht und dass Abmachungen eingehalten werden.
+        </p>
+        <p class="mt-4 text-[var(--hrr-muted)]">
+          Unser Sitz ist in Tägerwilen. Von hier aus sind wir mit eigenem Material und eingespielten Teams
+          in der ganzen Region unterwegs – für regelmässige Einsätze ebenso wie für kurzfristige Aufträge.
+        </p>
       </div>
 
-      <section class="mt-12 rounded-[32px] border border-[#eadfd4] bg-white p-7 md:p-10 shadow-[0_18px_55px_rgba(68,48,30,0.06)]">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div><p class="text-[#ef7f1a] font-bold uppercase tracking-[0.14em] text-sm">Erfahrung</p><h2 class="!text-4xl mt-2">Über 20 Jahre</h2><p class="text-[#6b655f]">Praxis, Fachwissen und ein hoher Anspruch an die tägliche Arbeit.</p></div>
-          <div><p class="text-[#ef7f1a] font-bold uppercase tracking-[0.14em] text-sm">Erreichbarkeit</p><h2 class="!text-4xl mt-2">24/7 Service</h2><p class="text-[#6b655f]">Für dringende Anliegen sind wir auch ausserhalb regulärer Zeiten erreichbar.</p></div>
-          <div><p class="text-[#ef7f1a] font-bold uppercase tracking-[0.14em] text-sm">Region</p><h2 class="!text-4xl mt-2">Kreuzlingen & Winterthur</h2><p class="text-[#6b655f]">Persönliche Betreuung in der Region und Umgebung.</p></div>
-        </div>
-      </section>
+      <ul class="grid gap-4 self-start sm:grid-cols-3 lg:grid-cols-1">
+        <li class="rounded-[10px] bg-[var(--hrr-sand)] p-6"><span class="num">20+ Jahre</span><span class="text-[var(--hrr-muted)]">Erfahrung im Facility Service</span></li>
+        <li class="rounded-[10px] bg-[var(--hrr-sand)] p-6"><span class="num">24/7</span><span class="text-[var(--hrr-muted)]">erreichbar für dringende Anliegen</span></li>
+        <li class="rounded-[10px] bg-[var(--hrr-sand)] p-6"><span class="num">Tägerwilen</span><span class="text-[var(--hrr-muted)]">Einsätze in Kreuzlingen, Winterthur und Umgebung</span></li>
+      </ul>
     </div>
-  </main>
+  </section>
+
+  <section class="section section-sand">
+    <div class="site-shell">
+      <span class="eyebrow">Wofür wir stehen</span>
+      <h2>Unsere Werte</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        {values.map((v) => (
+          <div class="rounded-[10px] bg-white p-7">
+            <h3>{v.title}</h3>
+            <p class="text-[var(--hrr-muted)]">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Contacts />
 </Layout>
