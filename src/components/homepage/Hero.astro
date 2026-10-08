@@ -1,50 +1,41 @@
-<section class="relative overflow-hidden bg-[#f7f1ea]">
-  <div class="site-shell py-6 lg:py-8">
-    <div class="relative overflow-hidden rounded-[30px] min-h-[620px] lg:min-h-[660px] shadow-[0_30px_90px_rgba(54,39,24,0.16)]">
-      <img
-        src="https://images.unsplash.com/photo-1758448755778-90ebf4d0f1e7?auto=format&fit=crop&fm=jpg&q=88&w=3000"
-        alt="Luxuriöser moderner Wohnbereich"
-        class="absolute inset-0 h-full w-full object-cover object-center"
-        loading="eager"
-        fetchpriority="high"
-      />
-      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,241,234,.98)_0%,rgba(247,241,234,.93)_35%,rgba(247,241,234,.48)_56%,rgba(247,241,234,.05)_82%)]"></div>
-      <div class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#f7f1ea]/65 to-transparent"></div>
+---
+import { Icon } from "astro-icon/components";
+import { CONTACT, IMAGES } from "../../consts";
+---
 
-      <div class="relative z-10 flex min-h-[620px] lg:min-h-[660px] items-center px-6 py-12 sm:px-10 lg:px-14 xl:px-16">
-        <div class="max-w-[720px]">
-          <div class="mb-5 inline-flex items-center gap-3 rounded-full border border-[#0f6b57]/20 bg-white/80 px-4 py-2 backdrop-blur-md">
-            <span class="h-2.5 w-2.5 rounded-full bg-[#0f6b57]"></span>
-            <span class="premium-kicker">Premium Facility Service</span>
-          </div>
+<section class="bg-white">
+  <div class="site-shell grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-20">
+    <div>
+      <span class="eyebrow">H-R-R Facility GmbH</span>
+      <h1>Wir halten Ihre Liegenschaft sauber und in Schuss.</h1>
+      <p class="lead max-w-xl">
+        Reinigung und Hauswartung aus einer Hand – für Verwaltungen, Unternehmen und Privathaushalte
+        in Kreuzlingen, Winterthur und Umgebung.
+      </p>
 
-          <h1 class="!mb-0 !text-[52px] sm:!text-[62px] lg:!text-[72px] xl:!text-[80px] !leading-[0.96]">
-            Reinigung &amp;<br />Hauswartung für<br /><span class="text-[#ef7f1a]">anspruchsvolle Immobilien.</span>
-          </h1>
-
-          <p class="mt-6 max-w-[620px] text-lg sm:text-xl leading-relaxed text-[#5f5a55]">
-            Sorgfältige Betreuung für hochwertige Wohnungen, Villen, Geschäftsräume und Liegenschaften – persönlich, diskret und zuverlässig.
-          </p>
-
-          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a href="/contact" class="cta-primary">Kostenlose Offerte anfragen <span>→</span></a>
-            <a href="#dienstleistungen" class="inline-flex items-center justify-center gap-3 rounded-[14px] border border-[#d7cec5] bg-white/90 px-6 py-4 font-semibold text-[#292929] backdrop-blur-sm transition hover:border-[#0f6b57] hover:text-[#0f6b57]">Leistungen entdecken <span>↓</span></a>
-          </div>
-
-          <div class="mt-7 grid max-w-[680px] grid-cols-1 gap-3 sm:grid-cols-3">
-            <div class="rounded-2xl border border-white/80 bg-white/78 px-4 py-3 backdrop-blur-md"><b class="block text-[#0f6b57]">✓ Persönlich</b><span class="text-sm text-[#6b655f]">Direkter Ansprechpartner</span></div>
-            <div class="rounded-2xl border border-white/80 bg-white/78 px-4 py-3 backdrop-blur-md"><b class="block text-[#0f6b57]">✓ Diskret</b><span class="text-sm text-[#6b655f]">Für private &amp; sensible Objekte</span></div>
-            <div class="rounded-2xl border border-white/80 bg-white/78 px-4 py-3 backdrop-blur-md"><b class="block text-[#0f6b57]">✓ Regional</b><span class="text-sm text-[#6b655f]">Kreuzlingen &amp; Winterthur</span></div>
-          </div>
-        </div>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="/contact" class="btn-main">Offerte anfragen <Icon name="lucide:arrow-right" size={18} /></a>
+        <a href={CONTACT.phoneHref} class="btn-line"><Icon name="lucide:phone" size={18} /> {CONTACT.phone}</a>
       </div>
 
-      <div class="absolute bottom-6 right-6 hidden w-[270px] rounded-[24px] border border-white/70 bg-white/88 p-4 shadow-[0_20px_60px_rgba(40,30,20,.14)] backdrop-blur-xl lg:block">
-        <div class="flex items-center gap-3">
-          <img src="/img/hrr-hero-team.webp" alt="H-R-R Facility Team" class="h-16 w-16 rounded-2xl object-cover object-center" />
-          <div><div class="text-sm font-extrabold text-[#ef7f1a]">H-R-R Facility GmbH</div><div class="mt-1 text-sm text-[#66615d]">Professionelle Betreuung mit persönlichem Service.</div></div>
-        </div>
-      </div>
+      <ul class="mt-10 grid gap-4 border-t border-[var(--hrr-line)] pt-6 sm:grid-cols-3">
+        <li>
+          <b class="num">20+ Jahre</b>
+          <span class="text-sm text-[var(--hrr-muted)]">Erfahrung im Facility Service</span>
+        </li>
+        <li>
+          <b class="num">24/7</b>
+          <span class="text-sm text-[var(--hrr-muted)]">erreichbar bei Notfällen</span>
+        </li>
+        <li>
+          <b class="num">1 Ansprechpartner</b>
+          <span class="text-sm text-[var(--hrr-muted)]">für Reinigung &amp; Hauswartung</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="photo aspect-[4/3] lg:aspect-[5/6]">
+      <img src={IMAGES.hero.src} alt={IMAGES.hero.alt} loading="eager" fetchpriority="high" />
     </div>
   </div>
 </section>
