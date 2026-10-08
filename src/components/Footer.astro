@@ -1,37 +1,54 @@
 ---
-const today = new Date();
 import Logo from "./Logo.astro";
+import { Icon } from "astro-icon/components";
+import { CONTACT } from "../consts";
+const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-[#ebe4dc] bg-[#fbfaf8] text-[#2b2b2b]">
-  <div class="container py-14 md:py-18">
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+<footer class="bg-[var(--hrr-sand)] text-[var(--hrr-text)]">
+  <div class="site-shell py-14 md:py-16">
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
       <div>
         <Logo />
-        <p class="mt-5 max-w-sm leading-relaxed text-[#68635e]">Reinigung und Hauswartung mit persönlicher Betreuung, hohen Qualitätsstandards und zuverlässigem 24/7-Service.</p>
+        <p class="mt-5 max-w-xs text-[var(--hrr-muted)]">
+          Reinigung und Hauswartung für Liegenschaften, Unternehmen und Privathaushalte.
+        </p>
       </div>
+
       <div>
-        <p class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-[#ef7f1a]">Navigation</p>
-        <div class="grid gap-3">
-          <a href="/reinigung" class="hover:text-[#ef7f1a]">Reinigung</a>
-          <a href="/hauswartung" class="hover:text-[#ef7f1a]">Hauswartung</a>
-          <a href="/about" class="hover:text-[#ef7f1a]">Über uns</a>
-          <a href="/contact" class="hover:text-[#ef7f1a]">Kontakt</a>
-        </div>
+        <h4 class="!text-base">Kontakt</h4>
+        <ul class="grid gap-2 text-[var(--hrr-muted)]">
+          <li><a href={CONTACT.phoneHref} class="inline-flex items-center gap-2 hover:text-[var(--hrr-orange)]"><Icon name="lucide:phone" size={16} /> {CONTACT.phone}</a></li>
+          <li><a href={CONTACT.whatsappHref} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-[var(--hrr-orange)]"><Icon name="lucide:message-circle" size={16} /> {CONTACT.mobile}</a></li>
+          <li><a href={CONTACT.emailHref} class="inline-flex items-center gap-2 hover:text-[var(--hrr-orange)]"><Icon name="lucide:mail" size={16} /> {CONTACT.email}</a></li>
+          <li class="inline-flex items-start gap-2"><Icon name="lucide:map-pin" size={16} class="mt-1 shrink-0" /> <span>{CONTACT.street}<br />{CONTACT.city}</span></li>
+        </ul>
       </div>
+
       <div>
-        <p class="mb-4 text-sm font-bold uppercase tracking-[0.16em] text-[#ef7f1a]">Direkt erreichbar</p>
-        <div class="grid gap-3 text-[#5f5a55]">
-          <a href="tel:+41716887851" class="hover:text-[#ef7f1a]">071 688 78 51</a>
-          <a href="https://wa.me/41774805454" target="_blank" rel="noopener" class="hover:text-[#ef7f1a]">WhatsApp: 077 480 54 54</a>
-          <a href="mailto:Info@h-r-r.ch" class="hover:text-[#ef7f1a]">Info@h-r-r.ch</a>
-          <p>Hauptstrasse 137b, 8274 Tägerwilen</p>
-        </div>
+        <h4 class="!text-base">Dienstleistungen</h4>
+        <ul class="grid gap-2 text-[var(--hrr-muted)]">
+          <li><a href="/reinigung" class="hover:text-[var(--hrr-orange)]">Reinigung</a></li>
+          <li><a href="/reinigung#geschaeftlich" class="hover:text-[var(--hrr-orange)]">Büro- &amp; Gewerbereinigung</a></li>
+          <li><a href="/hauswartung" class="hover:text-[var(--hrr-orange)]">Hauswartung</a></li>
+          <li><a href="/hauswartung#umgebung" class="hover:text-[var(--hrr-orange)]">Umgebungspflege</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="!text-base">H-R-R Facility</h4>
+        <ul class="grid gap-2 text-[var(--hrr-muted)]">
+          <li><a href="/about" class="hover:text-[var(--hrr-orange)]">Über uns</a></li>
+          <li><a href="/contact" class="hover:text-[var(--hrr-orange)]">Kontakt</a></li>
+          <li><a href="/impressum" class="hover:text-[var(--hrr-orange)]">Impressum</a></li>
+          <li><a href="/policy" class="hover:text-[var(--hrr-orange)]">Datenschutz</a></li>
+        </ul>
       </div>
     </div>
-    <div class="mt-12 flex flex-col gap-3 border-t border-[#e7dfd7] pt-7 text-sm text-[#77716b] sm:flex-row sm:items-center sm:justify-between">
-      <span>© {today.getFullYear()} H-R-R Facility GmbH</span>
-      <span>Kreuzlingen · Winterthur · Region</span>
+
+    <div class="mt-12 flex flex-col gap-2 border-t border-[var(--hrr-line)] pt-6 text-sm text-[var(--hrr-muted)] sm:flex-row sm:justify-between">
+      <span>© {year} H-R-R Facility GmbH</span>
+      <span>{CONTACT.region}</span>
     </div>
   </div>
 </footer>
