@@ -54,9 +54,12 @@ const year = new Date().getFullYear();
 
     <div class="mt-12 flex flex-col gap-3 border-t border-[var(--hrr-line)] pt-6 text-sm text-[var(--hrr-muted)] sm:flex-row sm:justify-between">
       <span>© {year} H-R-R Facility GmbH</span>
-      <span class="flex gap-5">
+      <span class="flex flex-wrap gap-x-5 gap-y-2">
         <a href="/impressum" class="hover:text-[var(--hrr-orange)]">Impressum</a>
         <a href="/policy" class="hover:text-[var(--hrr-orange)]">Datenschutz</a>
+        <a href="https://www.codepixel.ch" target="_blank" rel="noopener" class="hover:text-[var(--hrr-orange)]">
+          Made by <span class="font-semibold">codepixel.ch</span>
+        </a>
       </span>
     </div>
   </div>
