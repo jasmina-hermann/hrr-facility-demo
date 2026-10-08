@@ -1,7 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import { Icon } from "astro-icon/components";
-import { CONTACT, SERVICES } from "../consts";
+import { CONTACT, SERVICES, LOCATIONS } from "../consts";
 const year = new Date().getFullYear();
 ---
 
@@ -11,7 +11,7 @@ const year = new Date().getFullYear();
       <div>
         <Logo />
         <p class="mt-5 max-w-xs text-[var(--hrr-muted)]">
-          Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt – mit über 20 Jahren Erfahrung.
+          Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt. Seit über 20 Jahren im Thurgau und in Winterthur.
         </p>
         <a href={CONTACT.instagram} target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 font-semibold text-[var(--hrr-ink)] hover:text-[var(--hrr-orange)]">
           <Icon name="simple-icons:instagram" size={18} /> hrr_mavraj
@@ -42,6 +42,9 @@ const year = new Date().getFullYear();
         <ul class="grid gap-2 text-[var(--hrr-muted)]">
           {SERVICES.map((s) => (
             <li><a href={s.url} class="hover:text-[var(--hrr-orange)]">{s.title}</a></li>
+          ))}
+          {LOCATIONS.map((l) => (
+            <li><a href={`/standort/${l.slug}`} class="hover:text-[var(--hrr-orange)]">Standort {l.name}</a></li>
           ))}
           <li><a href="/about" class="hover:text-[var(--hrr-orange)]">Über uns</a></li>
           <li><a href="/contact" class="hover:text-[var(--hrr-orange)]">Kontakt</a></li>
