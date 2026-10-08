@@ -40,6 +40,8 @@ const year = new Date().getFullYear();
       <div>
         <h4 class="!text-base">Seiten</h4>
         <ul class="grid gap-2 text-[var(--hrr-muted)]">
+          <li><a href="/privat" class="hover:text-[var(--hrr-orange)]">Privat</a></li>
+          <li><a href="/geschaeftlich" class="hover:text-[var(--hrr-orange)]">Geschäftlich</a></li>
           {SERVICES.map((s) => (
             <li><a href={s.url} class="hover:text-[var(--hrr-orange)]">{s.title}</a></li>
           ))}
