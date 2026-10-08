@@ -1,32 +1,26 @@
 ---
+// Privat & Geschäftlich: zwei grosse Bildkarten plus Button zum Offertenformular
 import { Icon } from "astro-icon/components";
+import { IMAGES } from "../../consts";
 
 const groups = [
   {
-    icon: "lucide:building-2",
-    title: "Liegenschaften & Unternehmen",
-    text: "Für Verwaltungen, Eigentümer, Firmen und Gewerbe. Wir betreuen Ihr Objekt mit einem festen Team.",
-    points: [
-      "Treppenhaus-, Büro- und Gewerbereinigung",
-      "Hauswartung mit festen Kontrollgängen",
-      "Instandstellung beim Mieterwechsel",
-      "Umgebungspflege und Winterdienst",
-    ],
-    href: "/hauswartung#geschaeftlich",
-    cta: "Mehr für Liegenschaften",
+    headline: "Ihr Zuhause. Unsere Sorgfalt.",
+    intro: "Wir kümmern uns um Sauberkeit und Unterhalt, damit Sie mehr Zeit für die wichtigen Dinge haben.",
+    title: "Privat",
+    text: "Für Wohnungen, Häuser und Gärten.",
+    img: IMAGES.hero,
+    pos: "center 30%",
+    href: "/reinigung#privat",
   },
   {
-    icon: "lucide:house",
-    title: "Privathaushalte",
-    text: "Für Wohnungen und Häuser, ob Eigentum oder Miete. Einmalig oder regelmässig, wie es für Sie passt.",
-    points: [
-      "Regelmässige Wohnungsreinigung",
-      "Umzugsreinigung mit Abgabe",
-      "Kleine Renovationen",
-      "Gartenpflege",
-    ],
-    href: "/reinigung#privat",
-    cta: "Mehr für Privathaushalte",
+    headline: "Ihr Betrieb. Unsere Verantwortung.",
+    intro: "Wir halten Büro und Liegenschaft in Ordnung, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.",
+    title: "Geschäftlich",
+    text: "Für Verwaltungen, Firmen und Gewerbe.",
+    img: IMAGES.buero,
+    pos: "center 45%",
+    href: "/hauswartung#geschaeftlich",
   },
 ];
 ---
@@ -41,32 +35,35 @@ const groups = [
     <div class="audience__glow" aria-hidden="true"></div>
 
     <div class="site-shell relative py-24 md:py-32">
-      <div class="mx-auto max-w-2xl text-center" data-reveal>
-        <span class="eyebrow">Für wen wir arbeiten</span>
-        <h2 class="!text-white">Für Liegenschaften und Privathaushalte</h2>
-        <p class="lead !text-white/70">
-          Ob Verwaltung mit zwanzig Wohnungen oder Einfamilienhaus: Wir richten den Einsatz nach Ihrem Objekt.
-        </p>
-      </div>
-
-      <div class="mt-14 grid gap-6 lg:grid-cols-2" data-stagger>
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-8" data-stagger>
         {groups.map((g) => (
-          <div class="flex">
-            <article class="audience__card group">
-              <div class="flex items-center gap-4">
-                <span class="audience__icon"><Icon name={g.icon} size={26} /></span>
-                <h3 class="!mb-0 !text-white">{g.title}</h3>
+          <div class="flex flex-col">
+            <div class="mx-auto max-w-md text-center">
+              <h2 class="audience__headline">{g.headline}</h2>
+              <p class="mt-4 text-white/75">{g.intro}</p>
+            </div>
+
+            <a href={g.href} class="audience__card group mt-8">
+              <img src={g.img.src} alt={g.img.alt} loading="lazy" style={`object-position: ${g.pos}`} />
+              <div class="audience__veil" aria-hidden="true"></div>
+              <div class="audience__content">
+                <h3 class="audience__title">{g.title}</h3>
+                <p class="text-[var(--hrr-text)]">{g.text}</p>
+                <span class="mt-3 inline-flex items-center gap-2 font-semibold text-[var(--hrr-orange)]">
+                  Mehr erfahren
+                  <Icon name="lucide:arrow-right" size={18} class="transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
               </div>
-              <p class="mt-5 text-white/70">{g.text}</p>
-              <ul class="check-list mt-6 text-white/90">
-                {g.points.map((p) => <li>{p}</li>)}
-              </ul>
-              <a href={g.href} class="btn-main mt-9 self-start">
-                {g.cta} <Icon name="lucide:arrow-right" size={18} class="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-            </article>
+            </a>
           </div>
         ))}
+      </div>
+
+      <div class="mt-14 text-center" data-reveal>
+        <a href="/contact" class="audience__cta">
+          Offertenformular <Icon name="lucide:arrow-right" size={18} />
+        </a>
+        <p class="mt-4 text-sm text-white/60">Kostenlos und unverbindlich. Wir melden uns persönlich.</p>
       </div>
     </div>
   </div>
@@ -87,10 +84,10 @@ const groups = [
   /* Warmer Lichtschein in Orange */
   .audience__glow {
     position: absolute;
-    width: 900px;
-    height: 900px;
+    width: 1000px;
+    height: 1000px;
     left: 50%;
-    top: -340px;
+    top: -380px;
     transform: translateX(-50%);
     border-radius: 50%;
     background: radial-gradient(circle, rgba(232, 118, 26, .22) 0%, rgba(232, 118, 26, .06) 40%, transparent 70%);
@@ -108,34 +105,88 @@ const groups = [
   .audience__curve--top { top: -1px; }
   .audience__curve--bottom { bottom: -1px; }
 
-  .audience__card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 2.2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, .1);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
-    transition: transform .5s cubic-bezier(.2, .7, .2, 1), border-color .5s ease, background .5s ease;
-  }
-  @media (min-width: 768px) {
-    .audience__card { padding: 2.8rem; }
-  }
-  .audience__card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(232, 118, 26, .55);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .04));
+  .audience__headline {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
   }
 
-  .audience__icon {
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    flex-shrink: 0;
-    border-radius: 14px;
+  /* Grosse Bildkarte */
+  .audience__card {
+    position: relative;
+    display: block;
+    min-height: 400px;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .28);
+    transition: transform .6s cubic-bezier(.2, .7, .2, 1), box-shadow .6s ease;
+  }
+  .audience__card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, .35);
+  }
+  .audience__card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
+  }
+  .audience__card:hover img { transform: scale(1.05); }
+
+  /* Weisser Verlauf von unten, damit der Text sauber lesbar ist */
+  .audience__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, .97) 0%,
+      rgba(255, 255, 255, .9) 24%,
+      rgba(255, 255, 255, .55) 46%,
+      rgba(255, 255, 255, .12) 66%,
+      rgba(255, 255, 255, 0) 80%
+    );
+  }
+
+  .audience__content {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 0 1.5rem 2rem;
+    text-align: center;
+  }
+  .audience__title {
+    margin: 0 0 .35rem;
+    font-size: clamp(34px, 3.6vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--hrr-ink);
+  }
+
+  /* Button zum Offertenformular */
+  .audience__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: 1.05rem 2.2rem;
+    border-radius: 999px;
     background: var(--hrr-orange);
     color: #fff;
-    box-shadow: 0 12px 30px rgba(232, 118, 26, .35);
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    box-shadow: 0 16px 36px rgba(232, 118, 26, .4);
+    transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease;
+  }
+  .audience__cta:hover {
+    background: var(--hrr-orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 22px 44px rgba(232, 118, 26, .5);
   }
 </style>
