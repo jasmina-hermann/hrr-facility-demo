@@ -1,0 +1,31 @@
+---
+// Leistungsblock für Unterseiten: Foto + Text + Häkchen-Liste
+interface Props {
+  id: string;
+  eyebrow: string;
+  title: string;
+  text: string;
+  points: string[];
+  image: { src: string; alt: string };
+  reverse?: boolean;
+  sand?: boolean;
+}
+const { id, eyebrow, title, text, points, image, reverse = false, sand = false } = Astro.props;
+---
+
+<section id={id} class:list={["section scroll-mt-32", sand ? "section-sand" : "bg-white"]}>
+  <div class="site-shell grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <div class:list={["photo aspect-[4/3]", { "lg:order-2": reverse }]}>
+      <img src={image.src} alt={image.alt} loading="lazy" />
+    </div>
+    <div>
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{title}</h2>
+      <p class="lead">{text}</p>
+      <ul class="check-list mt-6 sm:grid-cols-2 sm:gap-x-8">
+        {points.map((p) => <li>{p}</li>)}
+      </ul>
+      <a href="/contact" class="btn-main mt-8">Offerte anfragen</a>
+    </div>
+  </div>
+</section>
