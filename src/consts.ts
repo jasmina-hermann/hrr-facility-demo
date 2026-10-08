@@ -124,9 +124,9 @@ export const IMAGES = {
 const mapQuery = 'H-R-R Facility GmbH, Hauptstrasse 137b, 8274 Tägerwilen';
 
 export const RATINGS = {
-  ofri: { score: '5.0', count: 8, url: 'https://www.ofri.ch' }, // url durch das ofri-Profil ersetzen
+  ofri: { score: '5.0', count: 8, url: 'https://www.ofri.ch/H-R-RMavraj' },
   topOfferten: { url: 'https://top-offerten.ch/reinigungsfirma' },
-  google: { url: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}` },
+  google: { url: 'https://share.google/OJrd5obSwN16zmvys' },
 };
 
 // Echte Google-Bewertungen hier eintragen (Text 1:1 von Google kopieren).
