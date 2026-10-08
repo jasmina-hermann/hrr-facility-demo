@@ -7,10 +7,10 @@ import { CONTACT, IMAGES } from "../../consts";
   <!-- 1. Teamfoto über die ganze Breite, Menü liegt durchsichtig darüber -->
   <div class="hrr-hero__media">
     <div class="hrr-hero__parallax" id="hero-parallax">
-      <!-- Unscharfe Kopie füllt die Ränder um das Foto -->
+      <!-- Unscharfe Kopie füllt auf dem Handy den Platz oberhalb des Fotos -->
       <img src={IMAGES.team.src} alt="" aria-hidden="true" class="hrr-hero__bg" loading="eager" decoding="async"
         onerror={`this.onerror=null;this.src='${IMAGES.team.fallback}'`} />
-      <!-- Das Teamfoto selbst wird immer vollständig gezeigt -->
+      <!-- Das Teamfoto: Handy = ganz sichtbar, Computer = volle Breite -->
       <img
         src={IMAGES.team.src}
         alt={IMAGES.team.alt}
@@ -95,21 +95,23 @@ import { CONTACT, IMAGES } from "../../consts";
     animation: heroZoom 3.2s cubic-bezier(.16, .8, .2, 1) both;
   }
 
-  /* Tablet und Desktop: grosser Bereich, Foto ganz sichtbar, Seiten mit weicher Unschärfe gefüllt */
+  /* Tablet und Desktop: Foto füllt die ganze Breite, gross und ohne Ränder */
   @media (min-width: 768px) {
     .hrr-hero__media {
-      height: 88svh;
+      height: min(100svh, 80vw);
       min-height: 560px;
-      max-height: 980px;
+      max-height: 1100px;
     }
     .hrr-hero__parallax { inset: -5% 0 0 0; }
-    .hrr-hero__img { height: 100%; }
-    .hrr-hero__bg { object-position: center 30%; }
-
-    /* Ränder des Fotos laufen weich in die Unschärfe aus */
+    .hrr-hero__bg { display: none; }
     .hrr-hero__img {
-      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center 30%;
+      translate: none;
     }
   }
 
