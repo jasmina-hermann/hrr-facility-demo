@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
+import ServiceBlock from "../components/ServiceBlock.astro";
+import Steps from "../components/Steps.astro";
+import Contacts from "../components/homepage/Contacts.astro";
+import { IMAGES } from "../consts";
+---
+
+<Layout
+  title="Gartenunterhalt"
+  description="Gartenunterhalt und Umgebungspflege für Liegenschaften und Privathaushalte in Kreuzlingen, Tägerwilen und Umgebung."
+>
+  <PageHero
+    eyebrow="Gartenunterhalt"
+    title="Ein gepflegter Garten ist die Visitenkarte Ihres Hauses"
+    text="Mit unserem Gartenunterhalt sorgen wir dafür, dass Aussenbereiche nicht nur ordentlich aussehen, sondern auch gesund und lebendig bleiben."
+    image={IMAGES.rasen}
+  />
+
+  <ServiceBlock
+    id="leistungen"
+    eyebrow="Unsere Leistungen"
+    title="Regelmässige Pflege – das ganze Jahr"
+    text="Für Liegenschaften, Unternehmen und Privatgärten. Wir pflegen nach festem Plan oder kommen, wenn Sie uns brauchen."
+    points={[
+      "Rasen mähen und pflegen",
+      "Hecken- und Strauchschnitt",
+      "Rabatten- und Beetpflege",
+      "Plätze und Wege reinigen",
+      "Laub entfernen",
+      "Winterdienst",
+    ]}
+    image={IMAGES.garten}
+  />
+
+  <ServiceBlock
+    id="liegenschaften"
+    eyebrow="Für Liegenschaften"
+    title="Umgebungspflege für Verwaltungen"
+    text="Zusammen mit der Hauswartung übernehmen wir die ganze Umgebung Ihrer Liegenschaft – mit einem Ansprechpartner für innen und aussen."
+    points={[
+      "Feste Pflegeintervalle",
+      "Saisonale Arbeiten",
+      "Entsorgung von Grüngut",
+      "Kombinierbar mit Hauswartung",
+    ]}
+    image={IMAGES.beet}
+    reverse
+    sand
+  />
+
+  <Steps />
+  <Contacts title="Offerte für Ihren Garten" />
+</Layout>
