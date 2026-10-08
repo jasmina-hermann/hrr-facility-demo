@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Main.astro";
+import Services from "../components/homepage/Services.astro";
+import Steps from "../components/Steps.astro";
+import Contacts from "../components/homepage/Contacts.astro";
+---
+
+<Layout
+  title="Dienstleistungen"
+  description="Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt – alle Dienstleistungen der H-R-R Facility GmbH."
+>
+  <section class="bg-white">
+    <div class="site-shell py-12 md:py-16">
+      <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
+        <a href="/" class="hover:text-[var(--hrr-orange)]">Startseite</a>
+        <span class="mx-2">/</span>
+        <span class="text-[var(--hrr-ink)]">Dienstleistungen</span>
+      </nav>
+      <h1 class="max-w-3xl">Unsere Dienstleistungen im Überblick</h1>
+      <p class="lead max-w-2xl">
+        Vom Treppenhaus bis zum Garten: Wir übernehmen die Arbeiten rund um Ihre Liegenschaft –
+        einzeln oder alles aus einer Hand.
+      </p>
+    </div>
+  </section>
+
+  <Services />
+  <Steps />
+  <Contacts />
+</Layout>
