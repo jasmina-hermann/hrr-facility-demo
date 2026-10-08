@@ -95,7 +95,7 @@ const u = (id: string, w = 1600) =>
 export const IMAGES = {
   // --- ORIGINALFOTOS DES KUNDEN (in public/img/ hochladen) ---
   // Solange eine Datei fehlt, zeigt die Seite automatisch das Ersatzfoto (fallback).
-  team: { src: '/img/hrr-team.jpg', fallback: u('photo-1581578731548-c64695cc6952', 2000), alt: 'Das Team der H-R-R Facility GmbH' },
+  team: { src: '/img/hrr-team.jpg.jpg', fallback: u('photo-1581578731548-c64695cc6952', 2000), alt: 'Das Team der H-R-R Facility GmbH' },
   reinigung: { src: '/img/hrr-reinigung.jpg', fallback: u('photo-1718152421680-d1580e843cc9'), alt: 'Reinigung durch H-R-R Facility' },
   hauswartung: { src: '/img/hrr-hauswartung.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Hauswartung durch H-R-R Facility' },
   renovation: { src: '/img/hrr-renovation.jpg', fallback: u('photo-1562259929-b4e1fd3aef09'), alt: 'Renovierungsarbeiten von H-R-R Facility' },
