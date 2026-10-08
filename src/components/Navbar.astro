@@ -1,18 +1,53 @@
 ---
 import { NAV_MENU } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
+import { Icon } from "astro-icon/components";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
 <nav class="hidden lg:block" aria-label="Hauptnavigation">
   <ul class="flex items-center gap-8 text-[15px] font-semibold text-[var(--hrr-ink)]">
     {
-      NAV_MENU.map((item) => (
-        <li>
-          <HeaderLink href={item.url} class="nav-link py-2 transition-colors hover:text-[var(--hrr-orange)]">
-            {item.title}
-          </HeaderLink>
-        </li>
-      ))
+      NAV_MENU.map((item) =>
+        item.children ? (
+          <li class="group relative">
+            <a
+              href={item.url}
+              class:list={[
+                "nav-link inline-flex items-center gap-1 py-2 transition-colors hover:text-[var(--hrr-orange)]",
+                { active: path === item.url || item.children.some((c) => c.url === path) },
+              ]}
+            >
+              {item.title}
+              <Icon name="lucide:chevron-down" size={16} class="transition-transform group-hover:rotate-180" />
+            </a>
+            <div class="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <ul class="w-60 rounded-[10px] border border-[var(--hrr-line)] bg-white p-2 shadow-[0_12px_30px_rgba(0,0,0,.08)]">
+                {item.children.map((c) => (
+                  <li>
+                    <a
+                      href={c.url}
+                      class:list={[
+                        "block rounded-md px-4 py-2.5 hover:bg-[var(--hrr-sand)] hover:text-[var(--hrr-orange)]",
+                        { "text-[var(--hrr-orange)]": c.url === path },
+                      ]}
+                    >
+                      {c.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ) : (
+          <li>
+            <HeaderLink href={item.url} class="nav-link py-2 transition-colors hover:text-[var(--hrr-orange)]">
+              {item.title}
+            </HeaderLink>
+          </li>
+        )
+      )
     }
   </ul>
 </nav>
