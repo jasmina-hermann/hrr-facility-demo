@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Main.astro";
+import AudiencePage from "../components/AudiencePage.astro";
+import { IMAGES } from "../consts";
+---
+
+<Layout
+  title="Für Verwaltungen und Firmen: Reinigung und Hauswartung"
+  description="Treppenhausreinigung, Büroreinigung, Hauswartung, Renovation bei Mieterwechsel und Umgebungspflege für Verwaltungen, Eigentümer und Firmen in Kreuzlingen, Winterthur und im Thurgau."
+>
+  <AudiencePage
+    kind="geschaeftlich"
+    eyebrow="Geschäftlich"
+    title="Ihr Betrieb. Unsere Verantwortung."
+    lead="Für Verwaltungen, Eigentümer, Firmen und Gewerbe. Wir übernehmen Reinigung, Hauswartung, Renovation und Umgebung. Mit festen Teams und einer Ansprechperson für alles."
+    icon="lucide:building-2"
+    services={[
+      {
+        icon: "lucide:sparkles",
+        title: "Reinigung",
+        text: "Treppenhäuser, Büros, Praxen und Gewerberäume. Nach festem Plan.",
+        href: "/reinigung#geschaeftlich",
+      },
+      {
+        icon: "lucide:key-round",
+        title: "Hauswartung",
+        text: "Kontrollgänge, Haustechnik, Waschküche. Wir sind Ansprechpartner für Ihre Mieter.",
+        href: "/hauswartung#geschaeftlich",
+      },
+      {
+        icon: "lucide:paint-roller",
+        title: "Renovierungsarbeiten",
+        text: "Instandstellung beim Mieterwechsel, Sanierungen und Umbauten.",
+        href: "/renovation",
+      },
+      {
+        icon: "lucide:trees",
+        title: "Gartenunterhalt",
+        text: "Umgebungspflege mit festen Intervallen. Kombinierbar mit der Hauswartung.",
+        href: "/garten#liegenschaften",
+      },
+    ]}
+    tasksTitle="Das übernehmen wir für Liegenschaften und Firmen"
+    tasksText="Ein Team für innen und aussen. Sie haben eine Ansprechperson und eine Offerte, die genau zu Ihrem Objekt passt."
+    tasks={[
+      "Treppenhausreinigung",
+      "Büro- und Praxisreinigung",
+      "Eingangsbereiche und Lifte",
+      "Regelmässige Kontrollgänge",
+      "Waschküche und Gemeinschaftsräume",
+      "Instandstellung bei Mieterwechsel",
+      "Bauendreinigung",
+      "Umgebungspflege und Winterdienst",
+    ]}
+    image={IMAGES.reinigung}
+    contactTitle="Offerte für Ihre Liegenschaft"
+  />
+</Layout>
