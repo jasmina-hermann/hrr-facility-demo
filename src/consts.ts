@@ -1,4 +1,4 @@
-// Globale Daten der Webseite – hier zentral pflegen.
+// Globale Daten der Webseite: hier zentral pflegen.
 
 export const SITE_TITLE = 'H-R-R Facility GmbH';
 export const SITE_URL = 'https://www.h-r-r.ch';
@@ -33,7 +33,7 @@ export const SERVICES = [
 ];
 
 // ---------------------------------------------------------------
-// STANDORTE – jeder Standort bekommt eine eigene Seite (/standort/...)
+// STANDORTE: jeder Standort bekommt eine eigene Seite (/standort/...)
 // Das ist wichtig für Google: Wer "Reinigung Winterthur" sucht,
 // findet eine Seite, die genau dazu passt.
 // Sobald die Adresse in Winterthur feststeht: street und city ausfüllen
@@ -70,6 +70,8 @@ export const LOCATIONS = [
 
 export const NAV_MENU: { url: string; title: string; children?: { url: string; title: string }[] }[] = [
   { url: '/', title: 'Startseite' },
+  { url: '/privat', title: 'Privat' },
+  { url: '/geschaeftlich', title: 'Geschäftlich' },
   { url: '/dienstleistungen', title: 'Dienstleistungen', children: SERVICES },
   {
     url: '/standort/kreuzlingen',
@@ -84,11 +86,10 @@ export const NAV_MENU: { url: string; title: string; children?: { url: string; t
 ];
 
 // ---------------------------------------------------------------
-// BILDER – echte Fotos statt KI-Bilder.
+// BILDER: echte Fotos statt KI-Bilder.
 // Eigene Fotos des Kunden in den Ordner public/img/ hochladen
 // und hier nur den Pfad ersetzen, z. B. src: '/img/hrr-auto.jpg'
 // (Der Ordner "public" wird im Pfad weggelassen.)
-// pos = welcher Teil des Fotos sichtbar ist ('center 20%' = eher oben)
 // ---------------------------------------------------------------
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
