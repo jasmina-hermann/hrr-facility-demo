@@ -1,0 +1,219 @@
+---
+// Bewertungen (ofri, top-offerten, Google) und Google Maps
+import { Icon } from "astro-icon/components";
+import { CONTACT, RATINGS, REVIEWS, MAP } from "../../consts";
+
+const stars = [1, 2, 3, 4, 5];
+---
+
+<section class="section bg-white">
+  <div class="site-shell">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Bewertungen</span>
+      <h2>Das sagen unsere Kunden</h2>
+      <p class="lead">Unsere Arbeit wird regelmässig bewertet. Überzeugen Sie sich selbst.</p>
+    </div>
+
+    <!-- Bewertungsplattformen -->
+    <div class="mt-12 grid gap-5 md:grid-cols-3" data-stagger>
+      <div class="flex">
+        <a href={RATINGS.ofri.url} target="_blank" rel="noopener" class="rating-card">
+          <span class="rating-card__brand text-[#2b4fa3]">ofri</span>
+          <span class="rating-card__score">{RATINGS.ofri.score}</span>
+          <span class="rating-card__stars" aria-label={`${RATINGS.ofri.score} von 5 Sternen`}>
+            {stars.map(() => <Icon name="lucide:star" size={20} />)}
+          </span>
+          <span class="rating-card__meta">{RATINGS.ofri.count} Bewertungen auf ofri.ch</span>
+        </a>
+      </div>
+
+      <div class="flex">
+        <a href={RATINGS.topOfferten.url} target="_blank" rel="noopener" class="rating-card">
+          <span class="rating-card__medal"><Icon name="lucide:award" size={34} /></span>
+          <span class="rating-card__title">Top-Partner</span>
+          <span class="rating-card__meta">ausgezeichnet auf top-offerten.ch</span>
+        </a>
+      </div>
+
+      <div class="flex">
+        <a href={RATINGS.google.url} target="_blank" rel="noopener" class="rating-card">
+          <span class="rating-card__google" aria-hidden="true"><Icon name="logos:google-icon" size={30} /></span>
+          <span class="rating-card__title">Google Bewertungen</span>
+          <span class="rating-card__meta inline-flex items-center gap-1">
+            Jetzt auf Google ansehen <Icon name="lucide:arrow-up-right" size={15} />
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Echte Kundenstimmen, werden in consts.ts unter REVIEWS eingetragen -->
+    {REVIEWS.length > 0 && (
+      <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-stagger>
+        {REVIEWS.map((r) => (
+          <figure class="review-card">
+            <span class="rating-card__stars justify-start" aria-label={`${r.stars} von 5 Sternen`}>
+              {Array.from({ length: r.stars }).map(() => <Icon name="lucide:star" size={17} />)}
+            </span>
+            <blockquote class="mt-4 text-[var(--hrr-text)]">{r.text}</blockquote>
+            <figcaption class="mt-5 text-sm">
+              <b class="text-[var(--hrr-ink)]">{r.name}</b>
+              <span class="text-[var(--hrr-muted)]"> · Google{r.date ? `, ${r.date}` : ""}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- Standort mit Google Maps -->
+<section class="section section-sand" id="standort">
+  <div class="site-shell grid gap-8 lg:grid-cols-[1fr_1.6fr] lg:items-stretch">
+    <div class="map-info">
+      <span class="eyebrow">Standort</span>
+      <h2 class="!text-[30px] md:!text-[34px]">So finden Sie uns</h2>
+
+      <p class="mt-2 flex items-start gap-3">
+        <Icon name="lucide:map-pin" size={20} class="mt-1 shrink-0 text-[var(--hrr-orange)]" />
+        <span><b class="text-[var(--hrr-ink)]">H-R-R Facility GmbH</b><br />{CONTACT.street}<br />{CONTACT.city}</span>
+      </p>
+
+      <div class="mt-6 border-t border-[var(--hrr-line)] pt-6">
+        <b class="text-[var(--hrr-ink)]">Bürozeiten</b>
+        <ul class="mt-2 grid gap-1.5">
+          {CONTACT.hours.map((h) => (
+            <li class="flex justify-between gap-4">
+              <span>{h.days}</span>
+              <span class="text-[var(--hrr-muted)]">{h.time}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+        <a href={MAP.route} target="_blank" rel="noopener" class="btn-main">
+          <Icon name="lucide:navigation" size={18} /> Route planen
+        </a>
+        <a href={CONTACT.phoneHref} class="btn-line">
+          <Icon name="lucide:phone" size={18} /> {CONTACT.phone}
+        </a>
+      </div>
+    </div>
+
+    <div class="map-frame">
+      <iframe
+        src={MAP.embed}
+        title="Standort der H-R-R Facility GmbH auf Google Maps"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rating-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 220px;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--hrr-line);
+    background: #fff;
+    text-align: center;
+    transition: transform .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s ease, border-color .5s ease;
+  }
+  .rating-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232, 118, 26, .35);
+    box-shadow: 0 22px 46px rgba(20, 22, 25, .09);
+  }
+
+  .rating-card__brand {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .rating-card__score {
+    margin-top: .5rem;
+    font-family: var(--font-head);
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--hrr-ink);
+  }
+  .rating-card__stars {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-top: .6rem;
+    color: #F5A623;
+  }
+  .rating-card__stars :global(svg) { fill: currentColor; }
+
+  .rating-card__medal {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2f9e44, #1c7a33);
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(31, 122, 51, .3);
+  }
+  .rating-card__google {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 10px 26px rgba(20, 22, 25, .1);
+  }
+  .rating-card__title {
+    margin-top: 1rem;
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hrr-ink);
+  }
+  .rating-card__meta {
+    margin-top: .4rem;
+    font-size: .93rem;
+    color: var(--hrr-muted);
+  }
+
+  .review-card {
+    padding: 1.8rem;
+    border-radius: 18px;
+    background: var(--hrr-sand);
+  }
+
+  .map-info {
+    padding: 2.2rem;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 16px 40px rgba(20, 22, 25, .06);
+  }
+  .map-frame {
+    min-height: 380px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(20, 22, 25, .08);
+  }
+  .map-frame iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    border: 0;
+    filter: grayscale(.85) contrast(1.05);
+    transition: filter .8s ease;
+  }
+  .map-frame:hover iframe { filter: none; }
+</style>
