@@ -15,6 +15,15 @@ import { Icon } from "astro-icon/components";
           <HeaderLink href={item.url} class="nav-link block py-4 font-semibold text-[var(--hrr-ink)]">
             {item.title}
           </HeaderLink>
+          {item.children && (
+            <ul class="mb-3 grid gap-1 border-l-2 border-[var(--hrr-orange-soft)] pl-4">
+              {item.children.map((c) => (
+                <li>
+                  <a href={c.url} class="block py-1.5 text-[var(--hrr-muted)] hover:text-[var(--hrr-orange)]">{c.title}</a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </ul>
