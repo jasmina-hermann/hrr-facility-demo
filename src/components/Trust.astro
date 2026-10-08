@@ -1,0 +1,110 @@
+---
+// Sicherheit & Vertrauen
+import { Icon } from "astro-icon/components";
+import { IMAGES } from "../../consts";
+
+const points = [
+  {
+    icon: "lucide:users",
+    title: "Feste Mitarbeitende",
+    text: "Bei Ihnen arbeiten immer die gleichen Leute. Sie wissen, wer kommt.",
+  },
+  {
+    icon: "lucide:key-round",
+    title: "Sorgfalt mit Schlüsseln",
+    text: "Schlüssel, Zugänge und Ihr Eigentum behandeln wir vertraulich.",
+  },
+  {
+    icon: "lucide:receipt-text",
+    title: "Klare Offerten",
+    text: "Sie wissen vorher, was es kostet. Ohne versteckte Kosten.",
+  },
+  {
+    icon: "lucide:phone-call",
+    title: "Immer erreichbar",
+    text: "Wenn etwas Dringendes passiert, sind wir rund um die Uhr da.",
+  },
+];
+---
+
+<section class="section section-sand">
+  <div class="site-shell grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+    <div class="trust__photo">
+      <div class="trust__frame" aria-hidden="true"></div>
+      <div class="photo aspect-[4/5] relative">
+        <img
+          src={IMAGES.sicherheit.src}
+          alt={IMAGES.sicherheit.alt}
+          loading="lazy"
+          onerror={`this.onerror=null;this.src='${IMAGES.sicherheit.fallback}'`}
+        />
+      </div>
+      <div class="trust__badge">
+        <Icon name="lucide:shield-check" size={26} />
+        <span>Qualität ist<br />unser Siegel</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="eyebrow">Vertrauen</span>
+      <h2>Die Sicherheit unserer Kunden steht an erster Stelle</h2>
+      <p class="lead">
+        Wir arbeiten in Ihrer Wohnung, in Ihrem Büro und mit Ihren Schlüsseln.
+        Deshalb setzen wir auf feste Teams, klare Absprachen und saubere Arbeit.
+      </p>
+
+      <ul class="mt-10 grid gap-6 sm:grid-cols-2" data-stagger>
+        {points.map((p) => (
+          <li class="flex gap-4">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-[var(--hrr-orange)] shadow-[0_8px_20px_rgba(20,22,25,.06)]">
+              <Icon name={p.icon} size={22} />
+            </span>
+            <span>
+              <b class="block font-semibold text-[var(--hrr-ink)]">{p.title}</b>
+              <span class="text-[15px] text-[var(--hrr-muted)]">{p.text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust__photo {
+    position: relative;
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .trust__photo .photo { border-radius: 20px; }
+
+  /* Feiner oranger Rahmen leicht versetzt hinter dem Foto */
+  .trust__frame {
+    position: absolute;
+    inset: 14px -14px -14px 14px;
+    border: 2px solid rgba(232, 118, 26, .45);
+    border-radius: 22px;
+  }
+
+  .trust__badge {
+    position: absolute;
+    left: -14px;
+    bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    background: var(--hrr-orange);
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 700;
+    line-height: 1.2;
+    box-shadow: 0 18px 40px rgba(232, 118, 26, .35);
+  }
+  @media (min-width: 1024px) {
+    .trust__frame { inset: 22px -22px -22px 22px; }
+    .trust__badge { left: -32px; }
+  }
+</style>
