@@ -88,6 +88,7 @@ export const NAV_MENU: { url: string; title: string; children?: { url: string; t
 // Eigene Fotos des Kunden in den Ordner public/img/ hochladen
 // und hier nur den Pfad ersetzen, z. B. src: '/img/hrr-auto.jpg'
 // (Der Ordner "public" wird im Pfad weggelassen.)
+// pos = welcher Teil des Fotos sichtbar ist ('center 20%' = eher oben)
 // ---------------------------------------------------------------
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
@@ -95,12 +96,12 @@ const u = (id: string, w = 1600) =>
 export const IMAGES = {
   // --- ORIGINALFOTOS DES KUNDEN (in public/img/ hochladen) ---
   // Solange eine Datei fehlt, zeigt die Seite automatisch das Ersatzfoto (fallback).
-  team: { src: '/img/hrr-team.jpg.jpg', fallback: u('photo-1581578731548-c64695cc6952', 2000), alt: 'Das Team der H-R-R Facility GmbH' },
-  reinigung: { src: '/img/hrr-reinigung.jpg.jpg', fallback: u('photo-1718152421680-d1580e843cc9'), alt: 'Reinigung durch H-R-R Facility' },
-  hauswartung: { src: '/img/hrr-hauswartung.jpg.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Hauswartung durch H-R-R Facility' },
-  renovation: { src: '/img/hrr-renovation.jpg.jpg', fallback: u('photo-1562259929-b4e1fd3aef09'), alt: 'Renovierungsarbeiten von H-R-R Facility' },
-  garten: { src: '/img/hrr-garten.jpg.jpg', fallback: u('photo-1689728318937-17d24bc0a65c'), alt: 'Gartenunterhalt von H-R-R Facility' },
-  sicherheit: { src: '/img/hrr-sicherheit.jpg.jpg', fallback: u('photo-1627905646269-7f034dcc5738'), alt: 'Mitarbeiterin von H-R-R Facility bei der Arbeit' },
+  team: { src: '/img/hrr-team.jpg.jpg', fallback: u('photo-1581578731548-c64695cc6952', 2000), alt: 'Das Team der H-R-R Facility GmbH', pos: 'center 30%' },
+  reinigung: { src: '/img/hrr-reinigung.jpg.jpg', fallback: u('photo-1718152421680-d1580e843cc9'), alt: 'Mitarbeitende von H-R-R mit Hochdruckreiniger vor dem Firmenwagen', pos: 'center 18%' },
+  hauswartung: { src: '/img/hrr-hauswartung.jpg.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Laubbläser für die Hauswartung', pos: 'center 40%' },
+  renovation: { src: '/img/hrr-renovation.jpg.jpg', fallback: u('photo-1562259929-b4e1fd3aef09'), alt: 'Firmenwagen der H-R-R Facility GmbH', pos: 'center 55%' },
+  garten: { src: '/img/hrr-garten.jpg.jpg', fallback: u('photo-1689728318937-17d24bc0a65c'), alt: 'Mitarbeiter von H-R-R beim Heckenschneiden', pos: 'center 50%' },
+  sicherheit: { src: '/img/hrr-sicherheit.jpg.jpg', fallback: u('photo-1627905646269-7f034dcc5738'), alt: 'Mitarbeiter der H-R-R Facility GmbH', pos: 'center 30%' },
 
   // --- Stockfotos für die Unterseiten ---
   hero: { src: u('photo-1581578731548-c64695cc6952', 1800), alt: 'Mitarbeiterin reinigt eine Glastür' },
