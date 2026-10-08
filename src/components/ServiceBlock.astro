@@ -6,7 +6,7 @@ interface Props {
   title: string;
   text: string;
   points: string[];
-  image: { src: string; alt: string };
+  image: { src: string; alt: string; fallback?: string };
   reverse?: boolean;
   sand?: boolean;
 }
@@ -16,7 +16,7 @@ const { id, eyebrow, title, text, points, image, reverse = false, sand = false }
 <section id={id} class:list={["section scroll-mt-32", sand ? "section-sand" : "bg-white"]}>
   <div class="site-shell grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
     <div class:list={["photo aspect-[4/3]", { "lg:order-2": reverse }]}>
-      <img src={image.src} alt={image.alt} loading="lazy" />
+      <img src={image.src} alt={image.alt} loading="lazy" onerror={image.fallback ? `this.onerror=null;this.src='${image.fallback}'` : undefined} />
     </div>
     <div>
       <span class="eyebrow">{eyebrow}</span>
