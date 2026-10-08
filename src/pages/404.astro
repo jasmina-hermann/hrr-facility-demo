@@ -1,19 +1,17 @@
 ---
 import Layout from "../layouts/Main.astro";
-import Logo from "../components/Logo.astro";
 ---
 
-<Layout title="Not found">
-  <section class="section flex-1 flex flex-col justify-center items-center">
-    <div class="container text-center grid gap-4">
-      <div class="text-center mx-auto">
-        <Logo />
+<Layout title="Seite nicht gefunden">
+  <section class="section bg-white">
+    <div class="site-shell"><div class="mx-auto max-w-xl text-center">
+      <span class="eyebrow">Fehler 404</span>
+      <h1>Diese Seite gibt es leider nicht.</h1>
+      <p class="lead">Vielleicht hat sich die Adresse geändert. Auf der Startseite finden Sie alle Dienstleistungen.</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/" class="btn-main">Zur Startseite</a>
+        <a href="/contact" class="btn-line">Kontakt</a>
       </div>
-      <h1 class="text-5xl lg:text-[10em] font-bold leading-none">404</h1>
-      <p>Sorry, we couldn't fint that page</p>
-      <a href="/" class="btn btn-neutral mx-auto shadow-none rounded-none"
-        >GO TO HOME</a
-      >
-    </div>
+    </div></div>
   </section>
 </Layout>
