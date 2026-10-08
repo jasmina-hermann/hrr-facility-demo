@@ -51,6 +51,7 @@ const services = [
               src={s.img.src}
               alt={s.img.alt}
               loading="lazy"
+              style={`object-position: ${s.img.pos}`}
               onerror={`this.onerror=null;this.src='${s.img.fallback}'`}
             />
             <span class="service-card__num">{String(i + 1).padStart(2, "0")}</span>
