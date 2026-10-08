@@ -3,12 +3,20 @@ import Layout from "../layouts/Main.astro";
 import Hero from "../components/homepage/Hero.astro";
 import Services from "../components/homepage/Services.astro";
 import Welcome from "../components/homepage/Welcome.astro";
-import Contacts from "../components/homepage/Contacts.astro";
+import Steps from "../components/Steps.astro";
+import Trust from "../components/homepage/Trust.astro";
+import Reviews from "../components/homepage/Reviews.astro";
 ---
 
-<Layout title="Reinigung & Hauswartung in Kreuzlingen und Winterthur">
+<Layout
+  title="Reinigung & Hauswartung in Kreuzlingen, Winterthur und Thurgau"
+  description="Professioneller Reinigungsdienst und Hauswartung in Kreuzlingen, Winterthur und im Kanton Thurgau. Über 20 Jahre Erfahrung, rund um die Uhr erreichbar. Jetzt kostenlose Offerte anfragen."
+  transparentHeader
+>
   <Hero />
   <Services />
   <Welcome />
-  <Contacts />
+  <Steps />
+  <Trust />
+  <Reviews />
 </Layout>
