@@ -1,44 +1,115 @@
-<section class="bg-white py-14 md:py-20">
+---
+import { Icon } from "astro-icon/components";
+import { IMAGES } from "../../consts";
+
+const reasons = [
+  {
+    title: "Ein Ansprechpartner für alles",
+    points: [
+      "Reinigung und Hauswartung aus einer Hand",
+      "Persönliche Betreuung und klare Kommunikation",
+      "Kurze Wege bei Fragen und Anliegen",
+    ],
+  },
+  {
+    title: "Planung, auf die Sie zählen können",
+    points: [
+      "Transparente Absprachen und klare Offerten",
+      "Zuverlässige und termingerechte Ausführung",
+      "Flexible Einsätze – auch kurzfristig",
+    ],
+  },
+  {
+    title: "Erfahrenes Team",
+    points: [
+      "Über 20 Jahre Erfahrung im Facility Service",
+      "Eingespielte Abläufe und feste Teams",
+    ],
+  },
+  {
+    title: "Qualität, die bleibt",
+    points: [
+      "Professionelle Geräte und Reinigungsmittel",
+      "Fokus auf Werterhalt und langfristige Betreuung",
+    ],
+  },
+];
+---
+
+<!-- Zielgruppen -->
+<section class="section bg-white">
   <div class="site-shell">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-      <div>
-        <p class="premium-kicker mb-3">Warum H-R-R</p>
-        <h2 class="max-w-3xl">Für Immobilien, bei denen jedes Detail zählt.</h2>
-        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[#69635e]">
-          Hochwertige Immobilien brauchen mehr als eine schnelle Reinigung. Sie brauchen Menschen, die sorgfältig arbeiten, Verantwortung übernehmen und wissen, dass Vertrauen und Diskretion genauso wichtig sind wie das sichtbare Ergebnis.
-        </p>
+    <div class="max-w-2xl">
+      <span class="eyebrow">Für wen wir arbeiten</span>
+      <h2>Für Liegenschaften und Privathaushalte</h2>
+      <p class="lead">Wählen Sie den passenden Einstieg – wir beraten Sie gerne persönlich.</p>
+    </div>
 
-        <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div class="rounded-[22px] border border-[#eadfd4] bg-[#fbf7f2] p-5"><b class="text-[#0f6b57]">01 · Persönliche Betreuung</b><p class="mt-2 text-[#6d6761]">Klare Ansprechpartner und individuelle Lösungen statt anonymer Standardpakete.</p></div>
-          <div class="rounded-[22px] border border-[#eadfd4] bg-[#fbf7f2] p-5"><b class="text-[#0f6b57]">02 · Diskretion</b><p class="mt-2 text-[#6d6761]">Respektvoller Umgang mit privaten Räumen, hochwertigen Einrichtungen und sensiblen Objekten.</p></div>
-          <div class="rounded-[22px] border border-[#eadfd4] bg-[#fbf7f2] p-5"><b class="text-[#0f6b57]">03 · Qualitätskontrolle</b><p class="mt-2 text-[#6d6761]">Saubere Abläufe, konstante Standards und zuverlässige Durchführung.</p></div>
-          <div class="rounded-[22px] border border-[#eadfd4] bg-[#fbf7f2] p-5"><b class="text-[#0f6b57]">04 · Flexibilität</b><p class="mt-2 text-[#6d6761]">Von regelmässiger Betreuung bis zur individuellen Sonderreinigung.</p></div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <div class="rounded-[10px] border border-[var(--hrr-line)] p-7 md:p-9">
+        <div class="mb-5 grid h-12 w-12 place-items-center rounded-lg bg-[var(--hrr-orange-soft)] text-[var(--hrr-orange)]">
+          <Icon name="lucide:building-2" size={24} />
         </div>
-
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="/contact" class="cta-primary">Unverbindlich beraten lassen <span>→</span></a>
-          <a href="/about" class="inline-flex items-center justify-center gap-2 rounded-[14px] border border-[#ded7cf] bg-white px-6 py-4 font-semibold text-[#292929] hover:border-[#0f6b57] hover:text-[#0f6b57]">Mehr über H-R-R <span>→</span></a>
-        </div>
+        <h3>Liegenschaften &amp; Unternehmen</h3>
+        <p class="text-[var(--hrr-muted)]">Für Verwaltungen, Eigentümer, Unternehmen und Gewerbeobjekte. Wir übernehmen die Betreuung Ihres Objekts:</p>
+        <ul class="check-list mt-4">
+          <li>Treppenhaus-, Büro- und Gewerbereinigung</li>
+          <li>Hauswartung und Kontrollgänge</li>
+          <li>Umgebungspflege und Winterdienst</li>
+        </ul>
+        <a href="/hauswartung#geschaeftlich" class="btn-line mt-7">Mehr für Liegenschaften</a>
       </div>
 
-      <div class="relative min-h-[520px] overflow-hidden rounded-[30px] shadow-[0_24px_75px_rgba(61,44,28,.12)]">
-        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&fm=jpg&q=88&w=2600" alt="Moderne Luxusvilla mit Pool" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#173d34]/72 via-transparent to-transparent"></div>
-        <div class="absolute bottom-6 left-6 right-6 rounded-[22px] border border-white/25 bg-white/88 p-5 backdrop-blur-xl">
-          <p class="text-sm font-extrabold uppercase tracking-[0.16em] text-[#ef7f1a]">Kreuzlingen · Winterthur</p>
-          <h3 class="!mb-1 !mt-2 !text-[34px]">Premium-Service für gepflegte Immobilien.</h3>
-          <p class="text-[#69635e]">Für Privatkunden, Verwaltungen und Unternehmen mit hohen Ansprüchen an Sauberkeit und Werterhalt.</p>
+      <div class="rounded-[10px] border border-[var(--hrr-line)] p-7 md:p-9">
+        <div class="mb-5 grid h-12 w-12 place-items-center rounded-lg bg-[var(--hrr-orange-soft)] text-[var(--hrr-orange)]">
+          <Icon name="lucide:house" size={24} />
         </div>
+        <h3>Privathaushalte</h3>
+        <p class="text-[var(--hrr-muted)]">Für Wohnungen, Häuser, Eigentümer und Mieter. Gerne übernehmen wir für Sie:</p>
+        <ul class="check-list mt-4">
+          <li>Regelmässige Wohnungsreinigung</li>
+          <li>Umzugs- und Endreinigung mit Abgabe</li>
+          <li>Hauswartungs- und Gartenarbeiten</li>
+        </ul>
+        <a href="/reinigung#privat" class="btn-line mt-7">Mehr für Privathaushalte</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Warum H-R-R -->
+<section class="section section-sand">
+  <div class="site-shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+    <div class="lg:sticky lg:top-32">
+      <span class="eyebrow">Warum H-R-R?</span>
+      <h2>Rundum betreut – mit einem Ansprechpartner</h2>
+      <p class="lead mb-8">Wir arbeiten so, wie wir es selbst von einem Partner erwarten würden: verlässlich, sauber und unkompliziert.</p>
+      <div class="photo aspect-[4/3]">
+        <img src={IMAGES.hauswart.src} alt={IMAGES.hauswart.alt} loading="lazy" />
       </div>
     </div>
 
-    <div class="mt-12 rounded-[30px] bg-[#f2e8de] px-7 py-8 md:px-10 md:py-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
-      <div class="max-w-3xl">
-        <p class="premium-kicker mb-2">Schnell &amp; unkompliziert</p>
-        <h3 class="!mb-2 !text-[38px] md:!text-[44px]">Sie zeigen uns das Objekt. Wir kümmern uns um den Rest.</h3>
-        <p class="text-lg text-[#69635e]">Kurze Anfrage senden, Bedarf besprechen und eine klare Offerte erhalten – ohne unnötige Umwege.</p>
-      </div>
-      <a href="/contact" class="cta-primary mt-6 shrink-0 lg:mt-0">Offerte anfragen <span>→</span></a>
+    <div class="grid gap-5">
+      {reasons.map((r, i) => (
+        <div class="rounded-[10px] bg-white p-6 md:p-7">
+          <div class="flex items-baseline gap-4">
+            <span class="font-semibold text-[var(--hrr-orange)]">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{r.title}</h3>
+              <ul class="check-list mt-3 text-[var(--hrr-muted)]">
+                {r.points.map((p) => <li>{p}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
+  </div>
+</section>
+
+<!-- Bildband -->
+<section class="relative">
+  <div class="h-[280px] md:h-[380px] overflow-hidden bg-[var(--hrr-sand)]">
+    <img src={IMAGES.liegenschaft.src} alt={IMAGES.liegenschaft.alt} loading="lazy" class="h-full w-full object-cover" />
   </div>
 </section>
