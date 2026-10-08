@@ -1,23 +1,39 @@
 ---
-import Navabar from "../components/Navbar.astro";
-import Logo from "../components/Logo.astro";
+import Navbar from "./Navbar.astro";
+import Logo from "./Logo.astro";
 import { Icon } from "astro-icon/components";
+import { CONTACT } from "../consts";
 ---
 
-<header class="header sticky top-0 z-50 border-b border-[#eee8e2] bg-white/95 backdrop-blur-xl">
-  <div class="navbar w-full min-h-[82px] py-2">
-    <div class="container grid grid-cols-[220px_1fr] lg:grid-cols-[220px_1fr_auto] items-center">
-      <Logo />
-      <Navabar />
-      <div class="flex gap-3 ml-auto">
-        <a href="/contact" class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-[#ef7f1a] px-6 py-3 text-sm font-bold text-white shadow-[0_10px_25px_rgba(239,127,26,.22)] transition hover:-translate-y-0.5 hover:bg-[#da6f12]">
-          Offerte anfragen <span>→</span>
+<header class="sticky top-0 z-50 bg-white">
+  <!-- Kontaktleiste oben -->
+  <div class="hidden md:block bg-[var(--hrr-ink)] text-white/85 text-sm">
+    <div class="site-shell flex h-10 items-center justify-between">
+      <span>{CONTACT.region}</span>
+      <div class="flex items-center gap-6">
+        <a href={CONTACT.phoneHref} class="inline-flex items-center gap-2 hover:text-white">
+          <Icon name="lucide:phone" size={15} /> {CONTACT.phone}
         </a>
-        <div class="flex-none lg:hidden">
-          <label for="my-drawer-2" aria-label="Menü öffnen" class="btn btn-square btn-ghost ml-2">
-            <Icon name="lucide:menu" />
-          </label>
-        </div>
+        <a href={CONTACT.emailHref} class="inline-flex items-center gap-2 hover:text-white">
+          <Icon name="lucide:mail" size={15} /> {CONTACT.email}
+        </a>
+        <span class="inline-flex items-center gap-2 text-[#F6B57A] font-semibold">
+          <Icon name="lucide:clock" size={15} /> 24/7 erreichbar
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hauptnavigation -->
+  <div class="border-b border-[var(--hrr-line)]">
+    <div class="site-shell flex h-[76px] items-center justify-between gap-6">
+      <Logo />
+      <Navbar />
+      <div class="flex items-center gap-2">
+        <a href="/contact" class="btn-main hidden sm:inline-flex">Offerte anfragen</a>
+        <label for="my-drawer-2" aria-label="Menü öffnen" class="btn btn-square btn-ghost lg:hidden">
+          <Icon name="lucide:menu" size={26} />
+        </label>
       </div>
     </div>
   </div>
