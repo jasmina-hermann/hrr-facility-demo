@@ -33,11 +33,15 @@ const { transparent = false } = Astro.props;
 </header>
 
 <script>
-  // Durchsichtiger Header wird beim Scrollen weiss
+  // Durchsichtiger Header: bleibt über dem ganzen Foto durchsichtig
+  // und wird erst weiss, wenn das Foto fast vorbei ist.
   const header = document.getElementById("site-header");
   if (header?.dataset.transparent === "true") {
-    const update = () => header.classList.toggle("is-scrolled", window.scrollY > 60);
+    const media = document.querySelector<HTMLElement>(".hrr-hero__media");
+    const limit = () => (media ? media.offsetHeight * 0.8 - header.offsetHeight : 60);
+    const update = () => header.classList.toggle("is-scrolled", window.scrollY > limit());
     update();
     window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
   }
 </script>
