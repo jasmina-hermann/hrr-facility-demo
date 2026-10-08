@@ -1,43 +1,30 @@
 ---
 import { Icon } from "astro-icon/components";
+import { CONTACT } from "../../consts";
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = "Kontaktieren Sie uns",
+  text = "Rufen Sie uns an oder schreiben Sie uns kurz, worum es geht. Wir melden uns persönlich bei Ihnen – auch für eine Besichtigung vor Ort.",
+} = Astro.props;
 ---
 
-<section class="bg-[#173d34] py-14 md:py-18">
-  <div class="site-shell">
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-stretch">
-      <div class="rounded-[30px] border border-white/10 bg-white/6 p-7 text-white md:p-9">
-        <p class="mb-3 text-sm font-extrabold uppercase tracking-[0.18em] text-[#f6b77e]">Direkt &amp; persönlich</p>
-        <h2 class="!text-white">Wie dürfen wir Ihre Immobilie unterstützen?</h2>
-        <p class="mt-4 max-w-xl text-lg leading-relaxed text-white/72">Ob regelmässige Reinigung, Hauswartung oder eine individuelle Lösung: Schreiben Sie uns kurz, was Sie benötigen. Wir melden uns persönlich bei Ihnen.</p>
+<section class="bg-[var(--hrr-ink)] text-white">
+  <div class="site-shell grid gap-10 py-16 md:py-20 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+    <div>
+      <span class="eyebrow">Wir freuen uns auf Sie</span>
+      <h2 class="!text-white">{title}</h2>
+      <p class="max-w-xl text-lg text-white/75">{text}</p>
+    </div>
 
-        <div class="mt-8 grid gap-4">
-          <div class="flex items-center gap-4 rounded-2xl bg-white/8 p-4"><span class="grid h-11 w-11 place-items-center rounded-xl bg-[#ef7f1a] text-white"><Icon name="lucide:map-pin" size={21} /></span><div><b class="block">Region</b><span class="text-sm text-white/65">Kreuzlingen · Winterthur · Umgebung</span></div></div>
-          <div class="flex items-center gap-4 rounded-2xl bg-white/8 p-4"><span class="grid h-11 w-11 place-items-center rounded-xl bg-[#ef7f1a] text-white"><Icon name="lucide:shield-check" size={21} /></span><div><b class="block">Diskret &amp; zuverlässig</b><span class="text-sm text-white/65">Für Privatkunden, Unternehmen und Verwaltungen</span></div></div>
-          <div class="flex items-center gap-4 rounded-2xl bg-white/8 p-4"><span class="grid h-11 w-11 place-items-center rounded-xl bg-[#ef7f1a] text-white"><Icon name="lucide:sparkles" size={21} /></span><div><b class="block">Premium-Anspruch</b><span class="text-sm text-white/65">Sorgfalt für hochwertige Räume und Liegenschaften</span></div></div>
-        </div>
-      </div>
-
-      <div class="rounded-[30px] bg-[#fbf8f4] p-7 shadow-[0_25px_80px_rgba(0,0,0,.18)] md:p-10">
-        <p class="premium-kicker mb-2">Unverbindlich anfragen</p>
-        <h3 class="!mb-2 !text-[42px]">Ihre persönliche Offerte.</h3>
-        <p class="max-w-2xl text-[#6d6862]">Je genauer wir Ihr Objekt und Ihren Bedarf kennen, desto passender können wir die Betreuung planen.</p>
-
-        <form action="/" method="POST" class="mt-7 grid gap-4 sm:grid-cols-2">
-          <input type="text" placeholder="Name" class="input w-full rounded-xl border-[#ddd3ca] bg-white" id="contact-name" name="contact_name" required />
-          <input type="email" placeholder="E-Mail" class="input w-full rounded-xl border-[#ddd3ca] bg-white" id="contact-email" name="contact_email" required />
-          <select class="select w-full rounded-xl border-[#ddd3ca] bg-white text-[#5f5a55]" name="service">
-            <option>Reinigung</option>
-            <option>Hauswartung</option>
-            <option>Reinigung &amp; Hauswartung</option>
-          </select>
-          <input type="text" placeholder="Ort / Liegenschaft" class="input w-full rounded-xl border-[#ddd3ca] bg-white" name="location" />
-          <textarea class="textarea min-h-32 w-full rounded-xl border-[#ddd3ca] bg-white sm:col-span-2" placeholder="Was dürfen wir für Sie übernehmen?" id="contact-msg" name="contact_msg" required></textarea>
-          <div class="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p class="text-sm text-[#777069]">✓ Unverbindlich &nbsp; ✓ Persönliche Rückmeldung &nbsp; ✓ Keine Standardpakete</p>
-            <button class="cta-primary border-0" type="submit">Offerte anfragen <span>→</span></button>
-          </div>
-        </form>
-      </div>
+    <div class="grid gap-3 sm:grid-cols-2">
+      <a href="/contact" class="btn-main sm:col-span-2">Kontakt aufnehmen <Icon name="lucide:arrow-right" size={18} /></a>
+      <a href={CONTACT.phoneHref} class="btn-light"><Icon name="lucide:phone" size={18} /> Anrufen</a>
+      <a href={CONTACT.emailHref} class="btn-light"><Icon name="lucide:mail" size={18} /> E-Mail senden</a>
+      <a href={CONTACT.whatsappHref} target="_blank" rel="noopener" class="btn-light sm:col-span-2"><Icon name="lucide:message-circle" size={18} /> WhatsApp {CONTACT.mobile}</a>
     </div>
   </div>
 </section>
