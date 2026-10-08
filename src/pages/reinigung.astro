@@ -1,50 +1,75 @@
 ---
 import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
+import ServiceBlock from "../components/ServiceBlock.astro";
+import Steps from "../components/Steps.astro";
+import Contacts from "../components/homepage/Contacts.astro";
+import { IMAGES } from "../consts";
 ---
-<Layout title="Reinigung | H-R-R Facility GmbH">
-  <main class="bg-[#fbf8f4] py-8 md:py-12">
-    <div class="site-shell">
-      <a href="/" class="font-semibold text-[#ef7f1a]">← Zurück zur Übersicht</a>
 
-      <div class="mt-6 overflow-hidden rounded-[30px] bg-white shadow-[0_24px_75px_rgba(61,44,28,.10)] lg:grid lg:grid-cols-[.9fr_1.1fr]">
-        <div class="p-7 sm:p-10 lg:p-12">
-          <p class="premium-kicker mb-3">Premium Reinigung</p>
-          <h1 class="!mb-4">Reinigung</h1>
-          <p class="max-w-xl text-xl leading-relaxed text-[#6b655f]">Für hochwertige Wohnungen, Villen, Geschäftsräume und Liegenschaften – gründlich, diskret und mit einem Auge für Details.</p>
-          <div class="mt-7 flex flex-wrap gap-3">
-            <span class="rounded-full bg-[#eaf3ef] px-4 py-2 text-sm font-bold text-[#0f6b57]">✓ Persönlich betreut</span>
-            <span class="rounded-full bg-[#fff1e4] px-4 py-2 text-sm font-bold text-[#ef7f1a]">✓ Flexible Einsätze</span>
-            <span class="rounded-full bg-[#eaf3ef] px-4 py-2 text-sm font-bold text-[#0f6b57]">✓ Diskret &amp; zuverlässig</span>
-          </div>
-        </div>
-        <div class="min-h-[380px]">
-          <img src="https://images.unsplash.com/photo-1771371428960-35a50c2d4e7c?auto=format&fit=crop&fm=jpg&q=88&w=2600" alt="Luxuriöser gepflegter Wohnbereich" class="h-full w-full object-cover" />
-        </div>
-      </div>
-
-      <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <a href="/reinigung-privat" class="group premium-card relative overflow-hidden rounded-[28px] p-8 md:p-10 min-h-[320px] flex flex-col justify-between transition hover:-translate-y-1">
-          <div class="absolute right-0 top-0 h-32 w-32 rounded-bl-[100px] bg-[#fff1e4]"></div>
-          <div class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ef7f1a] text-2xl text-white">✦</div>
-          <div class="relative z-10">
-            <p class="text-[#ef7f1a] font-bold mb-2 tracking-[0.12em]">REINIGUNG</p>
-            <h2 class="!text-4xl md:!text-5xl mb-4">Privat</h2>
-            <p class="text-[#6b655f] leading-relaxed mb-5">Für Wohnungen, Häuser, Villen und private Liegenschaften – regelmässig oder individuell nach Bedarf.</p>
-            <span class="font-semibold text-[#0f6b57]">Leistungen ansehen →</span>
-          </div>
-        </a>
-
-        <a href="/reinigung-geschaeftlich" class="group premium-card relative overflow-hidden rounded-[28px] p-8 md:p-10 min-h-[320px] flex flex-col justify-between transition hover:-translate-y-1">
-          <div class="absolute right-0 top-0 h-32 w-32 rounded-bl-[100px] bg-[#eaf3ef]"></div>
-          <div class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0f6b57] text-2xl text-white">▦</div>
-          <div class="relative z-10">
-            <p class="text-[#0f6b57] font-bold mb-2 tracking-[0.12em]">REINIGUNG</p>
-            <h2 class="!text-4xl md:!text-5xl mb-4">Geschäftlich</h2>
-            <p class="text-[#6b655f] leading-relaxed mb-5">Für Büros, Praxen, Gewerbe, Verwaltungen und repräsentative Geschäftsräume mit konstant hohem Qualitätsanspruch.</p>
-            <span class="font-semibold text-[#ef7f1a]">Leistungen ansehen →</span>
-          </div>
-        </a>
-      </div>
+<Layout
+  title="Reinigung"
+  description="Unterhaltsreinigung, Büroreinigung, Fenster-, Grund- und Umzugsreinigung in Kreuzlingen, Winterthur und Umgebung."
+>
+  <PageHero
+    eyebrow="Reinigung"
+    title="Reinigung für Liegenschaften, Büros und Privathaushalte"
+    text="Ob regelmässige Unterhaltsreinigung oder einmaliger Einsatz: Wir reinigen gründlich, zuverlässig und so, wie es mit Ihnen vereinbart ist."
+    image={IMAGES.boden}
+  >
+    <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[var(--hrr-ink)]">
+      <a href="#geschaeftlich" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Geschäftlich</a>
+      <a href="#privat" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Privat</a>
+      <a href="#spezial" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Fenster &amp; Grundreinigung</a>
     </div>
-  </main>
+  </PageHero>
+
+  <ServiceBlock
+    id="geschaeftlich"
+    eyebrow="Geschäftlich"
+    title="Treppenhaus-, Büro- und Gewerbereinigung"
+    text="Für Verwaltungen, Unternehmen, Praxen und Gewerbe. Wir reinigen nach festem Plan – täglich, wöchentlich oder in dem Rhythmus, der zu Ihrem Objekt passt."
+    points={[
+      "Treppenhausreinigung",
+      "Büro- und Praxisreinigung",
+      "Sanitär- und Küchenbereiche",
+      "Eingangsbereiche und Lifte",
+      "Abfallentsorgung",
+      "Reinigung nach festem Plan",
+    ]}
+    image={IMAGES.buero}
+  />
+
+  <ServiceBlock
+    id="privat"
+    eyebrow="Privat"
+    title="Reinigung für Ihr Zuhause"
+    text="Für Wohnungen und Häuser – regelmässig oder bei Bedarf. Sie bekommen feste Mitarbeitende, die Ihr Zuhause kennen."
+    points={[
+      "Wohnungs- und Hausreinigung",
+      "Küche und Bad",
+      "Böden und Teppiche",
+      "Umzugsreinigung mit Abgabe",
+    ]}
+    image={IMAGES.privat}
+    reverse
+    sand
+  />
+
+  <ServiceBlock
+    id="spezial"
+    eyebrow="Fenster & Grundreinigung"
+    title="Wenn es gründlich sein muss"
+    text="Für Einsätze, die über die normale Reinigung hinausgehen – nach Umbauten, beim Mieterwechsel oder einfach einmal im Jahr."
+    points={[
+      "Fenster und Rahmen",
+      "Grundreinigung",
+      "Bauendreinigung",
+      "Umzugs- und Endreinigung",
+    ]}
+    image={IMAGES.fenster}
+  />
+
+  <Steps />
+  <Contacts title="Offerte für Ihre Reinigung" />
 </Layout>
