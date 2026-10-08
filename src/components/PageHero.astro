@@ -4,7 +4,7 @@ interface Props {
   eyebrow: string;
   title: string;
   text: string;
-  image: { src: string; alt: string };
+  image: { src: string; alt: string; fallback?: string };
 }
 const { eyebrow, title, text, image } = Astro.props;
 ---
@@ -22,7 +22,7 @@ const { eyebrow, title, text, image } = Astro.props;
       <slot />
     </div>
     <div class="photo aspect-[4/3]">
-      <img src={image.src} alt={image.alt} loading="eager" fetchpriority="high" />
+      <img src={image.src} alt={image.alt} loading="eager" fetchpriority="high" onerror={image.fallback ? `this.onerror=null;this.src='${image.fallback}'` : undefined} />
     </div>
   </div>
 </section>
