@@ -4,12 +4,14 @@ import HeaderLink from "./HeaderLink.astro";
 import { Icon } from "astro-icon/components";
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+// "Startseite" steht nur im Handy-Menü, auf dem Computer führt das Logo zur Startseite
+const items = NAV_MENU.filter((item) => item.url !== "/");
 ---
 
 <nav class="hidden lg:block" aria-label="Hauptnavigation">
-  <ul class="flex items-center gap-8 text-[15px] font-semibold text-[var(--hrr-ink)]">
+  <ul class="flex items-center gap-5 text-[15px] 2xl:gap-8 font-semibold text-[var(--hrr-ink)]">
     {
-      NAV_MENU.map((item) =>
+      items.map((item) =>
         item.children ? (
           <li class="group relative">
             <a
