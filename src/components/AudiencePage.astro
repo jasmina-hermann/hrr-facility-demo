@@ -1,0 +1,319 @@
+---
+// Seite für eine Kundengruppe (Privat oder Geschäftlich).
+// Gleicher Look wie der Bereich "Privat & Geschäftlich" auf der Startseite.
+import { Icon } from "astro-icon/components";
+import Steps from "./Steps.astro";
+import Contacts from "./homepage/Contacts.astro";
+import { CONTACT } from "../consts";
+
+interface Service {
+  icon: string;
+  title: string;
+  text: string;
+  href: string;
+}
+
+interface Props {
+  kind: "privat" | "geschaeftlich";
+  eyebrow: string;
+  title: string;
+  lead: string;
+  icon: string;
+  services: Service[];
+  tasksTitle: string;
+  tasksText: string;
+  tasks: string[];
+  image: { src: string; alt: string; fallback?: string; pos?: string };
+  contactTitle: string;
+}
+
+const { kind, eyebrow, title, lead, icon, services, tasksTitle, tasksText, tasks, image, contactTitle } = Astro.props;
+
+const tabs = [
+  { kind: "privat", label: "Privat", href: "/privat", icon: "lucide:house" },
+  { kind: "geschaeftlich", label: "Geschäftlich", href: "/geschaeftlich", icon: "lucide:building-2" },
+];
+const offer = `/contact?fuer=${kind}`;
+---
+
+<!-- 1. Kopfbereich mit Farbverlauf -->
+<section class="aud-hero no-reveal">
+  <div class="aud-hero__glow" aria-hidden="true"></div>
+  <span class="aud-hero__watermark" aria-hidden="true"><Icon name={icon} size={420} /></span>
+
+  <div class="site-shell relative pb-28 pt-10 md:pb-40 md:pt-14">
+    <nav class="aud-hero__in text-sm text-white/60" aria-label="Brotkrumen" style="--d: 0s">
+      <a href="/" class="hover:text-white">Startseite</a>
+      <span class="mx-2">/</span>
+      <span class="text-white">{eyebrow}</span>
+    </nav>
+
+    <!-- Reiter zum Wechseln zwischen Privat und Geschäftlich -->
+    <div class="aud-tabs aud-hero__in" role="tablist" aria-label="Kundengruppe wählen" style="--d: .1s">
+      {tabs.map((t) => (
+        <a
+          href={t.href}
+          role="tab"
+          aria-selected={t.kind === kind ? "true" : "false"}
+          class:list={["aud-tabs__item", { "is-active": t.kind === kind }]}
+        >
+          <Icon name={t.icon} size={18} /> {t.label}
+        </a>
+      ))}
+    </div>
+
+    <h1 class="aud-hero__title aud-hero__in" style="--d: .2s">{title}</h1>
+    <p class="aud-hero__lead aud-hero__in" style="--d: .32s">{lead}</p>
+
+    <div class="aud-hero__in mt-9 flex flex-col gap-3 sm:flex-row" style="--d: .44s">
+      <a href={offer} class="aud-btn aud-btn--white">Kostenlose Offerte anfragen <Icon name="lucide:arrow-right" size={18} /></a>
+      <a href={CONTACT.phoneHref} class="aud-btn aud-btn--ghost"><Icon name="lucide:phone" size={18} /> {CONTACT.phone}</a>
+    </div>
+  </div>
+
+  <svg class="aud-hero__curve" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120H1440V90C1160 0 280 0 0 90Z" fill="#fff"></path>
+  </svg>
+</section>
+
+<!-- 2. Die vier Bereiche, passend zur Kundengruppe -->
+<section class="section bg-white">
+  <div class="site-shell">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Unsere Leistungen</span>
+      <h2>Alles aus einer Hand</h2>
+      <p class="lead">Wählen Sie einen Bereich. Sie können die Leistungen auch kombinieren.</p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
+      {services.map((s, i) => (
+        <div class="flex">
+          <a href={s.href} class="aud-card group">
+            <span class="aud-card__num">{String(i + 1).padStart(2, "0")}</span>
+            <span class="aud-card__icon"><Icon name={s.icon} size={26} /></span>
+            <h3 class="aud-card__title">{s.title}</h3>
+            <p class="text-[15px] text-[var(--hrr-muted)]">{s.text}</p>
+            <span class="aud-card__more">
+              Mehr erfahren
+              <Icon name="lucide:arrow-right" size={17} class="transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 3. Typische Aufträge mit Originalfoto -->
+<section class="section section-sand">
+  <div class="site-shell grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <div class="aud-photo">
+      <img
+        src={image.src}
+        alt={image.alt}
+        loading="lazy"
+        style={image.pos ? `object-position: ${image.pos}` : undefined}
+        onerror={image.fallback ? `this.onerror=null;this.src='${image.fallback}'` : undefined}
+      />
+    </div>
+    <div>
+      <span class="eyebrow">Typische Aufträge</span>
+      <h2>{tasksTitle}</h2>
+      <p class="lead">{tasksText}</p>
+      <ul class="check-list mt-6 sm:grid-cols-2 sm:gap-x-8">
+        {tasks.map((t) => <li>{t}</li>)}
+      </ul>
+      <a href={offer} class="btn-main mt-8">Offerte anfragen <Icon name="lucide:arrow-right" size={18} /></a>
+    </div>
+  </div>
+</section>
+
+<Steps />
+<Contacts
+  title={contactTitle}
+  text="Rufen Sie an oder schreiben Sie uns kurz, worum es geht. Wir melden uns persönlich und kommen gerne für eine Besichtigung vorbei."
+/>
+
+<style>
+  /* ---------- Kopfbereich ---------- */
+  .aud-hero {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(160deg, #2a2e33 0%, #1d2024 55%, #24211e 100%);
+  }
+  .aud-hero__glow {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    right: -260px;
+    top: -420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 118, 26, .3) 0%, rgba(232, 118, 26, .08) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .aud-hero__watermark {
+    position: absolute;
+    right: -60px;
+    bottom: -40px;
+    color: rgba(255, 255, 255, .05);
+    pointer-events: none;
+  }
+  .aud-hero__curve {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: clamp(40px, 7vw, 110px);
+    display: block;
+  }
+  .aud-hero__title {
+    max-width: 52rem;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(38px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  .aud-hero__lead {
+    max-width: 40rem;
+    margin-top: 1.4rem;
+    font-size: clamp(18px, 1.8vw, 21px);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, .78);
+  }
+
+  /* Reiter Privat / Geschäftlich */
+  .aud-tabs {
+    display: inline-flex;
+    gap: .35rem;
+    margin: 2rem 0 2.2rem;
+    padding: .35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .14);
+  }
+  .aud-tabs__item {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem 1.2rem;
+    border-radius: 999px;
+    font-family: var(--font-head);
+    font-size: .95rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .75);
+    transition: background-color .3s ease, color .3s ease;
+  }
+  .aud-tabs__item:hover { color: #fff; }
+  .aud-tabs__item.is-active {
+    background: var(--hrr-orange);
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(232, 118, 26, .4);
+  }
+
+  .aud-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    padding: .95rem 1.7rem;
+    border-radius: 999px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    transition: background-color .3s ease, transform .3s ease, border-color .3s ease;
+  }
+  .aud-btn:hover { transform: translateY(-2px); }
+  .aud-btn--white { background: #fff; color: var(--hrr-orange-dark); }
+  .aud-btn--white:hover { background: #FFF4EA; }
+  .aud-btn--ghost { border: 1px solid rgba(255, 255, 255, .35); color: #fff; }
+  .aud-btn--ghost:hover { border-color: #fff; }
+
+  .aud-hero__in {
+    animation: audUp .9s cubic-bezier(.16, .8, .2, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes audUp {
+    from { transform: translateY(18px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+
+  /* ---------- Leistungskarten ---------- */
+  .aud-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem 1.6rem 1.7rem;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--hrr-line);
+    box-shadow: 0 10px 30px rgba(20, 22, 25, .05);
+    transition: transform .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s ease, border-color .5s ease;
+  }
+  .aud-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232, 118, 26, .45);
+    box-shadow: 0 26px 50px rgba(20, 22, 25, .1);
+  }
+  .aud-card__num {
+    position: absolute;
+    top: 1.3rem;
+    right: 1.4rem;
+    font-family: var(--font-head);
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--hrr-muted);
+  }
+  .aud-card__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.3rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #F8A24C 0%, #E8761A 55%, #C9620F 100%);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(232, 118, 26, .3);
+  }
+  .aud-card__title {
+    margin: 0 0 .5rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--hrr-ink);
+  }
+  .aud-card__more {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin-top: auto;
+    padding-top: 1.3rem;
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--hrr-orange);
+  }
+
+  /* ---------- Foto ---------- */
+  .aud-photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 22px;
+    background: var(--hrr-sand);
+    box-shadow: 0 24px 60px rgba(20, 22, 25, .12);
+  }
+  .aud-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
+  }
+  .aud-photo:hover img { transform: scale(1.03); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aud-hero__in { animation: none; }
+  }
+</style>
