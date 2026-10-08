@@ -1,0 +1,24 @@
+---
+// "So läuft es ab" – drei einfache Schritte
+const steps = [
+  { title: "Anfrage", text: "Sie rufen uns an oder schreiben uns kurz, worum es geht." },
+  { title: "Besichtigung & Offerte", text: "Wir schauen uns das Objekt an und erstellen eine klare Offerte." },
+  { title: "Ausführung", text: "Wir starten zum vereinbarten Termin – mit festem Ansprechpartner." },
+];
+---
+
+<section class="section bg-white">
+  <div class="site-shell">
+    <span class="eyebrow">So läuft es ab</span>
+    <h2 class="max-w-xl">In drei Schritten zur Lösung</h2>
+    <ol class="mt-10 grid gap-6 md:grid-cols-3">
+      {steps.map((s, i) => (
+        <li class="border-t-2 border-[var(--hrr-orange)] pt-5">
+          <span class="num text-[var(--hrr-orange)]">{i + 1}</span>
+          <h3 class="mt-2">{s.title}</h3>
+          <p class="text-[var(--hrr-muted)]">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
