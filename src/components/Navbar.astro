@@ -3,17 +3,30 @@ import { NAV_MENU } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<div class="hidden lg:block mx-auto">
-  <ul class="menu menu-horizontal gap-x-4">
-    <!-- Navbar menu content here -->
+<nav class="hidden lg:block" aria-label="Hauptnavigation">
+  <ul class="flex items-center gap-8 text-[15px] font-semibold text-[var(--hrr-ink)]">
     {
       NAV_MENU.map((item) => (
         <li>
-          <HeaderLink href={item.url} class="hover:bg-white">
+          <HeaderLink href={item.url} class="nav-link py-2 transition-colors hover:text-[var(--hrr-orange)]">
             {item.title}
           </HeaderLink>
         </li>
       ))
     }
   </ul>
-</div>
+</nav>
+
+<style is:global>
+  .nav-link { position: relative; font-family: var(--font-head); }
+  .nav-link.active { color: var(--hrr-orange); }
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--hrr-orange);
+  }
+</style>
