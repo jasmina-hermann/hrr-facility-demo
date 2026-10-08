@@ -11,7 +11,7 @@ const channels = [
 ];
 ---
 
-<Layout title="Kontakt" description="Kontakt zu H-R-R Facility GmbH in Tägerwilen – Telefon, WhatsApp, E-Mail oder Offertanfrage.">
+<Layout title="Kontakt" description="Kontakt zu H-R-R Facility GmbH in Tägerwilen. Telefon, WhatsApp, E-Mail oder Offertanfrage für Privat und Geschäftlich.">
   <section class="bg-[var(--hrr-sand)]">
     <div class="site-shell py-12 md:py-16">
       <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
@@ -22,7 +22,7 @@ const channels = [
       <h1 class="max-w-2xl">Kontaktieren Sie uns</h1>
       <p class="lead max-w-2xl">
         Rufen Sie uns an, schreiben Sie uns oder füllen Sie das Formular aus.
-        Wir melden uns persönlich – in der Regel am gleichen oder nächsten Arbeitstag.
+        Wir melden uns persönlich, in der Regel am gleichen oder nächsten Arbeitstag.
       </p>
     </div>
   </section>
@@ -78,6 +78,21 @@ const channels = [
           <input type="hidden" name="_template" value="table" />
           <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
 
+          <!-- Privat oder Geschäftlich, wird über den Link vorausgewählt (z. B. /contact?fuer=privat) -->
+          <fieldset class="sm:col-span-2">
+            <legend class="mb-2 text-sm font-semibold text-[var(--hrr-ink)]">Die Anfrage ist</legend>
+            <div class="kind-switch">
+              <label class="kind-switch__item">
+                <input type="radio" name="Kundengruppe" value="Privat" checked />
+                <span><Icon name="lucide:house" size={18} /> Privat</span>
+              </label>
+              <label class="kind-switch__item">
+                <input type="radio" name="Kundengruppe" value="Geschäftlich" />
+                <span><Icon name="lucide:building-2" size={18} /> Geschäftlich</span>
+              </label>
+            </div>
+          </fieldset>
+
           <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)]">
             Name *
             <input type="text" name="Name" required class="field" autocomplete="name" />
@@ -92,7 +107,7 @@ const channels = [
           </label>
           <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)]">
             Dienstleistung
-            <select name="Dienstleistung" class="field">
+            <select name="Dienstleistung" id="field-service" class="field">
               <option>Reinigung</option>
               <option>Hauswartung</option>
               <option>Renovierungsarbeiten</option>
@@ -106,10 +121,10 @@ const channels = [
           </label>
           <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)] sm:col-span-2">
             Ihre Nachricht *
-            <textarea name="Nachricht" rows="5" required class="field" placeholder="z. B. Treppenhausreinigung, 3 Stockwerke, 1x pro Woche"></textarea>
+            <textarea name="Nachricht" rows="5" required class="field" id="field-message" placeholder="z. B. Treppenhausreinigung, 3 Stockwerke, 1x pro Woche"></textarea>
           </label>
           <div class="sm:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p class="text-sm text-[var(--hrr-muted)]">* Pflichtfelder · unverbindlich und kostenlos</p>
+            <p class="text-sm text-[var(--hrr-muted)]">* Pflichtfelder · kostenlos und unverbindlich</p>
             <button type="submit" class="btn-main cursor-pointer">Anfrage senden</button>
           </div>
         </form>
@@ -117,3 +132,69 @@ const channels = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .kind-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    padding: .35rem;
+    border-radius: 14px;
+    background: var(--hrr-sand);
+  }
+  .kind-switch__item { position: relative; cursor: pointer; }
+  .kind-switch__item input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .kind-switch__item span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 1rem;
+    border-radius: 10px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--hrr-muted);
+    transition: background-color .3s ease, color .3s ease, box-shadow .3s ease;
+  }
+  .kind-switch__item:hover span { color: var(--hrr-ink); }
+  .kind-switch__item input:checked + span {
+    background: var(--hrr-orange);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(232, 118, 26, .3);
+  }
+  .kind-switch__item input:focus-visible + span {
+    outline: 2px solid var(--hrr-orange);
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  // Vorauswahl aus dem Link übernehmen: ?fuer=privat oder ?fuer=geschaeftlich
+  const params = new URLSearchParams(window.location.search);
+  const kind = params.get("fuer");
+  const message = document.getElementById("field-message") as HTMLTextAreaElement | null;
+
+  if (kind === "geschaeftlich" || kind === "privat") {
+    const value = kind === "geschaeftlich" ? "Geschäftlich" : "Privat";
+    const radio = document.querySelector<HTMLInputElement>(`input[name="Kundengruppe"][value="${value}"]`);
+    if (radio) radio.checked = true;
+  }
+
+  // Passendes Beispiel im Nachrichtenfeld
+  const examples: Record<string, string> = {
+    Privat: "z. B. Umzugsreinigung, 3,5 Zimmer, Abgabe am 30. des Monats",
+    "Geschäftlich": "z. B. Treppenhausreinigung, 3 Stockwerke, 1x pro Woche",
+  };
+  const setExample = () => {
+    const checked = document.querySelector<HTMLInputElement>('input[name="Kundengruppe"]:checked');
+    if (message && checked) message.placeholder = examples[checked.value] ?? message.placeholder;
+  };
+  document.querySelectorAll<HTMLInputElement>('input[name="Kundengruppe"]').forEach((r) =>
+    r.addEventListener("change", setExample)
+  );
+  setExample();
+</script>
