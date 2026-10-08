@@ -81,7 +81,10 @@ body {
     /* Abschnitte */
     .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
     @media (min-width: 1024px) { .section { padding-top: 6rem; padding-bottom: 6rem; } }
-    .section-sand { background: var(--hrr-sand); }
+    /* Sandfarbene Abschnitte laufen oben und unten weich ins Weiss aus */
+    .section-sand {
+        background: linear-gradient(180deg, #fff 0, var(--hrr-sand) 160px, var(--hrr-sand) calc(100% - 160px), #fff 100%);
+    }
 
     /* Buttons */
     .btn-main,
@@ -151,3 +154,59 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .fadeIn { animation-name: fadeIn; }
 .breadcrumbs li { @apply whitespace-pre-wrap; }
+
+/* =============================================================
+   ÜBERGÄNGE & BEWEGUNG
+   ============================================================= */
+
+/* Weiches Überblenden beim Seitenwechsel (Chrome, Edge, Safari) */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: .5s;
+    animation-timing-function: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* Footer beginnt weich statt mit harter Kante */
+footer { background-image: linear-gradient(180deg, #fff 0, var(--hrr-sand) 140px); }
+
+/* Inhalte erscheinen beim Scrollen sanft (gesteuert in Main.astro) */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1);
+    transition-delay: var(--rd, 0s);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    @view-transition { navigation: none; }
+}
+
+/* =============================================================
+   HEADER: auf der Startseite durchsichtig über dem Foto
+   ============================================================= */
+.site-header { transition: background-color .45s ease, box-shadow .45s ease; }
+.site-header .header-bar { transition: border-color .45s ease; }
+
+.header-transparent {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent !important;
+}
+.header-transparent .header-bar { border-color: transparent !important; }
+.header-transparent:not(.is-scrolled) nav[aria-label="Hauptnavigation"] > ul,
+.header-transparent:not(.is-scrolled) .menu-toggle { color: #fff; }
+.header-transparent:not(.is-scrolled) .nav-link:hover { color: #FFD3AE; }
+.header-transparent:not(.is-scrolled) .header-call { color: #fff; border-color: rgba(255, 255, 255, .6); }
+.header-transparent:not(.is-scrolled) .header-call:hover { background: #fff; color: var(--hrr-ink); }
+
+.header-transparent.is-scrolled {
+    background: rgba(255, 255, 255, .94) !important;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(20, 22, 25, .07);
+}
