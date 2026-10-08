@@ -1,69 +1,111 @@
 ---
 import Layout from "../layouts/Main.astro";
+import { Icon } from "astro-icon/components";
+import { CONTACT } from "../consts";
+
+const channels = [
+  { icon: "lucide:phone", label: "Telefon", value: CONTACT.phone, href: CONTACT.phoneHref, ext: false },
+  { icon: "lucide:message-circle", label: "WhatsApp", value: CONTACT.mobile, href: CONTACT.whatsappHref, ext: true },
+  { icon: "lucide:mail", label: "E-Mail", value: CONTACT.email, href: CONTACT.emailHref, ext: false },
+  { icon: "lucide:clock", label: "24/7 Notfall", value: CONTACT.mobile, href: CONTACT.mobileHref, ext: false },
+];
 ---
 
-<Layout title="Kontakt | H-R-R Facility GmbH">
-  <main class="relative overflow-hidden bg-[#fbfaf8] py-12 md:py-16">
-    <div class="pointer-events-none absolute -left-40 top-20 h-[34rem] w-[34rem] rounded-full bg-[#ef7f1a]/12 blur-3xl"></div>
-    <div class="pointer-events-none absolute -right-48 bottom-0 h-[30rem] w-[30rem] rounded-full bg-[#f8c28d]/18 blur-3xl"></div>
+<Layout title="Kontakt" description="Kontakt zu H-R-R Facility GmbH in Tägerwilen – Telefon, WhatsApp, E-Mail oder Offertanfrage.">
+  <section class="bg-[var(--hrr-sand)]">
+    <div class="site-shell py-12 md:py-16">
+      <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
+        <a href="/" class="hover:text-[var(--hrr-orange)]">Startseite</a>
+        <span class="mx-2">/</span>
+        <span class="text-[var(--hrr-ink)]">Kontakt</span>
+      </nav>
+      <h1 class="max-w-2xl">Kontaktieren Sie uns</h1>
+      <p class="lead max-w-2xl">
+        Rufen Sie uns an, schreiben Sie uns oder füllen Sie das Formular aus.
+        Wir melden uns persönlich – in der Regel am gleichen oder nächsten Arbeitstag.
+      </p>
+    </div>
+  </section>
 
-    <div class="container relative z-10">
-      <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-[380px_1fr] lg:gap-20">
-        <div class="relative flex justify-center">
-          <div class="absolute inset-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(239,127,26,.28),rgba(239,127,26,.08)_42%,transparent_70%)] blur-xl"></div>
-          <div class="phone-mockup relative z-10">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="px-6 pt-14 text-center">
-                <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-[#ef7f1a]">H-R-R 24/7 Service</p>
-                <h1 class="!mt-3 !text-[28px] !leading-[1.05]">Direkt für Sie erreichbar.</h1>
-              </div>
-              <div class="mt-8 flex-1 px-5">
-                <div class="message-bubble">Grüezi! 👋<br /><br />Wie dürfen wir Sie unterstützen? Reinigung, Hauswartung oder eine unverbindliche Offerte – kontaktieren Sie uns direkt über Ihren bevorzugten Kanal.</div>
-              </div>
-              <div class="grid grid-cols-3 gap-2 px-5 pb-6">
-                <a href="tel:+41716887851" class="phone-mini">☎<small>Anruf</small></a>
-                <a href="https://wa.me/41774805454" target="_blank" rel="noopener" class="phone-mini">◉<small>WhatsApp</small></a>
-                <a href="mailto:Info@h-r-r.ch" class="phone-mini">✉<small>E-Mail</small></a>
-              </div>
-            </div>
-          </div>
-        </div>
+  <section class="section bg-white">
+    <div class="site-shell grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+      <!-- Direkter Kontakt -->
+      <div>
+        <h2 class="!text-[26px]">Direkt erreichbar</h2>
+        <ul class="mt-6 grid gap-3">
+          {channels.map((c) => (
+            <li>
+              <a
+                href={c.href}
+                target={c.ext ? "_blank" : undefined}
+                rel={c.ext ? "noopener" : undefined}
+                class="group flex items-center gap-4 rounded-[10px] border border-[var(--hrr-line)] p-4 transition-colors hover:border-[var(--hrr-orange)]"
+              >
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-[var(--hrr-orange-soft)] text-[var(--hrr-orange)]">
+                  <Icon name={c.icon} size={20} />
+                </span>
+                <span>
+                  <b class="block text-[var(--hrr-ink)]">{c.label}</b>
+                  <span class="text-[var(--hrr-muted)]">{c.value}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-        <div>
-          <p class="mb-4 text-sm font-extrabold uppercase tracking-[0.18em] text-[#ef7f1a]">Direkt erreichbar</p>
-          <h2 class="max-w-2xl">Wie möchten Sie uns <span class="text-[#ef7f1a]">kontaktieren?</span></h2>
-          <p class="mb-8 max-w-2xl text-lg leading-relaxed text-[#69635e]">Ein Klick verbindet Sie direkt mit H-R-R Facility. Für dringende Anliegen steht Ihnen unser 24/7-Service zur Verfügung.</p>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <a href="https://wa.me/41774805454" target="_blank" rel="noopener" class="contact-card group"><span class="contact-icon bg-[#ef7f1a] text-white">◉</span><span><b>WhatsApp</b><small>077 480 54 54</small></span><span class="arrow">↗</span></a>
-            <a href="tel:+41716887851" class="contact-card group"><span class="contact-icon bg-[#ef7f1a] text-white">☎</span><span><b>Telefon</b><small>071 688 78 51</small></span><span class="arrow">↗</span></a>
-            <a href="tel:+41774805454" class="contact-card group"><span class="contact-icon bg-[#f3e7dc] text-[#ef7f1a]">24</span><span><b>24/7 Service</b><small>077 480 54 54</small></span><span class="arrow">↗</span></a>
-            <a href="mailto:Info@h-r-r.ch" class="contact-card group"><span class="contact-icon bg-[#fff7ef] text-[#ef7f1a] border border-[#f1d4b6]">✉</span><span><b>E-Mail</b><small>Info@h-r-r.ch</small></span><span class="arrow">↗</span></a>
-          </div>
-
-          <div class="mt-7 rounded-2xl border border-[#e8e1da] bg-white/80 p-5 text-sm text-[#68635e] shadow-sm">
-            <b class="text-[#292929]">H-R-R Facility GmbH</b><br />Hauptstrasse 137b · 8274 Tägerwilen<br /><span class="text-[#ef7f1a]">Region Kreuzlingen &amp; Winterthur</span>
-          </div>
+        <div class="mt-8 rounded-[10px] bg-[var(--hrr-sand)] p-6">
+          <b class="text-[var(--hrr-ink)]">H-R-R Facility GmbH</b><br />
+          {CONTACT.street}<br />
+          {CONTACT.city}<br />
+          <span class="text-[var(--hrr-muted)]">Einsatzgebiet: {CONTACT.region}</span>
         </div>
       </div>
-    </div>
-  </main>
-</Layout>
 
-<style>
-  .phone-mockup { width:min(310px,80vw); aspect-ratio:.51; border-radius:46px; padding:10px; background:linear-gradient(145deg,#d8c5b4,#8f6e50 48%,#ecd8c6); box-shadow:0 32px 70px rgba(64,44,25,.22),0 0 65px rgba(239,127,26,.14); animation:phoneFloat 5s ease-in-out infinite; }
-  .phone-notch { position:absolute; top:16px; left:50%; transform:translateX(-50%); width:96px; height:25px; border-radius:20px; background:#7b5d45; z-index:3; }
-  .phone-screen { height:100%; overflow:hidden; border-radius:37px; display:flex; flex-direction:column; background:linear-gradient(180deg,#fffaf5,#fff 56%,#f8f3ed); border:1px solid rgba(255,255,255,.7); }
-  .message-bubble { border-radius:20px 20px 20px 6px; border:1px solid rgba(239,127,26,.22); background:linear-gradient(135deg,#fff4e9,#fff); color:#555; padding:18px; line-height:1.6; box-shadow:0 14px 28px rgba(76,52,28,.08); }
-  .phone-mini { display:flex; min-width:0; flex-direction:column; align-items:center; justify-content:center; gap:4px; border-radius:12px; border:1px solid #ece3da; background:#fff; padding:9px 4px; color:#ef7f1a; font-weight:800; }
-  .phone-mini small { font-size:9px; color:#777; font-weight:700; }
-  .contact-card { min-height:92px; display:grid; grid-template-columns:54px 1fr auto; gap:14px; align-items:center; border:1px solid #e6dfd8; border-radius:18px; padding:16px; background:#fff; color:#292929; box-shadow:0 12px 34px rgba(70,49,31,.06); transition:.25s ease; }
-  .contact-card:hover { transform:translateY(-3px); border-color:rgba(239,127,26,.55); box-shadow:0 18px 44px rgba(239,127,26,.12); }
-  .contact-icon { width:52px; height:52px; border-radius:14px; display:grid; place-items:center; font-weight:800; }
-  .contact-card b { display:block; font-size:1rem; }
-  .contact-card small { display:block; margin-top:3px; color:#777; font-size:.82rem; }
-  .arrow { color:#ef7f1a; font-size:1.4rem; transition:.25s ease; }
-  .contact-card:hover .arrow { transform:translate(3px,-3px); }
-  @keyframes phoneFloat { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-10px) rotate(1deg)} }
-</style>
+      <!-- Formular -->
+      <div class="rounded-[10px] border border-[var(--hrr-line)] p-6 md:p-9">
+        <h2 class="!text-[26px]">Offerte anfragen</h2>
+        <p class="text-[var(--hrr-muted)]">Je mehr wir über Ihr Objekt wissen, desto genauer wird die Offerte.</p>
+
+        <form action="https://formsubmit.co/Info@h-r-r.ch" method="POST" class="mt-6 grid gap-4 sm:grid-cols-2">
+          <input type="hidden" name="_subject" value="Neue Anfrage über h-r-r.ch" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)]">
+            Name *
+            <input type="text" name="Name" required class="field" autocomplete="name" />
+          </label>
+          <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)]">
+            Telefon
+            <input type="tel" name="Telefon" class="field" autocomplete="tel" />
+          </label>
+          <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)] sm:col-span-2">
+            E-Mail *
+            <input type="email" name="E-Mail" required class="field" autocomplete="email" />
+          </label>
+          <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)]">
+            Dienstleistung
+            <select name="Dienstleistung" class="field">
+              <option>Reinigung</option>
+              <option>Hauswartung</option>
+              <option>Umgebungspflege</option>
+              <option>Mehrere Leistungen</option>
+            </select>
+          </label>
+          <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)]">
+            Ort des Objekts
+            <input type="text" name="Ort" class="field" />
+          </label>
+          <label class="grid gap-1.5 text-sm font-semibold text-[var(--hrr-ink)] sm:col-span-2">
+            Ihre Nachricht *
+            <textarea name="Nachricht" rows="5" required class="field" placeholder="z. B. Treppenhausreinigung, 3 Stockwerke, 1x pro Woche"></textarea>
+          </label>
+          <div class="sm:col-span-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-sm text-[var(--hrr-muted)]">* Pflichtfelder · unverbindlich und kostenlos</p>
+            <button type="submit" class="btn-main cursor-pointer">Anfrage senden</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
