@@ -1,23 +1,60 @@
 ---
 import Layout from "../layouts/Main.astro";
-import PageHero from "../components/PageHero.astro";
+import TeamSlideshow from "../components/TeamSlideshow.astro";
 import Contacts from "../components/homepage/Contacts.astro";
 import { IMAGES } from "../consts";
 
+// Fotos für die Slideshow (Reihenfolge = Reihenfolge in der Slideshow).
+// caption: Text unten im Bild. Leer lassen ("") oder z. B. Vorname und Aufgabe eintragen: "Ana, Reinigung".
+// pos: Bildausschnitt. 'center 20%' = mehr oben, 'center 60%' = mehr unten.
+// Leerzeichen im Dateinamen werden als %20 geschrieben.
+const slide = (nr: number, alt: string, pos: string, caption = "") => ({
+  src: `/img/Slideshow%20${nr}.jpg`,
+  fallback: IMAGES.team.src,
+  alt,
+  pos,
+  caption,
+});
+
+const teamSlides = [
+  slide(7, "Das ganze Team der H-R-R Facility GmbH", "center 35%", "Unser Team in Tägerwilen"),
+  slide(2, "Mitarbeiterin der H-R-R Facility GmbH im orangen Poloshirt", "center 22%"),
+  slide(1, "Mitarbeiterin der H-R-R Facility GmbH", "center 22%"),
+  slide(3, "Mitarbeiterin der H-R-R Facility GmbH", "center 22%"),
+  slide(6, "Mitarbeiterin der H-R-R Facility GmbH", "center 22%"),
+  slide(8, "Mitarbeiterin der H-R-R Facility GmbH", "center 22%"),
+  slide(9, "Drei Mitarbeiterinnen der H-R-R Facility GmbH", "center 30%"),
+  slide(4, "Zwei Kinder mit Laubbläsern von H-R-R", "center 45%"),
+  slide(5, "Mitarbeiterinnen vor den Firmenfahrzeugen der H-R-R Facility GmbH", "center 45%", "Unterwegs in der ganzen Region"),
+];
+
 const values = [
   { title: "Verlässlichkeit", text: "Abmachungen gelten. Termine, Qualität und Kommunikation sind für Sie jederzeit nachvollziehbar." },
-  { title: "Sorgfalt", text: "Saubere Arbeit bis ins Detail – ob im Treppenhaus, im Büro oder bei Ihnen zu Hause." },
+  { title: "Sorgfalt", text: "Saubere Arbeit bis ins Detail. Im Treppenhaus, im Büro und bei Ihnen zu Hause." },
   { title: "Nähe", text: "Persönliche Ansprechpartner aus der Region und kurze Wege, wenn etwas schnell gehen muss." },
 ];
 ---
 
-<Layout title="Über uns" description="H-R-R Facility GmbH aus Tägerwilen – Reinigung und Hauswartung mit über 20 Jahren Erfahrung.">
-  <PageHero
-    eyebrow="Über uns"
-    title="Ein Team aus der Region – für Ihre Liegenschaft"
-    text="H-R-R Facility GmbH steht für Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt – mit einem jungen, engagierten Team und über 20 Jahren Erfahrung. Wir betreuen Liegenschaften, Unternehmen und Privathaushalte in der Region."
-    image={IMAGES.hero}
-  />
+<Layout title="Über uns" description="H-R-R Facility GmbH aus Tägerwilen. Reinigung, Hauswartung, Renovation und Gartenunterhalt mit über 20 Jahren Erfahrung, in Kreuzlingen, Winterthur und im Thurgau.">
+  <section class="bg-[var(--hrr-sand)]">
+    <div class="site-shell grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
+          <a href="/" class="hover:text-[var(--hrr-orange)]">Startseite</a>
+          <span class="mx-2">/</span>
+          <span class="text-[var(--hrr-ink)]">Über uns</span>
+        </nav>
+        <h1>Ein Team aus der Region für Ihre Liegenschaft</h1>
+        <p class="lead max-w-xl">
+          H-R-R Facility GmbH steht für Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt.
+          Mit einem jungen, eingespielten Team und über 20 Jahren Erfahrung betreuen wir Liegenschaften,
+          Unternehmen und Privathaushalte in der Region.
+        </p>
+      </div>
+
+      <TeamSlideshow slides={teamSlides} />
+    </div>
+  </section>
 
   <section class="section bg-white">
     <div class="site-shell grid gap-12 lg:grid-cols-2">
@@ -30,7 +67,7 @@ const values = [
         </p>
         <p class="mt-4 text-[var(--hrr-muted)]">
           Unser Sitz ist in Tägerwilen. Von hier aus sind wir mit eigenem Material und eingespielten Teams
-          in der ganzen Region unterwegs – für regelmässige Einsätze ebenso wie für kurzfristige Aufträge.
+          in der ganzen Region unterwegs. Für regelmässige Einsätze ebenso wie für kurzfristige Aufträge.
         </p>
       </div>
 
@@ -57,5 +94,8 @@ const values = [
     </div>
   </section>
 
-  <Contacts />
+  <Contacts
+    title="Lernen Sie uns kennen"
+    text="Rufen Sie an oder schreiben Sie uns kurz, worum es geht. Wir melden uns persönlich und kommen gerne für eine Besichtigung vorbei."
+  />
 </Layout>
