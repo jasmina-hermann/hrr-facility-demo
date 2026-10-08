@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
+import ServiceBlock from "../components/ServiceBlock.astro";
+import Steps from "../components/Steps.astro";
+import Contacts from "../components/homepage/Contacts.astro";
+import { IMAGES } from "../consts";
+---
+
+<Layout
+  title="Renovierungsarbeiten"
+  description="Kleine Renovierungsarbeiten, Bau- und Sanierungsprojekte in Kreuzlingen, Tägerwilen und Umgebung."
+>
+  <PageHero
+    eyebrow="Renovierungsarbeiten"
+    title="Renovierungsarbeiten – zuverlässig und sauber ausgeführt"
+    text="Wir führen kleine Renovierungsarbeiten mit Zuverlässigkeit und Beständigkeit durch und kümmern uns um Bau- und Sanierungsprojekte – damit Ihr Vorhaben reibungslos verläuft."
+    image={IMAGES.bohren}
+  />
+
+  <ServiceBlock
+    id="leistungen"
+    eyebrow="Unsere Leistungen"
+    title="Vom kleinen Auftrag bis zum Sanierungsprojekt"
+    text="Ob eine Wohnung nach dem Auszug wieder instand gestellt werden muss oder ein Raum umgebaut wird: Wir planen mit Ihnen und setzen um."
+    points={[
+      "Kleine Renovierungen",
+      "Bau- und Sanierungsprojekte",
+      "Innenausbau",
+      "Umbauten",
+      "Instandstellung bei Mieterwechsel",
+      "Reinigung nach Abschluss",
+    ]}
+    image={IMAGES.messen}
+  />
+
+  <section class="section section-sand">
+    <div class="site-shell grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <span class="eyebrow">Alles aus einer Hand</span>
+        <h2>Renovation und Reinigung – ohne zweite Firma</h2>
+        <p class="lead">
+          Weil wir auch reinigen, ist nach den Arbeiten alles bezugsbereit. Sie haben einen Ansprechpartner
+          vom ersten Gespräch bis zur sauberen Übergabe.
+        </p>
+      </div>
+      <div class="photo aspect-[4/3]">
+        <img src={IMAGES.werkzeug.src} alt={IMAGES.werkzeug.alt} loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <Steps />
+  <Contacts title="Offerte für Ihre Renovation" />
+</Layout>
