@@ -1,0 +1,74 @@
+---
+// Eine Seite pro Standort: /standort/kreuzlingen und /standort/winterthur
+// Die Inhalte kommen aus LOCATIONS in src/consts.ts
+import Layout from "../../layouts/Main.astro";
+import PageHero from "../../components/PageHero.astro";
+import Services from "../../components/homepage/Services.astro";
+import Steps from "../../components/Steps.astro";
+import Contacts from "../../components/homepage/Contacts.astro";
+import { Icon } from "astro-icon/components";
+import { LOCATIONS, IMAGES, CONTACT } from "../../consts";
+
+export function getStaticPaths() {
+  return LOCATIONS.map((loc) => ({ params: { ort: loc.slug }, props: { loc } }));
+}
+
+const { loc } = Astro.props;
+const hasAddress = Boolean(loc.street && loc.city);
+const heroImage = loc.slug === "winterthur" ? IMAGES.liegenschaft : IMAGES.hero;
+---
+
+<Layout
+  title={`Reinigung & Hauswartung in ${loc.name}`}
+  description={`Reinigungsdienst, Hauswartung, Renovierungsarbeiten und Gartenunterhalt in ${loc.name} und Umgebung. H-R-R Facility GmbH, über 20 Jahre Erfahrung. Jetzt kostenlose Offerte anfragen.`}
+>
+  <PageHero
+    eyebrow={`Standort ${loc.name}`}
+    title={`Reinigung & Hauswartung in ${loc.name}`}
+    text={loc.intro}
+    image={heroImage}
+  >
+    {loc.opening && (
+      <p class="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--hrr-orange-soft)] px-4 py-2 text-sm font-semibold text-[var(--hrr-orange)]">
+        <Icon name="lucide:sparkles" size={16} /> Neuer Standort, Eröffnung demnächst
+      </p>
+    )}
+    <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+      <a href="/contact" class="btn-main">Offerte anfragen</a>
+      <a href={CONTACT.phoneHref} class="btn-line"><Icon name="lucide:phone" size={18} /> {CONTACT.phone}</a>
+    </div>
+  </PageHero>
+
+  <section class="section bg-white">
+    <div class="site-shell grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+      <div>
+        <span class="eyebrow">H-R-R Facility in {loc.name}</span>
+        <h2>Ihr Partner für Liegenschaften in {loc.name} und Umgebung</h2>
+        <p class="lead">{loc.text}</p>
+      </div>
+
+      <div class="rounded-[10px] bg-[var(--hrr-sand)] p-7">
+        <h3 class="!text-xl">Hier sind wir im Einsatz</h3>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {loc.places.map((p) => (
+            <li class="rounded-full border border-[var(--hrr-line)] bg-white px-3 py-1 text-[15px]">{p}</li>
+          ))}
+        </ul>
+        <div class="mt-6 border-t border-[var(--hrr-line)] pt-5 text-[var(--hrr-muted)]">
+          {hasAddress ? (
+            <p class="flex items-start gap-2">
+              <Icon name="lucide:map-pin" size={18} class="mt-1 shrink-0 text-[var(--hrr-orange)]" />
+              <span><b class="text-[var(--hrr-ink)]">H-R-R Facility GmbH</b><br />{loc.street}<br />{loc.city}</span>
+            </p>
+          ) : (
+            <p>Die genaue Adresse unseres Standorts in {loc.name} folgt in Kürze. Sie erreichen uns bereits jetzt unter <a href={CONTACT.phoneHref} class="font-semibold text-[var(--hrr-orange)]">{CONTACT.phone}</a>.</p>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Services />
+  <Steps />
+  <Contacts title={`Offerte für Ihre Liegenschaft in ${loc.name}`} />
+</Layout>
