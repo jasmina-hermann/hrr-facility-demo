@@ -3,39 +3,140 @@ import { Icon } from "astro-icon/components";
 import { CONTACT, IMAGES } from "../../consts";
 ---
 
-<section class="bg-white">
-  <div class="site-shell grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-20">
-    <div>
-      <span class="eyebrow">H-R-R Facility GmbH</span>
-      <h1>Wir halten Ihre Liegenschaft sauber und in Schuss.</h1>
-      <p class="lead max-w-xl">
-        Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt aus einer Hand –
-        für Verwaltungen, Unternehmen und Privathaushalte in Kreuzlingen, Winterthur und Umgebung.
-      </p>
+<section class="hero relative overflow-hidden bg-white">
+  <!-- Grosses Teamfoto mit weichem Übergang nach unten -->
+  <div class="hero-media">
+    <img
+      src={IMAGES.team.src}
+      alt={IMAGES.team.alt}
+      class="hero-img"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="hero-fade" aria-hidden="true"></div>
+  </div>
 
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a href="/contact" class="btn-main">Offerte anfragen <Icon name="lucide:arrow-right" size={18} /></a>
-        <a href={CONTACT.phoneHref} class="btn-line"><Icon name="lucide:phone" size={18} /> {CONTACT.phone}</a>
-      </div>
+  <!-- Text liegt auf dem Übergang und läuft unter dem Bild weiter -->
+  <div class="site-shell relative z-10 -mt-24 pb-16 text-center md:-mt-36 md:pb-24">
+    <span class="hero-in eyebrow" style="--d: .15s">Seit über 20 Jahren für Sie im Einsatz</span>
 
-      <ul class="mt-10 grid gap-4 border-t border-[var(--hrr-line)] pt-6 sm:grid-cols-3">
-        <li>
-          <b class="num">20+ Jahre</b>
-          <span class="text-sm text-[var(--hrr-muted)]">Erfahrung im Facility Service</span>
-        </li>
-        <li>
-          <b class="num">24/7</b>
-          <span class="text-sm text-[var(--hrr-muted)]">erreichbar bei Notfällen</span>
-        </li>
-        <li>
-          <b class="num">1 Ansprechpartner</b>
-          <span class="text-sm text-[var(--hrr-muted)]">für alle Arbeiten rund ums Haus</span>
-        </li>
-      </ul>
+    <h1 class="hero-in hero-title" style="--d: .3s">
+      H-R-R Facility <span class="text-[var(--hrr-orange)]">GmbH</span>
+    </h1>
+
+    <div class="hero-in hero-line" style="--d: .45s" aria-hidden="true"></div>
+
+    <p class="hero-in hero-sub" style="--d: .55s">
+      Professioneller Reinigungsdienst &amp; Hauswartung in Kreuzlingen und im Kanton Thurgau
+    </p>
+
+    <div class="hero-in mt-9 flex flex-col justify-center gap-3 sm:flex-row" style="--d: .7s">
+      <a href="/contact" class="btn-main">Offerte anfragen <Icon name="lucide:arrow-right" size={18} /></a>
+      <a href={CONTACT.phoneHref} class="btn-line"><Icon name="lucide:phone" size={18} /> {CONTACT.phone}</a>
     </div>
 
-    <div class="photo aspect-[4/3] lg:aspect-[5/6]">
-      <img src={IMAGES.hero.src} alt={IMAGES.hero.alt} loading="eager" fetchpriority="high" />
-    </div>
+    <ul class="hero-in mx-auto mt-14 grid max-w-3xl gap-6 border-t border-[var(--hrr-line)] pt-8 sm:grid-cols-3" style="--d: .85s">
+      <li>
+        <b class="num">20+ Jahre</b>
+        <span class="text-sm text-[var(--hrr-muted)]">Berufserfahrung</span>
+      </li>
+      <li>
+        <b class="num">24/7</b>
+        <span class="text-sm text-[var(--hrr-muted)]">erreichbar bei Notfällen</span>
+      </li>
+      <li>
+        <b class="num">Alles aus einer Hand</b>
+        <span class="text-sm text-[var(--hrr-muted)]">Reinigung, Hauswartung, Renovation, Garten</span>
+      </li>
+    </ul>
   </div>
 </section>
+
+<style>
+  /* Bildbereich: fast bildschirmhoch, aber nie zu klein oder zu gross */
+  .hero-media {
+    position: relative;
+    height: 72vh;
+    min-height: 420px;
+    max-height: 860px;
+    overflow: hidden;
+    background: var(--hrr-sand);
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%; /* Gesichter bleiben sichtbar */
+    animation: heroZoom 2.8s cubic-bezier(.2, .7, .2, 1) both;
+  }
+
+  /* Feiner, eleganter Übergang vom Foto ins Weiss */
+  .hero-fade {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 55%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, .35) 35%,
+      rgba(255, 255, 255, .82) 70%,
+      #fff 100%
+    );
+  }
+
+  .hero-title {
+    margin: 0 auto;
+    font-size: clamp(42px, 8vw, 104px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+  }
+
+  .hero-line {
+    width: 72px;
+    height: 3px;
+    margin: 1.6rem auto 1.4rem;
+    background: var(--hrr-orange);
+    border-radius: 3px;
+    transform-origin: center;
+  }
+
+  .hero-sub {
+    max-width: 46rem;
+    margin: 0 auto;
+    font-family: var(--font-head);
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--hrr-text);
+  }
+
+  /* Sanftes Einblenden der Texte nacheinander */
+  .hero-in {
+    animation: heroUp .9s cubic-bezier(.2, .7, .2, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  .hero-line.hero-in { animation-name: heroLine; }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.08); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  @keyframes heroUp {
+    from { transform: translateY(18px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes heroLine {
+    from { transform: scaleX(0); opacity: 0; }
+    to   { transform: scaleX(1); opacity: 1; }
+  }
+
+  /* Wer Animationen im System ausgeschaltet hat, sieht alles sofort */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-img, .hero-in { animation: none; }
+  }
+</style>
