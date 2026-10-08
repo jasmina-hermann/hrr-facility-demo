@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Main.astro";
+import AudiencePage from "../components/AudiencePage.astro";
+import { IMAGES } from "../consts";
+---
+
+<Layout
+  title="Für Privatkunden: Reinigung, Hauswartung und Garten"
+  description="Wohnungsreinigung, Umzugsreinigung, Hauswartung, Renovierungsarbeiten und Gartenpflege für Privatkunden in Kreuzlingen, Winterthur und im Kanton Thurgau."
+>
+  <AudiencePage
+    kind="privat"
+    eyebrow="Privat"
+    title="Ihr Zuhause. Unsere Sorgfalt."
+    lead="Wir reinigen Ihre Wohnung, schauen zu Ihrem Haus und pflegen Ihren Garten. Regelmässig oder einmalig, in Kreuzlingen, Winterthur und im ganzen Thurgau."
+    icon="lucide:house"
+    services={[
+      {
+        icon: "lucide:sparkles",
+        title: "Reinigung",
+        text: "Wohnung und Haus, Küche und Bad, Fenster. Auch die Umzugsreinigung mit Abgabe.",
+        href: "/reinigung#privat",
+      },
+      {
+        icon: "lucide:key-round",
+        title: "Hauswartung",
+        text: "Wir schauen zu Ihrem Haus, wenn Sie weg sind, und erledigen kleine Reparaturen.",
+        href: "/hauswartung#privat",
+      },
+      {
+        icon: "lucide:paint-roller",
+        title: "Renovierungsarbeiten",
+        text: "Kleine Renovierungen, Innenausbau und Umbauten. Danach reinigen wir gleich mit.",
+        href: "/renovation",
+      },
+      {
+        icon: "lucide:trees",
+        title: "Gartenunterhalt",
+        text: "Rasen, Hecken, Beete und Wege. Nach festem Plan oder wenn Sie uns brauchen.",
+        href: "/garten",
+      },
+    ]}
+    tasksTitle="Das erledigen wir oft für Privatkunden"
+    tasksText="Bei Ihnen arbeiten immer die gleichen Leute. Sie wissen, wer kommt, und wir kennen Ihr Zuhause."
+    tasks={[
+      "Wohnungs- und Hausreinigung",
+      "Umzugsreinigung mit Abgabe",
+      "Fenster und Rahmen",
+      "Grundreinigung",
+      "Kontrolle während der Ferien",
+      "Kleine Reparaturen",
+      "Rasen mähen, Hecken schneiden",
+      "Laub und Winterdienst",
+    ]}
+    image={IMAGES.garten}
+    contactTitle="Offerte für Ihr Zuhause"
+  />
+</Layout>
