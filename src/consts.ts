@@ -15,7 +15,7 @@ export const CONTACT = {
   instagram: 'https://www.instagram.com/hrr_mavraj',
   street: 'Hauptstrasse 137b',
   city: '8274 Tägerwilen',
-  region: 'Kreuzlingen · Winterthur · Umgebung',
+  region: 'Kreuzlingen · Kanton Thurgau',
   hours: [
     { days: 'Montag – Freitag', time: '07:30 – 17:00' },
     { days: 'Samstag', time: '08:30 – 12:00' },
@@ -40,14 +40,16 @@ export const NAV_MENU: { url: string; title: string; children?: { url: string; t
 
 // ---------------------------------------------------------------
 // BILDER – echte Fotos statt KI-Bilder.
-// Sobald der Kunde eigene Fotos liefert (Team, Fahrzeug, Objekte),
-// die Dateien nach /public/img/fotos/ legen und hier nur den Pfad
-// ersetzen, z. B. src: '/img/fotos/team.jpg'
+// Eigene Fotos des Kunden in den Ordner public/img/ hochladen
+// und hier nur den Pfad ersetzen, z. B. src: '/img/hrr-auto.jpg'
+// (Der Ordner "public" wird im Pfad weggelassen.)
 // ---------------------------------------------------------------
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&q=80&w=${w}`;
 
 export const IMAGES = {
+  // Teamfoto für die Startseite: Datei hochladen nach public/img/hrr-team.jpg
+  team: { src: '/img/hrr-team.jpg', alt: 'Das Team der H-R-R Facility GmbH' },
   hero: { src: u('photo-1581578731548-c64695cc6952', 1800), alt: 'Mitarbeiterin reinigt eine Glastür' },
   treppenhaus: { src: u('photo-1718152421680-d1580e843cc9'), alt: 'Bodenreinigung in einem Gebäude' },
   buero: { src: u('photo-1627905646269-7f034dcc5738'), alt: 'Reinigung eines Büroarbeitsplatzes' },
