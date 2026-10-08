@@ -8,11 +8,16 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://pro-cleaning-eta.vercel.app/',
+	site: 'https://www.h-r-r.ch/',
 	vite: {
 		plugins: [tailwindcss()],
 	},
 	integrations: [mdx(), sitemap(), icon()],
+	// Alte Adressen der bisherigen Webseite weiterleiten (Google-Links bleiben gültig)
+	redirects: {
+		'/ueber-uns': '/contact',
+		'/privacy': '/policy',
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),
