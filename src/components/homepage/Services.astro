@@ -4,32 +4,32 @@ import { IMAGES } from "../../consts";
 
 const services = [
   {
-    title: "Unterhaltsreinigung",
-    text: "Regelmässige Reinigung für Liegenschaften, Büros und Privathaushalte.",
-    points: ["Treppenhausreinigung", "Büro- und Praxisreinigung", "Privathaushalte"],
+    title: "Reinigung",
+    text: "Regelmässige und einmalige Reinigungen für Liegenschaften, Büros und Privathaushalte.",
+    points: ["Treppenhaus- und Büroreinigung", "Fenster- und Grundreinigung", "Umzugs- und Baureinigung"],
     img: IMAGES.treppenhaus,
     href: "/reinigung",
   },
   {
-    title: "Fenster- & Grundreinigung",
-    text: "Gründliche Einsätze, wenn mehr als die tägliche Pflege gefragt ist.",
-    points: ["Fensterreinigung", "Grundreinigung", "Umzugs- und Endreinigung"],
-    img: IMAGES.fenster,
-    href: "/reinigung#spezial",
-  },
-  {
     title: "Hauswartung",
     text: "Zuverlässige Betreuung, damit in Ihrer Liegenschaft alles funktioniert.",
-    points: ["Regelmässige Kontrollgänge", "Kleine Reparaturen", "Haustechnik im Blick"],
-    img: IMAGES.werkzeug,
+    points: ["Regelmässige Kontrollgänge", "Kleine Reparaturen", "Ansprechpartner für Mieter"],
+    img: IMAGES.hauswart,
     href: "/hauswartung",
   },
   {
-    title: "Umgebungspflege",
-    text: "Gepflegte Aussenbereiche – das ganze Jahr hindurch.",
-    points: ["Rasen- und Heckenpflege", "Plätze und Wege", "Winterdienst"],
+    title: "Renovierungsarbeiten",
+    text: "Kleine Renovierungen und Instandsetzungen – sauber geplant und ausgeführt.",
+    points: ["Kleine Renovierungen", "Bau- und Sanierungsprojekte", "Innenausbau und Umbauten"],
+    img: IMAGES.bohren,
+    href: "/renovation",
+  },
+  {
+    title: "Gartenunterhalt",
+    text: "Gepflegte Aussenbereiche – die Visitenkarte Ihres Hauses.",
+    points: ["Rasen-, Hecken- und Strauchpflege", "Plätze und Wege", "Winterdienst"],
     img: IMAGES.garten,
-    href: "/hauswartung#umgebung",
+    href: "/garten",
   },
 ];
 ---
@@ -38,10 +38,10 @@ const services = [
   <div class="site-shell">
     <div class="max-w-2xl">
       <span class="eyebrow">Dienstleistungen</span>
-      <h2>Ihr Ansprechpartner für eine gepflegte Liegenschaft</h2>
+      <h2>Ihr Partner für Innen- und Aussenbereiche</h2>
       <p class="lead">
-        Ob kleine oder grosse Arbeiten: Mit erfahrenen Mitarbeitenden und professionellem Material
-        sind wir für die unterschiedlichsten Aufgaben gerüstet.
+        Ob kleine oder grosse Arbeiten: Mit erfahrenen Mitarbeitenden und modernen Geräten sind wir
+        für die unterschiedlichsten Aufgaben gerüstet.
       </p>
     </div>
 
