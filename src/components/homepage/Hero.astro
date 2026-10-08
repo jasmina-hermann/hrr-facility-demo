@@ -7,10 +7,16 @@ import { CONTACT, IMAGES } from "../../consts";
   <!-- 1. Teamfoto über die ganze Breite, Menü liegt durchsichtig darüber -->
   <div class="hrr-hero__media">
     <div class="hrr-hero__parallax" id="hero-parallax">
+      <!-- Unscharfe Kopie füllt die Ränder um das Foto -->
+      <img src={IMAGES.team.src} alt="" aria-hidden="true" class="hrr-hero__bg" loading="eager" decoding="async"
+        onerror={`this.onerror=null;this.src='${IMAGES.team.fallback}'`} />
+      <!-- Das Teamfoto selbst wird immer vollständig gezeigt -->
       <img
         src={IMAGES.team.src}
         alt={IMAGES.team.alt}
         class="hrr-hero__img"
+        width="2400"
+        height="1920"
         loading="eager"
         fetchpriority="high"
         decoding="async"
@@ -50,27 +56,61 @@ import { CONTACT, IMAGES } from "../../consts";
 
 <style>
   /* ---------- Foto ---------- */
+  /* Handy: Foto in voller Breite und ganzer Höhe, darüber etwas Platz für das Menü,
+     damit kein Kopf unter dem Menü verschwindet */
   .hrr-hero__media {
     position: relative;
-    height: 88svh;
-    min-height: 540px;
-    max-height: 980px;
+    height: calc(80vw + 72px);
     overflow: hidden;
-    background: #2a2d31;
+    background: #e8e8e6;
   }
 
   .hrr-hero__parallax {
     position: absolute;
-    inset: -6% 0 0 0;
+    inset: 0;
     will-change: transform;
   }
 
-  .hrr-hero__img {
-    width: 100%;
-    height: 100%;
+  .hrr-hero__bg {
+    position: absolute;
+    inset: -60px;
+    width: calc(100% + 120px);
+    height: calc(100% + 120px);
     object-fit: cover;
-    object-position: center 30%; /* Köpfe aller Personen bleiben sichtbar */
+    object-position: center 20%;
+    filter: blur(32px) saturate(1.05);
+    opacity: .85;
+  }
+
+  .hrr-hero__img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: calc(100% - 72px);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    translate: -50% 0;
     animation: heroZoom 3.2s cubic-bezier(.16, .8, .2, 1) both;
+  }
+
+  /* Tablet und Desktop: grosser Bereich, Foto ganz sichtbar, Seiten mit weicher Unschärfe gefüllt */
+  @media (min-width: 768px) {
+    .hrr-hero__media {
+      height: 88svh;
+      min-height: 560px;
+      max-height: 980px;
+    }
+    .hrr-hero__parallax { inset: -5% 0 0 0; }
+    .hrr-hero__img { height: 100%; }
+    .hrr-hero__bg { object-position: center 30%; }
+
+    /* Ränder des Fotos laufen weich in die Unschärfe aus */
+    .hrr-hero__img {
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+    }
   }
 
   /* Leichter dunkler Verlauf oben, fliesst in den Schleier hinter dem Menü über */
@@ -186,8 +226,8 @@ import { CONTACT, IMAGES } from "../../consts";
   .hrr-hero__line.hrr-hero__in { animation-name: heroLine; }
 
   @keyframes heroZoom {
-    from { transform: scale(1.1); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
+    from { scale: 1.08; opacity: 0; }
+    to   { scale: 1; opacity: 1; }
   }
   @keyframes heroUp {
     from { transform: translateY(22px); opacity: 0; }
@@ -204,10 +244,11 @@ import { CONTACT, IMAGES } from "../../consts";
 </style>
 
 <script>
-  // Leichter Tiefeneffekt: Foto scrollt etwas langsamer als die Seite
+  // Leichter Tiefeneffekt: Foto scrollt etwas langsamer als die Seite (nur auf grossen Bildschirmen)
   const layer = document.getElementById("hero-parallax");
   const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (layer && !calm) {
+  const wide = window.matchMedia("(min-width: 768px)").matches;
+  if (layer && !calm && wide) {
     let ticking = false;
     const move = () => {
       const y = Math.min(window.scrollY, window.innerHeight);
