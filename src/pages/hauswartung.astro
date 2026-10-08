@@ -9,18 +9,18 @@ import { IMAGES } from "../consts";
 
 <Layout
   title="Hauswartung"
-  description="Hauswartung und Umgebungspflege für Liegenschaften, Unternehmen und Privathaushalte in Kreuzlingen, Winterthur und Umgebung."
+  description="Hauswartung für Liegenschaften, Unternehmen und Privathaushalte in Kreuzlingen, Winterthur und Umgebung."
 >
   <PageHero
     eyebrow="Hauswartung"
     title="Hauswartung, auf die Sie sich verlassen können"
-    text="Wir schauen regelmässig zum Rechten, beheben kleine Schäden und halten Innen- und Aussenbereiche in Ordnung – damit Ihre Liegenschaft ihren Wert behält."
+    text="Wir schauen regelmässig zum Rechten, beheben kleine Schäden und halten alles in Ordnung – damit Ihre Liegenschaft ihren Wert behält."
     image={IMAGES.werkzeug}
   >
     <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[var(--hrr-ink)]">
       <a href="#geschaeftlich" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Liegenschaften</a>
       <a href="#privat" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Privat</a>
-      <a href="#umgebung" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Umgebungspflege</a>
+      <a href="/garten" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Gartenunterhalt</a>
     </div>
   </PageHero>
 
@@ -54,21 +54,6 @@ import { IMAGES } from "../consts";
     image={IMAGES.liegenschaft}
     reverse
     sand
-  />
-
-  <ServiceBlock
-    id="umgebung"
-    eyebrow="Umgebungspflege"
-    title="Gepflegte Aussenbereiche das ganze Jahr"
-    text="Ein gepflegter Aussenbereich ist die Visitenkarte jeder Liegenschaft. Wir kümmern uns um Grünflächen, Wege und Plätze."
-    points={[
-      "Rasen mähen",
-      "Hecken- und Strauchschnitt",
-      "Plätze und Wege reinigen",
-      "Laub entfernen",
-      "Winterdienst",
-    ]}
-    image={IMAGES.rasen}
   />
 
   <Steps />
