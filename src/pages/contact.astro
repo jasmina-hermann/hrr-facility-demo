@@ -58,6 +58,13 @@ const channels = [
           {CONTACT.street}<br />
           {CONTACT.city}<br />
           <span class="text-[var(--hrr-muted)]">Einsatzgebiet: {CONTACT.region}</span>
+
+          <b class="mt-5 block text-[var(--hrr-ink)]">Öffnungszeiten</b>
+          <ul class="mt-1 grid gap-1">
+            {CONTACT.hours.map((h) => (
+              <li class="flex justify-between gap-4"><span>{h.days}</span><span class="text-[var(--hrr-muted)]">{h.time}</span></li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -88,7 +95,8 @@ const channels = [
             <select name="Dienstleistung" class="field">
               <option>Reinigung</option>
               <option>Hauswartung</option>
-              <option>Umgebungspflege</option>
+              <option>Renovierungsarbeiten</option>
+              <option>Gartenunterhalt</option>
               <option>Mehrere Leistungen</option>
             </select>
           </label>
