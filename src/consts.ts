@@ -70,9 +70,16 @@ export const LOCATIONS = [
 
 export const NAV_MENU: { url: string; title: string; children?: { url: string; title: string }[] }[] = [
   { url: '/', title: 'Startseite' },
-  { url: '/privat', title: 'Privat' },
-  { url: '/geschaeftlich', title: 'Geschäftlich' },
-  { url: '/dienstleistungen', title: 'Dienstleistungen', children: SERVICES },
+  {
+    url: '/dienstleistungen',
+    title: 'Dienstleistungen',
+    // Zuerst die Kundengruppen, danach die vier Bereiche
+    children: [
+      { url: '/privat', title: 'Privat' },
+      { url: '/geschaeftlich', title: 'Geschäftlich' },
+      ...SERVICES,
+    ],
+  },
   {
     url: '/standort/kreuzlingen',
     title: 'Standorte',
