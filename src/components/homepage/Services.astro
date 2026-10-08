@@ -1,44 +1,68 @@
-<section id="dienstleistungen" class="bg-[#fbf8f4] py-10 md:py-14">
+---
+import { Icon } from "astro-icon/components";
+import { IMAGES } from "../../consts";
+
+const services = [
+  {
+    title: "Unterhaltsreinigung",
+    text: "Regelmässige Reinigung für Liegenschaften, Büros und Privathaushalte.",
+    points: ["Treppenhausreinigung", "Büro- und Praxisreinigung", "Privathaushalte"],
+    img: IMAGES.treppenhaus,
+    href: "/reinigung",
+  },
+  {
+    title: "Fenster- & Grundreinigung",
+    text: "Gründliche Einsätze, wenn mehr als die tägliche Pflege gefragt ist.",
+    points: ["Fensterreinigung", "Grundreinigung", "Umzugs- und Endreinigung"],
+    img: IMAGES.fenster,
+    href: "/reinigung#spezial",
+  },
+  {
+    title: "Hauswartung",
+    text: "Zuverlässige Betreuung, damit in Ihrer Liegenschaft alles funktioniert.",
+    points: ["Regelmässige Kontrollgänge", "Kleine Reparaturen", "Haustechnik im Blick"],
+    img: IMAGES.werkzeug,
+    href: "/hauswartung",
+  },
+  {
+    title: "Umgebungspflege",
+    text: "Gepflegte Aussenbereiche – das ganze Jahr hindurch.",
+    points: ["Rasen- und Heckenpflege", "Plätze und Wege", "Winterdienst"],
+    img: IMAGES.garten,
+    href: "/hauswartung#umgebung",
+  },
+];
+---
+
+<section id="dienstleistungen" class="section section-sand">
   <div class="site-shell">
-    <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-      <div class="max-w-3xl">
-        <p class="premium-kicker mb-3">Unsere Kernleistungen</p>
-        <h2 class="!mb-3">Zwei Bereiche. Ein Qualitätsanspruch.</h2>
-        <p class="max-w-2xl text-lg leading-relaxed text-[#69635e]">Ob exklusive Privatwohnung, Villa, Büro oder gesamte Liegenschaft: H-R-R verbindet hochwertige Reinigung mit zuverlässiger Hauswartung.</p>
-      </div>
-      <a href="/contact" class="hidden lg:inline-flex items-center gap-2 font-bold text-[#ef7f1a] hover:text-[#0f6b57]">Beratung anfragen <span>→</span></a>
+    <div class="max-w-2xl">
+      <span class="eyebrow">Dienstleistungen</span>
+      <h2>Ihr Ansprechpartner für eine gepflegte Liegenschaft</h2>
+      <p class="lead">
+        Ob kleine oder grosse Arbeiten: Mit erfahrenen Mitarbeitenden und professionellem Material
+        sind wir für die unterschiedlichsten Aufgaben gerüstet.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
-      <article class="group relative min-h-[500px] overflow-hidden rounded-[30px] shadow-[0_24px_70px_rgba(64,44,25,.10)]">
-        <img src="https://images.unsplash.com/photo-1771371428960-35a50c2d4e7c?auto=format&fit=crop&fm=jpg&q=86&w=2400" alt="Hochwertiger moderner Wohnbereich" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.025]" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#241f1b]/90 via-[#241f1b]/38 to-transparent"></div>
-        <div class="absolute left-7 top-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ef7f1a] text-2xl text-white shadow-xl">✦</div>
-        <div class="relative z-10 flex min-h-[500px] flex-col justify-end p-7 sm:p-9">
-          <p class="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-[#f8c28d]">Premium Reinigung</p>
-          <h3 class="!mb-3 !text-[48px] !text-white">Reinigung</h3>
-          <p class="max-w-xl text-lg leading-relaxed text-white/82">Sorgfältige Reinigung für hochwertige Wohnungen, Häuser, Büros und repräsentative Räume – diskret und mit Blick fürs Detail.</p>
-          <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <a href="/reinigung-privat" class="flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-bold text-[#292929] transition hover:text-[#ef7f1a]"><span>Privat</span><span>→</span></a>
-            <a href="/reinigung-geschaeftlich" class="flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-bold text-[#292929] transition hover:text-[#ef7f1a]"><span>Geschäftlich</span><span>→</span></a>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      {services.map((s) => (
+        <article class="flex flex-col overflow-hidden rounded-[10px] border border-[var(--hrr-line)] bg-white">
+          <div class="aspect-[4/3] overflow-hidden bg-[var(--hrr-sand)]">
+            <img src={s.img.src} alt={s.img.alt} loading="lazy" class="h-full w-full object-cover" />
           </div>
-        </div>
-      </article>
-
-      <article class="group relative min-h-[500px] overflow-hidden rounded-[30px] shadow-[0_24px_70px_rgba(64,44,25,.10)]">
-        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&fm=jpg&q=86&w=2400" alt="Luxuriöse moderne Villa" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.025]" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#183f36]/92 via-[#183f36]/42 to-transparent"></div>
-        <div class="absolute left-7 top-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0f6b57] text-2xl text-white shadow-xl">⌂</div>
-        <div class="relative z-10 flex min-h-[500px] flex-col justify-end p-7 sm:p-9">
-          <p class="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-[#cde2da]">Werterhalt &amp; Betreuung</p>
-          <h3 class="!mb-3 !text-[48px] !text-white">Hauswartung</h3>
-          <p class="max-w-xl text-lg leading-relaxed text-white/82">Professionelle Betreuung von Villen, Mehrfamilienhäusern, Geschäftsliegenschaften und Aussenbereichen – zuverlässig und vorausschauend.</p>
-          <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <a href="/hauswartung-privat" class="flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-bold text-[#292929] transition hover:text-[#0f6b57]"><span>Privat</span><span>→</span></a>
-            <a href="/hauswartung-geschaeftlich" class="flex items-center justify-between rounded-2xl bg-white px-5 py-4 font-bold text-[#292929] transition hover:text-[#0f6b57]"><span>Geschäftlich</span><span>→</span></a>
+          <div class="flex flex-1 flex-col p-6">
+            <h3>{s.title}</h3>
+            <p class="text-[var(--hrr-muted)]">{s.text}</p>
+            <ul class="check-list mt-4 mb-6 text-[15px]">
+              {s.points.map((p) => <li>{p}</li>)}
+            </ul>
+            <a href={s.href} class="mt-auto inline-flex items-center gap-2 font-semibold text-[var(--hrr-orange)] hover:text-[var(--hrr-orange-dark)]">
+              Mehr erfahren <Icon name="lucide:arrow-right" size={17} />
+            </a>
           </div>
-        </div>
-      </article>
+        </article>
+      ))}
     </div>
   </div>
 </section>
