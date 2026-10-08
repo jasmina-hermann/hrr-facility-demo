@@ -1,24 +1,161 @@
 ---
-// "So läuft es ab" – drei einfache Schritte
+// Ablauf: So kommen Kunden zur Offerte und so funktioniert der Kontakt
+import { Icon } from "astro-icon/components";
+import { CONTACT } from "../consts";
+
 const steps = [
-  { title: "Anfrage & Offerte", text: "Sie melden sich bei uns. Wir besprechen Ihr Anliegen und erstellen eine kostenlose Offerte." },
-  { title: "Termin festlegen", text: "Gemeinsam legen wir den Zeitplan fest – einmalig oder regelmässig." },
-  { title: "Erledigt!", text: "Wir führen die Arbeiten pünktlich und sauber aus. Sie haben einen festen Ansprechpartner." },
+  {
+    icon: "lucide:message-circle",
+    title: "Sie melden sich",
+    text: "Per Telefon, WhatsApp, E-Mail oder über das Formular. Sagen Sie uns kurz, worum es geht.",
+  },
+  {
+    icon: "lucide:clipboard-check",
+    title: "Besichtigung und Offerte",
+    text: "Wir schauen uns das Objekt an, wenn nötig vor Ort. Danach erhalten Sie eine klare Offerte.",
+  },
+  {
+    icon: "lucide:sparkles",
+    title: "Wir legen los",
+    text: "Sie bestätigen, wir planen den Termin. Ab dann kümmert sich Ihr festes Team um alles.",
+  },
+];
+
+const channels = [
+  { icon: "lucide:phone", label: "Anrufen", value: CONTACT.phone, href: CONTACT.phoneHref, ext: false },
+  { icon: "lucide:message-circle", label: "WhatsApp", value: CONTACT.mobile, href: CONTACT.whatsappHref, ext: true },
+  { icon: "lucide:mail", label: "E-Mail", value: CONTACT.email, href: CONTACT.emailHref, ext: false },
+  { icon: "lucide:file-text", label: "Formular", value: "Offerte online anfragen", href: "/contact", ext: false },
 ];
 ---
 
 <section class="section bg-white">
   <div class="site-shell">
-    <span class="eyebrow">So läuft es ab</span>
-    <h2 class="max-w-xl">In drei Schritten zur Lösung</h2>
-    <ol class="mt-10 grid gap-6 md:grid-cols-3">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Ablauf</span>
+      <h2>So kommen Sie zu Ihrer Offerte</h2>
+      <p class="lead">Drei Schritte, keine Verpflichtung. Die Offerte ist kostenlos.</p>
+    </div>
+
+    <ol class="steps mt-14 grid gap-10 md:grid-cols-3 md:gap-6" data-stagger>
       {steps.map((s, i) => (
-        <li class="border-t-2 border-[var(--hrr-orange)] pt-5">
-          <span class="num text-[var(--hrr-orange)]">{i + 1}</span>
-          <h3 class="mt-2">{s.title}</h3>
-          <p class="text-[var(--hrr-muted)]">{s.text}</p>
+        <li class="steps__item">
+          <div class="steps__icon">
+            <Icon name={s.icon} size={28} />
+            <span class="steps__nr">{i + 1}</span>
+          </div>
+          <h3 class="mt-6">{s.title}</h3>
+          <p class="mx-auto max-w-xs text-[var(--hrr-muted)]">{s.text}</p>
         </li>
       ))}
     </ol>
+
+    <div class="contact-strip mt-16">
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {channels.map((c) => (
+          <a
+            href={c.href}
+            target={c.ext ? "_blank" : undefined}
+            rel={c.ext ? "noopener" : undefined}
+            class="contact-strip__item group"
+          >
+            <span class="contact-strip__icon"><Icon name={c.icon} size={20} /></span>
+            <span class="min-w-0">
+              <b class="block text-[var(--hrr-ink)]">{c.label}</b>
+              <span class="block truncate text-sm text-[var(--hrr-muted)]">{c.value}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+      <p class="mt-5 text-center text-sm text-[var(--hrr-muted)]">
+        Bürozeiten Mo bis Fr 07:30 bis 17:00 und Sa 08:30 bis 12:00.
+        Bei Notfällen erreichen Sie uns rund um die Uhr unter
+        <a href={CONTACT.mobileHref} class="font-semibold text-[var(--hrr-orange)]">{CONTACT.mobile}</a>.
+      </p>
+    </div>
   </div>
 </section>
+
+<style>
+  .steps__item {
+    position: relative;
+    text-align: center;
+  }
+
+  /* Verbindungslinie zwischen den Schritten */
+  @media (min-width: 768px) {
+    .steps__item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 38px;
+      left: calc(50% + 52px);
+      width: calc(100% - 104px + 1.5rem);
+      height: 2px;
+      background: repeating-linear-gradient(90deg, rgba(232, 118, 26, .5) 0 8px, transparent 8px 16px);
+    }
+  }
+
+  .steps__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 78px;
+    height: 78px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--hrr-orange);
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(232, 118, 26, .3);
+  }
+  .steps__nr {
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--hrr-ink);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: .8rem;
+    font-weight: 700;
+    border: 3px solid #fff;
+  }
+
+  .contact-strip {
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: var(--hrr-sand);
+  }
+  .contact-strip__item {
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid transparent;
+    transition: border-color .4s ease, box-shadow .4s ease;
+  }
+  .contact-strip__item:hover {
+    border-color: rgba(232, 118, 26, .45);
+    box-shadow: 0 12px 28px rgba(20, 22, 25, .07);
+  }
+  .contact-strip__icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--hrr-orange-soft);
+    color: var(--hrr-orange);
+    transition: background .4s ease, color .4s ease;
+  }
+  .contact-strip__item:hover .contact-strip__icon {
+    background: var(--hrr-orange);
+    color: #fff;
+  }
+</style>
