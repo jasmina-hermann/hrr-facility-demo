@@ -1,7 +1,6 @@
 ---
-// Privat & Geschäftlich: zwei grosse Bildkarten plus Button zum Offertenformular
+// Privat & Geschäftlich: zwei grosse Karten mit Farbverlauf plus Button zum Offertenformular
 import { Icon } from "astro-icon/components";
-import { IMAGES } from "../../consts";
 
 const groups = [
   {
@@ -9,8 +8,8 @@ const groups = [
     intro: "Wir kümmern uns um Sauberkeit und Unterhalt, damit Sie mehr Zeit für die wichtigen Dinge haben.",
     title: "Privat",
     text: "Für Wohnungen, Häuser und Gärten.",
-    img: IMAGES.hero,
-    pos: "center 30%",
+    icon: "lucide:house",
+    tone: "warm",
     href: "/reinigung#privat",
   },
   {
@@ -18,8 +17,8 @@ const groups = [
     intro: "Wir halten Büro und Liegenschaft in Ordnung, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.",
     title: "Geschäftlich",
     text: "Für Verwaltungen, Firmen und Gewerbe.",
-    img: IMAGES.buero,
-    pos: "center 45%",
+    icon: "lucide:building-2",
+    tone: "deep",
     href: "/hauswartung#geschaeftlich",
   },
 ];
@@ -43,13 +42,14 @@ const groups = [
               <p class="mt-4 text-white/75">{g.intro}</p>
             </div>
 
-            <a href={g.href} class="audience__card group mt-8">
-              <img src={g.img.src} alt={g.img.alt} loading="lazy" style={`object-position: ${g.pos}`} />
-              <div class="audience__veil" aria-hidden="true"></div>
+            <a href={g.href} class:list={["audience__card group mt-8", `audience__card--${g.tone}`]}>
+              <div class="audience__shine" aria-hidden="true"></div>
+              <span class="audience__watermark" aria-hidden="true"><Icon name={g.icon} size={220} /></span>
               <div class="audience__content">
+                <span class="audience__badge"><Icon name={g.icon} size={28} /></span>
                 <h3 class="audience__title">{g.title}</h3>
-                <p class="text-[var(--hrr-text)]">{g.text}</p>
-                <span class="mt-3 inline-flex items-center gap-2 font-semibold text-[var(--hrr-orange)]">
+                <p class="text-white/85">{g.text}</p>
+                <span class="audience__more">
                   Mehr erfahren
                   <Icon name="lucide:arrow-right" size={18} class="transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -110,62 +110,98 @@ const groups = [
     color: #fff;
     font-size: clamp(28px, 3.2vw, 40px);
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 
-  /* Grosse Bildkarte */
+  /* Grosse Karte mit Farbverlauf */
   .audience__card {
     position: relative;
-    display: block;
-    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 380px;
     overflow: hidden;
     border-radius: 22px;
-    background: #fff;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, .28);
-    transition: transform .6s cubic-bezier(.2, .7, .2, 1), box-shadow .6s ease;
+    background-size: 160% 160%;
+    background-position: 0% 0%;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .3);
+    transition: transform .6s cubic-bezier(.2, .7, .2, 1), box-shadow .6s ease, background-position 1.2s ease;
+  }
+  .audience__card--warm {
+    background-image: linear-gradient(135deg, #F8A24C 0%, #E8761A 45%, #B8520C 100%);
+  }
+  .audience__card--deep {
+    background-image: linear-gradient(135deg, #E8761A 0%, #A9480E 50%, #5E2A0D 100%);
   }
   .audience__card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, .35);
+    background-position: 100% 100%;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, .38);
   }
-  .audience__card img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
-  }
-  .audience__card:hover img { transform: scale(1.05); }
 
-  /* Weisser Verlauf von unten, damit der Text sauber lesbar ist */
-  .audience__veil {
+  /* Weicher Lichtschein oben rechts */
+  .audience__shine {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(255, 255, 255, .97) 0%,
-      rgba(255, 255, 255, .9) 24%,
-      rgba(255, 255, 255, .55) 46%,
-      rgba(255, 255, 255, .12) 66%,
-      rgba(255, 255, 255, 0) 80%
-    );
+    width: 420px;
+    height: 420px;
+    right: -120px;
+    top: -160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, .35) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
   }
+
+  /* Grosses, fast durchsichtiges Symbol im Hintergrund */
+  .audience__watermark {
+    position: absolute;
+    right: -30px;
+    bottom: -40px;
+    color: rgba(255, 255, 255, .1);
+    transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
+    pointer-events: none;
+  }
+  .audience__card:hover .audience__watermark { transform: rotate(-6deg) scale(1.05); }
 
   .audience__content {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 0 1.5rem 2rem;
+    position: relative;
+    padding: 2.5rem 1.5rem 2.5rem;
     text-align: center;
   }
-  .audience__title {
-    margin: 0 0 .35rem;
-    font-size: clamp(34px, 3.6vw, 46px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--hrr-ink);
+  .audience__badge {
+    display: inline-grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.2rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .35);
+    color: #fff;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
+  .audience__title {
+    margin: 0 0 .4rem;
+    font-size: clamp(36px, 3.8vw, 50px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .audience__more {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 1.4rem;
+    padding: .7rem 1.4rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--hrr-orange-dark);
+    font-family: var(--font-head);
+    font-weight: 700;
+    transition: background-color .3s ease;
+  }
+  .audience__card:hover .audience__more { background: #FFF4EA; }
 
   /* Button zum Offertenformular */
   .audience__cta {
