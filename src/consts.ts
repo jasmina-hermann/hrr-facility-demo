@@ -96,11 +96,11 @@ export const IMAGES = {
   // --- ORIGINALFOTOS DES KUNDEN (in public/img/ hochladen) ---
   // Solange eine Datei fehlt, zeigt die Seite automatisch das Ersatzfoto (fallback).
   team: { src: '/img/hrr-team.jpg.jpg', fallback: u('photo-1581578731548-c64695cc6952', 2000), alt: 'Das Team der H-R-R Facility GmbH' },
-  reinigung: { src: '/img/hrr-reinigung.jpg', fallback: u('photo-1718152421680-d1580e843cc9'), alt: 'Reinigung durch H-R-R Facility' },
-  hauswartung: { src: '/img/hrr-hauswartung.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Hauswartung durch H-R-R Facility' },
-  renovation: { src: '/img/hrr-renovation.jpg', fallback: u('photo-1562259929-b4e1fd3aef09'), alt: 'Renovierungsarbeiten von H-R-R Facility' },
-  garten: { src: '/img/hrr-garten.jpg', fallback: u('photo-1689728318937-17d24bc0a65c'), alt: 'Gartenunterhalt von H-R-R Facility' },
-  sicherheit: { src: '/img/hrr-sicherheit.jpg', fallback: u('photo-1627905646269-7f034dcc5738'), alt: 'Mitarbeiterin von H-R-R Facility bei der Arbeit' },
+  reinigung: { src: '/img/hrr-reinigung.jpg.jpg', fallback: u('photo-1718152421680-d1580e843cc9'), alt: 'Reinigung durch H-R-R Facility' },
+  hauswartung: { src: '/img/hrr-hauswartung.jpg.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Hauswartung durch H-R-R Facility' },
+  renovation: { src: '/img/hrr-renovation.jpg.jpg', fallback: u('photo-1562259929-b4e1fd3aef09'), alt: 'Renovierungsarbeiten von H-R-R Facility' },
+  garten: { src: '/img/hrr-garten.jpg.jpg', fallback: u('photo-1689728318937-17d24bc0a65c'), alt: 'Gartenunterhalt von H-R-R Facility' },
+  sicherheit: { src: '/img/hrr-sicherheit.jpg.jpg', fallback: u('photo-1627905646269-7f034dcc5738'), alt: 'Mitarbeiterin von H-R-R Facility bei der Arbeit' },
 
   // --- Stockfotos für die Unterseiten ---
   hero: { src: u('photo-1581578731548-c64695cc6952', 1800), alt: 'Mitarbeiterin reinigt eine Glastür' },
