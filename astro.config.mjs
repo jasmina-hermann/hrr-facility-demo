@@ -17,6 +17,9 @@ export default defineConfig({
 	redirects: {
 		'/ueber-uns': '/contact',
 		'/privacy': '/policy',
+		// Frühere Standort-Unterseiten führen jetzt auf die gemeinsame Standort-Seite
+		'/standort/kreuzlingen': '/standort',
+		'/standort/winterthur': '/standort',
 	},
 	fonts: [
 		{
