@@ -1,13 +1,14 @@
 ---
 import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
 import { CONTACT } from "../consts";
 ---
 
 <Layout title="Impressum">
+  <PageHero kicker="Rechtliches" title="Impressum" icon="lucide:file-text" />
+
   <section class="section bg-white">
     <div class="site-shell"><div class="post max-w-3xl">
-      <h1>Impressum</h1>
-
       <h2 class="!text-2xl">Verantwortlich für den Inhalt</h2>
       <p>
         H-R-R Facility GmbH<br />
