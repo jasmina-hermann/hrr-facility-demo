@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
 import TeamSlideshow from "../components/TeamSlideshow.astro";
 import Contacts from "../components/homepage/Contacts.astro";
 import { IMAGES } from "../consts";
@@ -24,7 +25,6 @@ const teamSlides = [
   slide(6, "Mitarbeiterin der H-R-R Facility GmbH", "center 22%"),
   slide(8, "Mitarbeiterin der H-R-R Facility GmbH", "center 22%"),
   slide(9, "Drei Mitarbeiterinnen der H-R-R Facility GmbH", "center 30%"),
-  slide(4, "Zwei Kinder mit Laubbläsern von H-R-R", "center 45%"),
   slide(5, "Mitarbeiterinnen vor den Firmenfahrzeugen der H-R-R Facility GmbH", "center 45%", "Unterwegs in der ganzen Region"),
 ];
 
@@ -36,23 +36,19 @@ const values = [
 ---
 
 <Layout title="Über uns" description="H-R-R Facility GmbH aus Tägerwilen. Reinigung, Hauswartung, Renovation und Gartenunterhalt mit über 20 Jahren Erfahrung, in Kreuzlingen, Winterthur und im Thurgau.">
-  <section class="bg-[var(--hrr-sand)]">
-    <div class="site-shell grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16">
-      <div>
-        <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
-          <a href="/" class="hover:text-[var(--hrr-orange)]">Startseite</a>
-          <span class="mx-2">/</span>
-          <span class="text-[var(--hrr-ink)]">Über uns</span>
-        </nav>
-        <h1>Ein Team aus der Region für Ihre Liegenschaft</h1>
-        <p class="lead max-w-xl">
-          H-R-R Facility GmbH steht für Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt.
-          Mit einem jungen, eingespielten Team und über 20 Jahren Erfahrung betreuen wir Liegenschaften,
-          Unternehmen und Privathaushalte in der Region.
-        </p>
-      </div>
+  <PageHero
+    kicker="H-R-R Facility GmbH"
+    title="Über uns"
+    text="Ein Team aus der Region, seit über 20 Jahren."
+    icon="lucide:users"
+  />
 
-      <TeamSlideshow slides={teamSlides} />
+  <!-- Slideshow direkt unter dem dunklen Kopfbereich, ragt leicht in den Bogen hinein -->
+  <section class="about-slides no-reveal">
+    <div class="site-shell">
+      <div class="about-slides__frame">
+        <TeamSlideshow slides={teamSlides} />
+      </div>
     </div>
   </section>
 
@@ -62,8 +58,8 @@ const values = [
         <span class="eyebrow">Wer wir sind</span>
         <h2>Erfahrung, die man sieht</h2>
         <p class="lead">
-          Mit über 20 Jahren Berufserfahrung wissen wir, worauf es ankommt: dass die Arbeit sauber gemacht wird,
-          dass man uns erreicht und dass Abmachungen eingehalten werden.
+          H-R-R Facility GmbH steht für Reinigung, Hauswartung, Renovierungsarbeiten und Gartenunterhalt.
+          Mit einem jungen, eingespielten Team betreuen wir Liegenschaften, Unternehmen und Privathaushalte in der Region.
         </p>
         <p class="mt-4 text-[var(--hrr-muted)]">
           Unser Sitz ist in Tägerwilen. Von hier aus sind wir mit eigenem Material und eingespielten Teams
@@ -99,3 +95,24 @@ const values = [
     text="Rufen Sie an oder schreiben Sie uns kurz, worum es geht. Wir melden uns persönlich und kommen gerne für eine Besichtigung vorbei."
   />
 </Layout>
+
+<style>
+  /* Slideshow gross und mittig, leicht über den Bogen des Kopfbereichs gezogen */
+  .about-slides {
+    position: relative;
+    z-index: 3;
+    margin-top: -2.5rem;
+  }
+  @media (min-width: 768px) {
+    .about-slides { margin-top: -5rem; }
+  }
+  .about-slides__frame {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  /* Breiteres Format als im Standard, damit die Slideshow wie ein grosses Bild wirkt */
+  .about-slides__frame :global(.tss) { aspect-ratio: 4 / 3; }
+  @media (min-width: 768px) {
+    .about-slides__frame :global(.tss) { aspect-ratio: 16 / 9; }
+  }
+</style>
