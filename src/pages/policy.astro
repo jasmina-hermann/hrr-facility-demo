@@ -1,12 +1,14 @@
 ---
 import Layout from "../layouts/Main.astro";
+import PageHero from "../components/PageHero.astro";
 import { CONTACT } from "../consts";
 ---
 
 <Layout title="Datenschutz">
+  <PageHero kicker="Rechtliches" title="Datenschutz" icon="lucide:shield-check" />
+
   <section class="section bg-white">
     <div class="site-shell"><div class="post max-w-3xl">
-      <h1>Datenschutzerklärung</h1>
       <p>
         Der Schutz Ihrer Personendaten ist uns wichtig. Wir bearbeiten Ihre Daten nach dem
         Schweizerischen Datenschutzgesetz (DSG). Hier erfahren Sie, welche Daten wir bearbeiten und wozu.
