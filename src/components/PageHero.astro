@@ -1,28 +1,127 @@
 ---
-// Kopfbereich für Unterseiten: Text links, Foto rechts
+// Einheitlicher Kopfbereich für alle Unterseiten.
+// Bewusst schlicht: Man sieht sofort, auf welcher Seite man ist.
+// Dunkler Farbverlauf, orangener Lichtschein, grosser Seitentitel, eine kurze Zeile darunter.
+import { Icon } from "astro-icon/components";
+
 interface Props {
-  eyebrow: string;
-  title: string;
-  text: string;
-  image: { src: string; alt: string; fallback?: string };
+  title: string; // Seitenname, gross
+  kicker?: string; // kleine orange Zeile über dem Titel
+  text?: string; // eine kurze Zeile unter dem Titel
+  icon?: string; // grosses, fast durchsichtiges Symbol rechts
 }
-const { eyebrow, title, text, image } = Astro.props;
+
+const { title, kicker, text, icon = "lucide:sparkles" } = Astro.props;
 ---
 
-<section class="bg-[var(--hrr-sand)]">
-  <div class="site-shell grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16">
-    <div>
-      <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
-        <a href="/" class="hover:text-[var(--hrr-orange)]">Startseite</a>
-        <span class="mx-2">/</span>
-        <span class="text-[var(--hrr-ink)]">{eyebrow}</span>
-      </nav>
-      <h1>{title}</h1>
-      <p class="lead max-w-xl">{text}</p>
-      <slot />
-    </div>
-    <div class="photo aspect-[4/3]">
-      <img src={image.src} alt={image.alt} loading="eager" fetchpriority="high" onerror={image.fallback ? `this.onerror=null;this.src='${image.fallback}'` : undefined} />
-    </div>
+<section class="ph no-reveal">
+  <div class="ph__glow" aria-hidden="true"></div>
+  <span class="ph__watermark" aria-hidden="true"><Icon name={icon} size={340} /></span>
+
+  <div class="site-shell ph__inner">
+    {kicker && <p class="ph__in ph__kicker" style="--d: 0s">{kicker}</p>}
+    <h1 class="ph__in ph__title" style="--d: .1s">{title}</h1>
+    <span class="ph__in ph__line" style="--d: .22s" aria-hidden="true"></span>
+    {text && <p class="ph__in ph__text" style="--d: .3s">{text}</p>}
   </div>
+
+  <svg class="ph__curve" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120H1440V90C1160 0 280 0 0 90Z" fill="#fff"></path>
+  </svg>
 </section>
+
+<style>
+  .ph {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(160deg, #2a2e33 0%, #1d2024 55%, #24211e 100%);
+  }
+  .ph__glow {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    right: -260px;
+    top: -460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 118, 26, .32) 0%, rgba(232, 118, 26, .08) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .ph__watermark {
+    position: absolute;
+    right: 4%;
+    bottom: -70px;
+    color: rgba(255, 255, 255, .05);
+    pointer-events: none;
+  }
+  .ph__curve {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: clamp(36px, 6vw, 90px);
+    display: block;
+  }
+
+  .ph__inner {
+    position: relative;
+    z-index: 2;
+    padding-top: 3.5rem;
+    padding-bottom: 6.5rem;
+  }
+  @media (min-width: 768px) {
+    .ph__inner { padding-top: 5rem; padding-bottom: 8.5rem; }
+  }
+
+  .ph__kicker {
+    margin: 0 0 .9rem;
+    font-family: var(--font-head);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--hrr-orange);
+  }
+  .ph__title {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(42px, 6.4vw, 84px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .ph__line {
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 1.5rem 0 1.3rem;
+    border-radius: 3px;
+    background: var(--hrr-orange);
+    transform-origin: left;
+  }
+  .ph__line.ph__in { animation-name: phLine; }
+  .ph__text {
+    max-width: 36rem;
+    margin: 0;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, .75);
+  }
+
+  .ph__in {
+    animation: phUp .9s cubic-bezier(.16, .8, .2, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes phUp {
+    from { transform: translateY(16px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes phLine {
+    from { transform: scaleX(0); opacity: 0; }
+    to   { transform: scaleX(1); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ph__in { animation: none; }
+  }
+</style>
