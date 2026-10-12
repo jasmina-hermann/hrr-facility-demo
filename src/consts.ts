@@ -33,9 +33,7 @@ export const SERVICES = [
 ];
 
 // ---------------------------------------------------------------
-// STANDORTE: jeder Standort bekommt eine eigene Seite (/standort/...)
-// Das ist wichtig für Google: Wer "Reinigung Winterthur" sucht,
-// findet eine Seite, die genau dazu passt.
+// STANDORTE: werden auf der Seite /standort angezeigt.
 // Sobald die Adresse in Winterthur feststeht: street und city ausfüllen
 // und opening auf false setzen.
 // ---------------------------------------------------------------
@@ -80,14 +78,7 @@ export const NAV_MENU: { url: string; title: string; children?: { url: string; t
       ...SERVICES,
     ],
   },
-  {
-    url: '/standort/kreuzlingen',
-    title: 'Standorte',
-    children: [
-      { url: '/standort/kreuzlingen', title: 'Kreuzlingen & Thurgau' },
-      { url: '/standort/winterthur', title: 'Winterthur' },
-    ],
-  },
+  { url: '/standort', title: 'Standorte' },
   { url: '/about', title: 'Über uns' },
   { url: '/contact', title: 'Kontakt' },
 ];
@@ -106,10 +97,10 @@ export const IMAGES = {
   // Solange eine Datei fehlt, zeigt die Seite automatisch das Ersatzfoto (fallback).
   team: { src: '/img/hrr-team.jpg.jpg', fallback: u('photo-1581578731548-c64695cc6952', 2000), alt: 'Das Team der H-R-R Facility GmbH', pos: 'center 30%' },
   reinigung: { src: '/img/hrr-reinigung.jpg.jpg', fallback: u('photo-1718152421680-d1580e843cc9'), alt: 'Mitarbeitende von H-R-R mit Hochdruckreiniger vor dem Firmenwagen', pos: 'center 18%' },
-  hauswartung: { src: '/img/hrr-hauswartung.jpg.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Laubbläser für die Hauswartung', pos: 'center 40%' },
+  hauswartung: { src: '/img/hrr-sicherheit.jpg.jpg', fallback: u('photo-1646119945537-2a73112f5913'), alt: 'Hauswart der H-R-R Facility GmbH', pos: 'center 18%' },
   renovation: { src: '/img/hrr-renovation.jpg.jpg', fallback: u('photo-1562259929-b4e1fd3aef09'), alt: 'Firmenwagen der H-R-R Facility GmbH', pos: 'center 55%' },
   garten: { src: '/img/hrr-garten.jpg.jpg', fallback: u('photo-1689728318937-17d24bc0a65c'), alt: 'Mitarbeiter von H-R-R beim Heckenschneiden', pos: 'center 50%' },
-  sicherheit: { src: '/img/hrr-sicherheit.jpg.jpg', fallback: u('photo-1627905646269-7f034dcc5738'), alt: 'Mitarbeiter der H-R-R Facility GmbH', pos: 'center 30%' },
+  sicherheit: { src: '/img/Slideshow%202.jpg', fallback: u('photo-1627905646269-7f034dcc5738'), alt: 'Mitarbeiterin der H-R-R Facility GmbH', pos: 'center 25%' },
 
   // --- Stockfotos für die Unterseiten ---
   hero: { src: u('photo-1581578731548-c64695cc6952', 1800), alt: 'Mitarbeiterin reinigt eine Glastür' },
