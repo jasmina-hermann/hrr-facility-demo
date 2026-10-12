@@ -12,23 +12,17 @@ import { IMAGES } from "../consts";
   description="Unterhaltsreinigung, Büroreinigung, Fenster-, Grund- und Umzugsreinigung in Kreuzlingen, Winterthur und Umgebung."
 >
   <PageHero
-    eyebrow="Reinigung"
-    title="Reinigung für Liegenschaften, Büros und Privathaushalte"
-    text="Ob regelmässige Unterhaltsreinigung oder einmaliger Einsatz: Wir reinigen gründlich, zuverlässig und so, wie es mit Ihnen vereinbart ist."
-    image={IMAGES.boden}
-  >
-    <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[var(--hrr-ink)]">
-      <a href="#geschaeftlich" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Geschäftlich</a>
-      <a href="#privat" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Privat</a>
-      <a href="#spezial" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Fenster &amp; Grundreinigung</a>
-    </div>
-  </PageHero>
+    kicker="Dienstleistungen"
+    title="Reinigung"
+    text="Treppenhaus, Büro, Wohnung und Fenster."
+    icon="lucide:sparkles"
+  />
 
   <ServiceBlock
     id="geschaeftlich"
     eyebrow="Geschäftlich"
     title="Treppenhaus-, Büro- und Gewerbereinigung"
-    text="Für Verwaltungen, Unternehmen, Praxen und Gewerbe. Wir reinigen nach festem Plan – täglich, wöchentlich oder in dem Rhythmus, der zu Ihrem Objekt passt."
+    text="Für Verwaltungen, Unternehmen, Praxen und Gewerbe. Wir reinigen nach festem Plan: täglich, wöchentlich oder in dem Rhythmus, der zu Ihrem Objekt passt."
     points={[
       "Treppenhausreinigung",
       "Büro- und Praxisreinigung",
@@ -44,7 +38,7 @@ import { IMAGES } from "../consts";
     id="privat"
     eyebrow="Privat"
     title="Reinigung für Ihr Zuhause"
-    text="Für Wohnungen und Häuser – regelmässig oder bei Bedarf. Sie bekommen feste Mitarbeitende, die Ihr Zuhause kennen."
+    text="Für Wohnungen und Häuser, regelmässig oder bei Bedarf. Sie bekommen feste Mitarbeitende, die Ihr Zuhause kennen."
     points={[
       "Wohnungs- und Hausreinigung",
       "Küche und Bad",
@@ -60,7 +54,7 @@ import { IMAGES } from "../consts";
     id="spezial"
     eyebrow="Fenster & Grundreinigung"
     title="Wenn es gründlich sein muss"
-    text="Für Einsätze, die über die normale Reinigung hinausgehen – nach Umbauten, beim Mieterwechsel oder einfach einmal im Jahr."
+    text="Für Einsätze, die über die normale Reinigung hinausgehen: nach Umbauten, beim Mieterwechsel oder einfach einmal im Jahr."
     points={[
       "Fenster und Rahmen",
       "Grundreinigung",
