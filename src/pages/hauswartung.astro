@@ -12,17 +12,11 @@ import { IMAGES } from "../consts";
   description="Hauswartung für Liegenschaften, Unternehmen und Privathaushalte in Kreuzlingen, Winterthur und Umgebung."
 >
   <PageHero
-    eyebrow="Hauswartung"
-    title="Hauswartung, auf die Sie sich verlassen können"
-    text="Wir schauen regelmässig zum Rechten, beheben kleine Schäden und halten alles in Ordnung – damit Ihre Liegenschaft ihren Wert behält."
-    image={IMAGES.werkzeug}
-  >
-    <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-semibold text-[var(--hrr-ink)]">
-      <a href="#geschaeftlich" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Liegenschaften</a>
-      <a href="#privat" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Privat</a>
-      <a href="/garten" class="underline decoration-[var(--hrr-orange)] decoration-2 underline-offset-4 hover:text-[var(--hrr-orange)]">Gartenunterhalt</a>
-    </div>
-  </PageHero>
+    kicker="Dienstleistungen"
+    title="Hauswartung"
+    text="Kontrolle, Unterhalt und kleine Reparaturen."
+    icon="lucide:key-round"
+  />
 
   <ServiceBlock
     id="geschaeftlich"
@@ -44,7 +38,7 @@ import { IMAGES } from "../consts";
     id="privat"
     eyebrow="Privat"
     title="Hauswartung für Ihr Haus"
-    text="Für Einfamilien- und Mehrfamilienhäuser. Wir übernehmen die Arbeiten, für die Ihnen die Zeit fehlt – regelmässig oder auf Abruf."
+    text="Für Einfamilien- und Mehrfamilienhäuser. Wir übernehmen die Arbeiten, für die Ihnen die Zeit fehlt. Regelmässig oder auf Abruf."
     points={[
       "Kontrolle bei Abwesenheit",
       "Kleine Reparaturen",
