@@ -1,0 +1,263 @@
+---
+// Eine Seite für alle Standorte: Kreuzlingen mit Karte, Winterthur (bald), alle Gemeinden im Thurgau
+import Layout from "../../layouts/Main.astro";
+import PageHero from "../../components/PageHero.astro";
+import Contacts from "../../components/homepage/Contacts.astro";
+import { Icon } from "astro-icon/components";
+import { CONTACT, MAP } from "../../consts";
+
+// Alle politischen Gemeinden im Kanton Thurgau, nach Bezirk
+const thurgau = [
+  {
+    bezirk: "Bezirk Kreuzlingen",
+    orte: ["Altnau", "Bottighofen", "Ermatingen", "Gottlieben", "Güttingen", "Kemmental", "Kreuzlingen", "Langrickenbach", "Lengwil", "Münsterlingen", "Raperswilen", "Salenstein", "Tägerwilen", "Wäldi"],
+  },
+  {
+    bezirk: "Bezirk Frauenfeld",
+    orte: ["Basadingen-Schlattingen", "Berlingen", "Diessenhofen", "Eschenz", "Felben-Wellhausen", "Frauenfeld", "Gachnang", "Herdern", "Homburg", "Hüttlingen", "Hüttwilen", "Mammern", "Matzingen", "Müllheim", "Neunforn", "Pfyn", "Schlatt", "Steckborn", "Stettfurt", "Thundorf", "Uesslingen-Buch", "Wagenhausen", "Warth-Weiningen"],
+  },
+  {
+    bezirk: "Bezirk Weinfelden",
+    orte: ["Affeltrangen", "Amlikon-Bissegg", "Berg", "Birwinken", "Bischofszell", "Bürglen", "Bussnang", "Erlen", "Hauptwil-Gottshaus", "Hohentannen", "Kradolf-Schönenberg", "Märstetten", "Schönholzerswilen", "Sulgen", "Weinfelden", "Wigoltingen", "Wuppenau", "Zihlschlacht-Sitterdorf"],
+  },
+  {
+    bezirk: "Bezirk Arbon",
+    orte: ["Amriswil", "Arbon", "Dozwil", "Egnach", "Hefenhofen", "Horn", "Kesswil", "Roggwil", "Romanshorn", "Salmsach", "Sommeri", "Uttwil"],
+  },
+  {
+    bezirk: "Bezirk Münchwilen",
+    orte: ["Aadorf", "Bettwiesen", "Bichelsee-Balterswil", "Braunau", "Eschlikon", "Fischingen", "Lommis", "Münchwilen", "Rickenbach", "Sirnach", "Tobel-Tägerschen", "Wängi", "Wilen"],
+  },
+];
+---
+
+<Layout
+  title="Standorte: Reinigung & Hauswartung in Kreuzlingen, Thurgau und Winterthur"
+  description="H-R-R Facility GmbH in Tägerwilen bei Kreuzlingen. Reinigung, Hauswartung, Renovation und Gartenunterhalt im ganzen Kanton Thurgau. Bald auch in Winterthur."
+>
+  <PageHero
+    kicker="Hier sind wir für Sie da"
+    title="Standorte"
+    text="Kreuzlingen, der ganze Thurgau und bald Winterthur."
+    icon="lucide:map-pin"
+  />
+
+  <!-- 1. Kreuzlingen mit Google Maps -->
+  <section id="kreuzlingen" class="section scroll-mt-32 bg-white">
+    <div class="site-shell">
+      <div class="loc-main">
+        <div class="loc-main__info">
+          <span class="loc-badge"><Icon name="lucide:map-pin" size={15} /> Hauptsitz</span>
+          <h2 class="loc-main__title">Kreuzlingen &amp; Thurgau</h2>
+          <p class="text-[var(--hrr-muted)]">
+            Von Tägerwilen aus sind wir in wenigen Minuten in Kreuzlingen und im ganzen Kanton Thurgau im Einsatz.
+          </p>
+
+          <ul class="mt-6 grid gap-4">
+            <li class="flex items-start gap-3">
+              <Icon name="lucide:building-2" size={20} class="mt-0.5 shrink-0 text-[var(--hrr-orange)]" />
+              <span><b class="text-[var(--hrr-ink)]">H-R-R Facility GmbH</b><br />{CONTACT.street}<br />{CONTACT.city}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="lucide:clock" size={20} class="mt-0.5 shrink-0 text-[var(--hrr-orange)]" />
+              <span class="grid gap-0.5">
+                {CONTACT.hours.map((h) => (
+                  <span><b class="font-semibold text-[var(--hrr-ink)]">{h.days}</b> {h.time}</span>
+                ))}
+              </span>
+            </li>
+            <li>
+              <a href={CONTACT.phoneHref} class="flex items-center gap-3 font-semibold text-[var(--hrr-ink)] hover:text-[var(--hrr-orange)]">
+                <Icon name="lucide:phone" size={20} class="shrink-0 text-[var(--hrr-orange)]" /> {CONTACT.phone}
+              </a>
+            </li>
+          </ul>
+
+          <a href={MAP.route} target="_blank" rel="noopener" class="btn-main mt-8">
+            <Icon name="lucide:navigation" size={18} /> Route planen
+          </a>
+        </div>
+
+        <div class="loc-main__map">
+          <iframe
+            src={MAP.embed}
+            title="Karte: H-R-R Facility GmbH in Tägerwilen"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- 2. Winterthur, demnächst -->
+      <div id="winterthur" class="loc-soon scroll-mt-32">
+        <span class="loc-soon__icon"><Icon name="lucide:sparkles" size={26} /></span>
+        <div class="flex-1">
+          <span class="loc-badge loc-badge--soon">Demnächst verfügbar</span>
+          <h2 class="loc-soon__title">Winterthur</h2>
+          <p class="text-[var(--hrr-muted)]">
+            Unser neuer Standort in Winterthur öffnet bald. Aufträge in Winterthur und Umgebung nehmen wir schon jetzt gerne an.
+          </p>
+        </div>
+        <a href="/contact" class="btn-line shrink-0">Anfrage für Winterthur <Icon name="lucide:arrow-right" size={18} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Alle Gemeinden im Thurgau -->
+  <section class="section section-sand">
+    <div class="site-shell">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="eyebrow">Einsatzgebiet</span>
+        <h2>Im ganzen Thurgau für Sie unterwegs</h2>
+        <p class="lead">Reinigung, Hauswartung, Renovation und Gartenunterhalt in allen Gemeinden des Kantons.</p>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-stagger>
+        {thurgau.map((b) => (
+          <div class="loc-district">
+            <h3 class="loc-district__title">
+              <Icon name="lucide:map-pin" size={18} class="text-[var(--hrr-orange)]" /> {b.bezirk}
+            </h3>
+            <ul class="loc-district__list">
+              {b.orte.map((o) => <li>{o}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Contacts title="Offerte für Ihre Liegenschaft im Thurgau" />
+</Layout>
+
+<style>
+  /* ---------- Kreuzlingen ---------- */
+  .loc-main {
+    display: grid;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid var(--hrr-line);
+    box-shadow: 0 24px 60px rgba(20, 22, 25, .08);
+  }
+  @media (min-width: 1024px) {
+    .loc-main { grid-template-columns: 1fr 1.4fr; }
+  }
+  .loc-main__info { padding: 2rem 1.75rem; }
+  @media (min-width: 768px) {
+    .loc-main__info { padding: 2.8rem 2.6rem; }
+  }
+  .loc-main__title {
+    margin: 1rem 0 .6rem;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .loc-main__map {
+    min-height: 320px;
+    background: var(--hrr-sand);
+  }
+  .loc-main__map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    border: 0;
+  }
+  @media (min-width: 1024px) {
+    .loc-main__map, .loc-main__map iframe { min-height: 480px; }
+  }
+
+  .loc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .4rem .85rem;
+    border-radius: 999px;
+    background: var(--hrr-orange-soft);
+    color: var(--hrr-orange-dark);
+    font-family: var(--font-head);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .loc-badge--soon {
+    background: var(--hrr-ink);
+    color: #fff;
+  }
+
+  /* ---------- Winterthur ---------- */
+  .loc-soon {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-top: 1.5rem;
+    padding: 2rem 1.75rem;
+    border-radius: 22px;
+    border: 2px dashed rgba(232, 118, 26, .45);
+    background: linear-gradient(135deg, #FFF8F1 0%, #fff 70%);
+  }
+  @media (min-width: 768px) {
+    .loc-soon {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.4rem 2.6rem;
+    }
+  }
+  .loc-soon__icon {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #F8A24C 0%, #E8761A 55%, #C9620F 100%);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(232, 118, 26, .3);
+  }
+  .loc-soon__title {
+    margin: .8rem 0 .4rem;
+    font-size: clamp(26px, 2.6vw, 32px);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  /* ---------- Gemeinden ---------- */
+  .loc-district {
+    padding: 1.8rem 1.6rem;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(20, 22, 25, .05);
+  }
+  .loc-district__title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: 0 0 1.1rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--hrr-ink);
+  }
+  .loc-district__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .loc-district__list li {
+    padding: .3rem .75rem;
+    border-radius: 999px;
+    border: 1px solid var(--hrr-line);
+    font-size: .92rem;
+    color: var(--hrr-text);
+    transition: border-color .3s ease, color .3s ease;
+  }
+  .loc-district__list li:hover {
+    border-color: var(--hrr-orange);
+    color: var(--hrr-orange-dark);
+  }
+</style>
