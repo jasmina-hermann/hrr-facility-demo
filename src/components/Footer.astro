@@ -1,7 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import { Icon } from "astro-icon/components";
-import { CONTACT, SERVICES, LOCATIONS } from "../consts";
+import { CONTACT, SERVICES } from "../consts";
 const year = new Date().getFullYear();
 ---
 
@@ -45,9 +45,7 @@ const year = new Date().getFullYear();
           {SERVICES.map((s) => (
             <li><a href={s.url} class="hover:text-[var(--hrr-orange)]">{s.title}</a></li>
           ))}
-          {LOCATIONS.map((l) => (
-            <li><a href={`/standort/${l.slug}`} class="hover:text-[var(--hrr-orange)]">Standort {l.name}</a></li>
-          ))}
+          <li><a href="/standort" class="hover:text-[var(--hrr-orange)]">Standorte</a></li>
           <li><a href="/about" class="hover:text-[var(--hrr-orange)]">Über uns</a></li>
           <li><a href="/contact" class="hover:text-[var(--hrr-orange)]">Kontakt</a></li>
         </ul>
