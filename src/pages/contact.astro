@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Main.astro";
 import { Icon } from "astro-icon/components";
+import PageHero from "../components/PageHero.astro";
 import { CONTACT } from "../consts";
 
 const channels = [
@@ -12,26 +13,19 @@ const channels = [
 ---
 
 <Layout title="Kontakt" description="Kontakt zu H-R-R Facility GmbH in Tägerwilen. Telefon, WhatsApp, E-Mail oder Offertanfrage für Privat und Geschäftlich.">
-  <section class="bg-[var(--hrr-sand)]">
-    <div class="site-shell py-12 md:py-16">
-      <nav class="mb-6 text-sm text-[var(--hrr-muted)]" aria-label="Brotkrumen">
-        <a href="/" class="hover:text-[var(--hrr-orange)]">Startseite</a>
-        <span class="mx-2">/</span>
-        <span class="text-[var(--hrr-ink)]">Kontakt</span>
-      </nav>
-      <h1 class="max-w-2xl">Kontaktieren Sie uns</h1>
-      <p class="lead max-w-2xl">
-        Rufen Sie uns an, schreiben Sie uns oder füllen Sie das Formular aus.
-        Wir melden uns persönlich, in der Regel am gleichen oder nächsten Arbeitstag.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    kicker="Wir sind für Sie da"
+    title="Kontakt"
+    text="Rufen Sie an, schreiben Sie uns oder füllen Sie das Formular aus."
+    icon="lucide:message-circle"
+  />
 
   <section class="section bg-white">
     <div class="site-shell grid gap-12 lg:grid-cols-[1fr_1.4fr]">
       <!-- Direkter Kontakt -->
       <div>
         <h2 class="!text-[26px]">Direkt erreichbar</h2>
+        <p class="text-[var(--hrr-muted)]">Wir melden uns persönlich, in der Regel am gleichen oder nächsten Arbeitstag.</p>
         <ul class="mt-6 grid gap-3">
           {channels.map((c) => (
             <li>
@@ -69,7 +63,7 @@ const channels = [
       </div>
 
       <!-- Formular -->
-      <div class="rounded-[10px] border border-[var(--hrr-line)] p-6 md:p-9">
+      <div id="formular" class="scroll-mt-32 rounded-[10px] border border-[var(--hrr-line)] p-6 md:p-9">
         <h2 class="!text-[26px]">Offerte anfragen</h2>
         <p class="text-[var(--hrr-muted)]">Je mehr wir über Ihr Objekt wissen, desto genauer wird die Offerte.</p>
 
