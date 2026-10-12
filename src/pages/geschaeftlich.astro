@@ -5,54 +5,47 @@ import { IMAGES } from "../consts";
 ---
 
 <Layout
-  title="Für Verwaltungen und Firmen: Reinigung und Hauswartung"
-  description="Treppenhausreinigung, Büroreinigung, Hauswartung, Renovation bei Mieterwechsel und Umgebungspflege für Verwaltungen, Eigentümer und Firmen in Kreuzlingen, Winterthur und im Thurgau."
+  title="Geschäftlich: Reinigung und Hauswartung für Firmen und Verwaltungen"
+  description="Treppenhausreinigung, Büroreinigung, Hauswartung, Endreinigung mit Abgabe und Umgebungspflege für Verwaltungen, Eigentümer und Firmen in Kreuzlingen, Winterthur und im Thurgau."
 >
   <AudiencePage
     kind="geschaeftlich"
-    eyebrow="Geschäftlich"
-    title="Ihr Betrieb. Unsere Verantwortung."
-    lead="Für Verwaltungen, Eigentümer, Firmen und Gewerbe. Wir übernehmen Reinigung, Hauswartung, Renovation und Umgebung. Mit festen Teams und einer Ansprechperson für alles."
+    kicker="Für Firmen und Verwaltungen"
+    title="Geschäftlich"
+    tagline="Ihr Betrieb. Unsere Verantwortung."
     icon="lucide:building-2"
-    services={[
+    groupsTitle="Was wir für Ihren Betrieb übernehmen"
+    groups={[
       {
         icon: "lucide:sparkles",
-        title: "Reinigung",
-        text: "Treppenhäuser, Büros, Praxen und Gewerberäume. Nach festem Plan.",
+        title: "Regelmässige Reinigung",
+        items: ["Treppenhäuser", "Büros und Praxen", "Läden und Gewerberäume", "Sanitär- und Küchenbereiche", "Eingangsbereiche und Lifte"],
         href: "/reinigung#geschaeftlich",
       },
       {
         icon: "lucide:key-round",
         title: "Hauswartung",
-        text: "Kontrollgänge, Haustechnik, Waschküche. Wir sind Ansprechpartner für Ihre Mieter.",
+        items: ["Regelmässige Kontrollgänge", "Heizung und Haustechnik im Blick", "Kleine Reparaturen", "Waschküche und Gemeinschaftsräume", "Ansprechperson für Mieter"],
         href: "/hauswartung#geschaeftlich",
       },
       {
-        icon: "lucide:paint-roller",
-        title: "Renovierungsarbeiten",
-        text: "Instandstellung beim Mieterwechsel, Sanierungen und Umbauten.",
-        href: "/renovation",
+        icon: "lucide:calendar-check",
+        title: "Einmalige Einsätze",
+        items: ["Endreinigung mit Abgabe", "Bauendreinigung", "Grundreinigung", "Fensterreinigung", "Instandstellung bei Mieterwechsel"],
+        href: "/reinigung#spezial",
       },
       {
         icon: "lucide:trees",
-        title: "Gartenunterhalt",
-        text: "Umgebungspflege mit festen Intervallen. Kombinierbar mit der Hauswartung.",
+        title: "Umgebung und Renovation",
+        items: ["Umgebungspflege nach festem Plan", "Winterdienst", "Entsorgung von Grüngut", "Kleine Renovierungen", "Innenausbau und Umbauten"],
         href: "/garten#liegenschaften",
       },
     ]}
-    tasksTitle="Das übernehmen wir für Liegenschaften und Firmen"
-    tasksText="Ein Team für innen und aussen. Sie haben eine Ansprechperson und eine Offerte, die genau zu Ihrem Objekt passt."
-    tasks={[
-      "Treppenhausreinigung",
-      "Büro- und Praxisreinigung",
-      "Eingangsbereiche und Lifte",
-      "Regelmässige Kontrollgänge",
-      "Waschküche und Gemeinschaftsräume",
-      "Instandstellung bei Mieterwechsel",
-      "Bauendreinigung",
-      "Umgebungspflege und Winterdienst",
+    partnerTitle="Ihr Partner für Liegenschaften und Betriebe"
+    partnerText={[
+      "Wir arbeiten für Verwaltungen, Eigentümer, Firmen und Gewerbe in Kreuzlingen, Winterthur und im Thurgau.",
+      "Ein Team übernimmt innen und aussen, Sie haben eine Ansprechperson für alles. Nach einer Besichtigung erhalten Sie eine klare Offerte, die zu Ihrem Objekt passt. Ohne versteckte Kosten.",
     ]}
-    image={IMAGES.reinigung}
-    contactTitle="Offerte für Ihre Liegenschaft"
+    photo={IMAGES.reinigung}
   />
 </Layout>
