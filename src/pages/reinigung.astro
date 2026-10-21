@@ -4,7 +4,6 @@ import PageHero from "../components/PageHero.astro";
 import ServiceBlock from "../components/ServiceBlock.astro";
 import Steps from "../components/Steps.astro";
 import Contacts from "../components/homepage/Contacts.astro";
-import { IMAGES } from "../consts";
 ---
 
 <Layout
@@ -31,7 +30,6 @@ import { IMAGES } from "../consts";
       "Abfallentsorgung",
       "Reinigung nach festem Plan",
     ]}
-    image={IMAGES.buero}
   />
 
   <ServiceBlock
@@ -45,7 +43,6 @@ import { IMAGES } from "../consts";
       "Böden und Teppiche",
       "Umzugsreinigung mit Abgabe",
     ]}
-    image={IMAGES.privat}
     reverse
     sand
   />
@@ -61,7 +58,6 @@ import { IMAGES } from "../consts";
       "Bauendreinigung",
       "Umzugs- und Endreinigung",
     ]}
-    image={IMAGES.fenster}
   />
 
   <Steps />
