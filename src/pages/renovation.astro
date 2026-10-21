@@ -4,7 +4,6 @@ import PageHero from "../components/PageHero.astro";
 import ServiceBlock from "../components/ServiceBlock.astro";
 import Steps from "../components/Steps.astro";
 import Contacts from "../components/homepage/Contacts.astro";
-import { IMAGES } from "../consts";
 ---
 
 <Layout
@@ -31,7 +30,6 @@ import { IMAGES } from "../consts";
       "Instandstellung bei Mieterwechsel",
       "Reinigung nach Abschluss",
     ]}
-    image={IMAGES.messen}
   />
 
   <section class="section section-sand">
@@ -44,8 +42,8 @@ import { IMAGES } from "../consts";
           vom ersten Gespräch bis zur sauberen Übergabe.
         </p>
       </div>
-      <div class="photo aspect-[4/3]">
-        <img src={IMAGES.werkzeug.src} alt={IMAGES.werkzeug.alt} loading="lazy" />
+      <div class="photo photo--placeholder aspect-[4/3]">
+        <span>(Bild folgt)</span>
       </div>
     </div>
   </section>
