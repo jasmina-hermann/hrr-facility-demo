@@ -13,7 +13,6 @@ export const CONTACT = {
   whatsappHref: 'https://wa.me/41774805454',
   email: 'Info@h-r-r.ch',
   emailHref: 'mailto:Info@h-r-r.ch',
-  instagram: 'https://www.instagram.com/hrr_mavraj',
   street: 'Hauptstrasse 137b',
   city: '8274 Tägerwilen',
   region: 'Kreuzlingen · Winterthur · Kanton Thurgau',

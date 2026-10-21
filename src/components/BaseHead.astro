@@ -57,7 +57,6 @@ const schema = {
   ],
   areaServed: LOCATIONS.flatMap((l) => l.places).map((name) => ({ "@type": "City", name })),
   knowsAbout: SERVICES.map((s) => s.title),
-  sameAs: [CONTACT.instagram],
 };
 ---
 
